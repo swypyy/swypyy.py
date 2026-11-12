@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn where Python is used, including web development, artificial intelligence, data science, automation and scientific computing.">
+    <title>Where Is Python Used? | Swypyy.py</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .lesson-page {
+            width: min(100% - 32px, 850px);
+            margin: 0 auto;
+            padding: 32px 0 60px;
+        }
+
+        .lesson-top-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top-links a,
+        .lesson-navigation a,
+        .lesson-navigation button {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top-links a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-heading {
+            margin-bottom: 32px;
+        }
+
+        .lesson-label {
+            display: inline-block;
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.14);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 20px;
+            padding: 7px 13px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .lesson-heading h1 {
+            font-size: clamp(30px, 6vw, 44px);
+            line-height: 1.2;
+            margin: 0 0 14px;
+            color: #f5f3ff;
+        }
+
+        .lesson-heading p {
+            color: #a1a1aa;
+            line-height: 1.8;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.85;
+        }
+
+        .lesson-content section {
+            margin-bottom: 32px;
+        }
+
+        .lesson-content h2 {
+            color: #f5f3ff;
+            font-size: 22px;
+            margin: 0 0 14px;
+        }
+
+        .lesson-content h3 {
+            color: #ddd6fe;
+            font-size: 17px;
+            margin: 20px 0 8px;
+        }
+
+        .lesson-content p {
+            margin: 0 0 14px;
+        }
+
+        .lesson-content ul {
+            padding-left: 22px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-content strong {
+            color: #e9d5ff;
+        }
+
+        .example-card,
+        .info-card,
+        .quiz-card,
+        .summary-card {
+            background: #15121f;
+            border: 1px solid #30283f;
+            border-radius: 14px;
+            padding: 20px;
+            margin: 18px 0;
+        }
+
+        .example-card h3,
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #09080e;
+            border: 1px solid #30283f;
+            border-radius: 10px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 14px 0;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #c4b5fd;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .output-label {
+            color: #a1a1aa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 12px 0 6px;
+            text-transform: uppercase;
+        }
+
+        .lesson-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .lesson-table th,
+        .lesson-table td {
+            border: 1px solid #30283f;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .lesson-table th {
+            color: #ddd6fe;
+            background: #211a30;
+        }
+
+        .lesson-table td {
+            color: #d4d4d8;
+        }
+
+        .lesson-note {
+            background: rgba(124, 58, 237, 0.10);
+            border-left: 3px solid #8b5cf6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 13px 15px;
+            margin: 10px 0;
+            border: 1px solid #393044;
+            border-radius: 9px;
+            background: #100e18;
+            color: #e4e4e7;
+            cursor: pointer;
+            font: inherit;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .quiz-option:hover:not(:disabled) {
+            border-color: #8b5cf6;
+            background: #1b1528;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.10);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.10);
+        }
+
+        .quiz-feedback {
+            margin-top: 14px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .completion-panel {
+            background: #15121f;
+            border: 1px solid #49366a;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 36px;
+            text-align: center;
+        }
+
+        .completion-panel h2 {
+            color: #f5f3ff;
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .completion-panel p {
+            color: #a1a1aa;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            padding: 12px 20px;
+            color: white;
+            background: #7c3aed;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button:disabled {
+            background: #3f3158;
+            cursor: default;
+        }
+
+        .completion-status {
+            color: #c4b5fd;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            border-top: 1px solid #30283f;
+            padding-top: 24px;
+            margin-top: 32px;
+        }
+
+        .lesson-navigation a {
+            display: inline-block;
+            padding: 11px 15px;
+            border: 1px solid #393044;
+            border-radius: 9px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                width: min(100% - 24px, 850px);
+                padding-top: 22px;
+            }
+
+            .lesson-content h2 {
+                font-size: 20px;
+            }
+
+            .example-card,
+            .info-card,
+            .quiz-card,
+            .summary-card {
+                padding: 16px;
+            }
+
+            .lesson-table {
+                font-size: 12px;
+            }
+
+            .lesson-table th,
+            .lesson-table td {
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <main class="lesson-page">
+
+        <div class="lesson-top-links">
+            <a href="index.html">← Back to Module 1</a>
+            <a href="../index.html">View All Modules</a>
+        </div>
+
+        <header class="lesson-heading">
+            <span class="lesson-label">MODULE 1 · LESSON 3</span>
+            <h1>Where Is Python Used?</h1>
+            <p>
+                Python is more than a programming language used in classrooms.
+                Discover how it powers websites, artificial intelligence,
+                data analysis, automation and scientific research.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+
+            <section>
+                <h2>1. Introduction</h2>
+
+                <p>
+                    Python is one of the most widely used programming languages
+                    in the world. It is used by students, developers, scientists,
+                    researchers and companies to solve different kinds of problems.
+                </p>
+
+                <p>
+                    One major reason for its popularity is its flexibility.
+                    The same language can be used to build a website, analyse
+                    information, automate tasks or develop intelligent applications.
+                </p>
+
+                <div class="lesson-note">
+                    <strong>Remember:</strong> Python is a general-purpose
+                    programming language. This means it can be used for many
+                    different types of applications.
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Web Development</h2>
+
+                <p>
+                    Web development is the process of creating websites and
+                    web applications. Python can be used to build the
+                    server-side part of a website.
+                </p>
+
+                <p>
+                    The server-side handles tasks such as processing user
+                    requests, working with databases and managing application
+                    logic.
+                </p>
+
+                <h3>Popular Python web frameworks</h3>
+
+                <ul>
+                    <li><strong>Django:</strong> A framework with many built-in
+                        features for developing larger web applications.</li>
+                    <li><strong>Flask:</strong> A lightweight framework that
+                        gives developers more flexibility.</li>
+                </ul>
+
+                <div class="example-card">
+                    <h3>A simple web application example</h3>
+                    <p>
+                        Imagine a website where students can log in and view
+                        their examination results. Python can help process
+                        login requests, retrieve results from a database and
+                        send the information back to the website.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Artificial Intelligence and Machine Learning</h2>
+
+                <p>
+                    Artificial Intelligence (AI) is a field of computer science
+                    focused on creating systems that perform tasks that usually
+                    require human intelligence.
+                </p>
+
+                <p>
+                    Machine Learning (ML) is a part of AI. It allows computers
+                    to learn patterns from data and use those patterns to make
+                    predictions or decisions.
+                </p>
+
+                <p>
+                    Python is widely used in these fields because it has
+                    powerful libraries and tools for working with data
+                    and building machine learning models.
+                </p>
+
+                <h3>Examples of AI applications</h3>
+
+                <ul>
+                    <li>Voice assistants that understand spoken requests.</li>
+                    <li>Recommendation systems that suggest videos or products.</li>
+                    <li>Image recognition systems that identify objects.</li>
+                    <li>Systems that help detect patterns in large datasets.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    Python provides tools for developing AI systems, but
+                    building a useful AI application also requires suitable
+                    data, algorithms and testing.
+                </div>
+            </section>
+
+            <section>
+                <h2>4. Data Science and Data Analysis</h2>
+
+                <p>
+                    Data science involves collecting, organising, analysing
+                    and understanding data. It helps people discover useful
+                    information and patterns.
+                </p>
+
+                <p>
+                    Python is popular in this field because it can work with
+                    large amounts of information and create charts and graphs
+                    that make results easier to understand.
+                </p>
+
+                <h3>Some popular Python libraries</h3>
+
+                <ul>
+                    <li><strong>NumPy:</strong> Used for numerical calculations
+                        and working with arrays.</li>
+                    <li><strong>Pandas:</strong> Used for organising and
+                        analysing structured data.</li>
+                    <li><strong>Matplotlib:</strong> Used to create graphs
+                        and visualisations.</li>
+                </ul>
+
+                <div class="example-card">
+                    <h3>Example: Analysing student marks</h3>
+
+                    <p>
+                        Suppose a teacher has the marks of 100 students.
+                        Python can help calculate the average mark, find
+                        the highest score and create a graph showing
+                        the distribution of marks.
+                    </p>
+
+                    <div class="code-block">
+                        <pre>marks = [80, 75, 90, 65, 85]
+
+average = sum(marks) / len(marks)
+
+print("Average mark:", average)</pre>
+                    </div>
+
+                    <div class="output-label">Output</div>
+                    <div class="code-block">
+                        <pre>Average mark: 79.0</pre>
+                    </div>
+                </div>
+  </section>
+  
+            <section>
+                <h2>5. Automation</h2>
+
+                <p>
+                    Automation means using technology to perform repetitive
+                    tasks with less manual effort. Python is especially useful
+                    for writing small programs that handle routine work.
+                </p>
+
+                <h3>Examples of automation</h3>
+
+                <ul>
+                    <li>Organising files into folders.</li>
+                    <li>Renaming multiple files.</li>
+                    <li>Processing large collections of text files.</li>
+                    <li>Generating reports from data.</li>
+                    <li>Performing repetitive calculations.</li>
+                </ul>
+
+                <div class="example-card">
+                    <h3>Example: Automating a calculation</h3>
+
+                    <div class="code-block">
+                        <pre>prices = [100, 250, 150]
+
+total = sum(prices)
+
+print("Total amount:", total)</pre>
+                    </div>
+
+                    <div class="output-label">Output</div>
+                    <div class="code-block">
+                        <pre>Total amount: 500</pre>
+                    </div>
+
+                    <p>
+                        Instead of adding each value manually, Python
+                        calculates the total automatically.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>6. Scientific Computing</h2>
+
+                <p>
+                    Scientists and researchers use programming to perform
+                    calculations, analyse experimental results and simulate
+                    real-world situations.
+                </p>
+
+                <p>
+                    Python is useful in scientific computing because it
+                    provides tools for mathematics, statistics, numerical
+                    calculations and visualisation.
+                </p>
+
+                <h3>Where is it used?</h3>
+
+                <ul>
+                    <li><strong>Physics:</strong> Calculating values and
+                        simulating physical systems.</li>
+                    <li><strong>Biology:</strong> Analysing biological and
+                        genetic data.</li>
+                    <li><strong>Chemistry:</strong> Processing experimental
+                        results and studying chemical data.</li>
+                    <li><strong>Astronomy:</strong> Analysing observations
+                        from telescopes and space missions.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    Python is also used in education and research to make
+                    complex calculations easier to repeat and verify.
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Other Applications of Python</h2>
+
+                <p>
+                    Python is not limited to the fields discussed above.
+                    Developers also use it in several other areas.
+                </p>
+
+                <table class="lesson-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>How Python is Used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Game Development</td>
+                            <td>Creating games and prototypes.</td>
+                        </tr>
+                        <tr>
+                            <td>Desktop Applications</td>
+                            <td>Building software with graphical interfaces.</td>
+                        </tr>
+                        <tr>
+                            <td>Cybersecurity</td>
+                            <td>Learning security concepts and analysing systems
+                                in authorised environments.</td>
+                        </tr>
+                        <tr>
+                            <td>Internet of Things</td>
+                            <td>Working with connected devices and sensors.</td>
+                        </tr>
+                        <tr>
+                            <td>Education</td>
+                            <td>Teaching programming and problem-solving.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>
+                    These examples show why Python is considered a versatile
+                    programming language.
+                </p>
+            </section>
+
+            <section class="quiz-card">
+                <h2>8. Knowledge Check</h2>
+
+                <p>
+                    Test what you have learned in this lesson.
+                    Choose the correct answer.
+                </p>
+
+                <div class="quiz-question">
+                    <h3>Question 1</h3>
+                    <p>Which Python library is commonly used for data analysis?</p>
+
+                    <button class="quiz-option" type="button">
+                        A. Flask
+                    </button>
+
+                    <button class="quiz-option" type="button" data-correct="true">
+                        B. Pandas
+                    </button>
+
+                    <button class="quiz-option" type="button">
+                        C. Django
+                    </button>
+
+                    <button class="quiz-option" type="button">
+                        D. None of these
+                    </button>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <section class="summary-card">
+                <h2>9. Lesson Summary</h2>
+
+                <p>
+                    Python is a general-purpose programming language used
+                    across many industries and areas of study.
+                </p>
+
+                <ul>
+                    <li>Web development uses Python to build server-side applications.</li>
+                    <li>AI and machine learning use Python to develop intelligent systems.</li>
+                    <li>Data science uses Python to analyse and visualise information.</li>
+                    <li>Automation uses Python to handle repetitive tasks.</li>
+                    <li>Scientific computing uses Python for calculations and research.</li>
+                    <li>Python is also used in games, desktop software and education.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <strong>Key takeaway:</strong> Learning Python gives you
+                    a foundation that can be applied to many different
+                    technical fields.
+                </div>
+            </section>
+
+        </article>
+
+        <div class="completion-panel">
+            <h2>Lesson completed?</h2>
+
+            <p>
+                Mark this lesson as completed when you have finished
+                reading and practising. Your progress is saved in this browser.
+            </p>
+
+            <button class="complete-button" id="complete-lesson" type="button">
+                Mark as Completed
+            </button>
+
+            <p class="completion-status" id="completion-status" aria-live="polite">
+                Not completed yet.
+            </p>
+        </div>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-2.html">← Previous Lesson</a>
+            <a href="lesson-4.html">Next Lesson →</a>
+        </nav>
+
+                      </main>
+  
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 1;
+        const LESSON_NUMBER = 3;
+
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            const course = window.SwypyyCourse;
+
+            if (!course) {
+                completionStatus.textContent =
+                    "Progress system could not be loaded.";
+                completeButton.disabled = true;
+                return;
+            }
+
+            const completed = course.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            if (completed) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            } else {
+                completionStatus.textContent = "Not completed yet.";
+                completeButton.textContent = "Mark as Completed";
+                completeButton.disabled = false;
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            const course = window.SwypyyCourse;
+
+            if (!course) {
+                completionStatus.textContent =
+                    "Progress system could not be loaded.";
+                return;
+            }
+
+            course.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            updateCompletionStatus();
+        });
+
+        const quizOptions = document.querySelectorAll(".quiz-option");
+        const quizFeedback = document.querySelector(".quiz-feedback");
+
+        quizOptions.forEach(function (option) {
+            option.addEventListener("click", function () {
+                if (option.disabled) {
+                    return;
+                }
+
+                const correctAnswer =
+                    document.querySelector('[data-correct="true"]');
+
+                quizOptions.forEach(function (item) {
+                    item.disabled = true;
+                });
+
+                if (option.dataset.correct === "true") {
+                    option.classList.add("correct");
+                    quizFeedback.textContent =
+                        "Correct! Pandas is commonly used for data analysis.";
+                    quizFeedback.style.color = "#4ade80";
+                } else {
+                    option.classList.add("incorrect");
+                    correctAnswer.classList.add("correct");
+
+                    quizFeedback.textContent =
+                        "Not quite. The correct answer is B. Pandas.";
+                    quizFeedback.style.color = "#f87171";
+                }
+            });
+        });
+
+        updateCompletionStatus();
+
+        window.addEventListener("storage", updateCompletionStatus);
+    </script>
+</body>
+      </html>
