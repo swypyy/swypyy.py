@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding How Your First Program Works | Swypyy.py</title>
+    <link rel="stylesheet" href="../css/course.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px 22px 70px;
+        }
+
+        .lesson-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            font-size: clamp(30px, 6vw, 43px);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .lesson-description {
+            color: #b8b2c9;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .lesson-content section {
+            margin-bottom: 35px;
+        }
+
+        .lesson-content h2 {
+            font-size: 23px;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .lesson-content h3 {
+            font-size: 17px;
+            margin: 20px 0 9px;
+            color: #ddd6fe;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c4bfd0;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 23px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 7px;
+        }
+
+        .lesson-content code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 14px 0 7px;
+            text-transform: uppercase;
+        }
+
+        .lesson-note {
+            background: #1c172e;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+        }
+
+        .lesson-note p {
+            margin: 0;
+        }
+
+        .flow-diagram {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            text-align: center;
+        }
+
+        .flow-step {
+            background: #211a32;
+            border: 1px solid #594276;
+            border-radius: 9px;
+            padding: 13px;
+            margin: 8px auto;
+            max-width: 360px;
+            color: #e9ddff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .flow-arrow {
+            color: #a78bfa;
+            font-size: 21px;
+            line-height: 1.3;
+        }
+
+        .quiz-box,
+        .completion-box {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .quiz-question {
+            margin-bottom: 22px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #211a32;
+            color: #e5e0ed;
+            border: 1px solid #403451;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 9px 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .quiz-option:hover {
+            border-color: #a78bfa;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: #123020;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #351919;
+        }
+
+        .quiz-feedback {
+            min-height: 24px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c4bfd0;
+        }
+
+        .completion-box {
+            text-align: center;
+        }
+
+        .completion-box p {
+            color: #c4bfd0;
+            margin-bottom: 16px;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            background: #7c3aed;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .completion-status {
+            color: #a78bfa;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-top: 1px solid #302541;
+            padding-top: 25px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                padding: 25px 16px 50px;
+            }
+
+            .lesson-content h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="lesson-page">
+        <nav class="lesson-top">
+            <a href="index.html">← Back to Module 1</a>
+            <a href="../index.html">View All Modules</a>
+        </nav>
+
+        <header>
+            <div class="lesson-label">Module 1 · Lesson 8</div>
+            <h1 class="lesson-title">Understanding How Your First Program Works</h1>
+            <p class="lesson-description">
+                Discover what happens when Python runs your code.
+                Learn about execution order, the interpreter, output,
+                and common errors through simple examples.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+            <section>
+                <h2>1. Introduction</h2>
+                <p>
+                    In the previous lesson, you wrote your first Python
+                    program using the <code>print()</code> function.
+                    You gave Python an instruction, and it displayed
+                    the expected message.
+                </p>
+                <p>
+                    But what actually happens after you click Run?
+                    How does Python understand your instructions and
+                    produce the output?
+                </p>
+                <p>
+                    Understanding this process helps you become a
+                    better programmer. Instead of only writing code,
+                    you begin to understand how your code behaves.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>In this lesson:</strong> We will follow
+                        a small Python program from the code you write
+                        to the output you see.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. How Python Reads Code</h2>
+                <p>
+                    Python normally executes instructions in order,
+                    starting from the first executable line and
+                    moving towards the last.
+                </p>
+
+                <p>Consider this program:</p>
+
+                <div class="code-example">
+                    <pre>print("Good morning")
+print("Welcome to Python")
+print("Let's start learning")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>Good morning
+Welcome to Python
+Let's start learning</pre>
+                </div>
+
+                <p>
+                    Python runs the first statement, then the second,
+                    and finally the third.
+                </p>
+  </section>
+  
+            <section>
+                <h2>3. The Role of the Python Interpreter</h2>
+                <p>
+                    A computer's processor does not directly understand
+                    Python source code. Python uses an interpreter
+                    implementation to process your program and help
+                    execute it.
+                </p>
+                <p>
+                    When you run a Python file, the Python implementation
+                    processes the source code. In the standard CPython
+                    implementation, this involves compiling code into
+                    bytecode and executing it using the Python Virtual
+                    Machine.
+                </p>
+
+                <h3>What is an interpreter?</h3>
+                <p>
+                    An interpreter is software that processes a
+                    programming language and helps execute its
+                    instructions.
+                </p>
+
+                <h3>What is bytecode?</h3>
+                <p>
+                    Bytecode is an intermediate form of instructions
+                    produced by CPython before execution. It is not
+                    the same as the machine code executed directly
+                    by a processor.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Important:</strong> Python has different
+                        implementations. The details described here
+                        focus on CPython, the most widely used
+                        implementation.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. Understanding Each Part of a Program</h2>
+                <p>
+                    Let's look again at your first Python instruction:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello, World!")</pre>
+                </div>
+
+                <h3>Function name: print</h3>
+                <p>
+                    A function is a reusable block of code that
+                    performs a particular task. The built-in
+                    <code>print()</code> function displays information.
+                </p>
+
+                <h3>Parentheses</h3>
+                <p>
+                    The parentheses contain the information passed
+                    to the function. This information is called
+                    an argument.
+                </p>
+
+                <h3>String</h3>
+                <p>
+                    <code>"Hello, World!"</code> is a string value.
+                    It represents text that Python can display.
+                </p>
+
+                <h3>Function call</h3>
+                <p>
+                    Writing a function name followed by parentheses
+                    to use it is called a function call.
+                    Here, <code>print()</code> is being called with
+                    one string argument.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. How Output Is Produced</h2>
+                <p>
+                    Let's follow a simple program through its
+                    execution process.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Learning Python")</pre>
+                </div>
+
+                <div class="flow-diagram">
+                    <div class="flow-step">1. You write Python source code</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">2. Python processes the code</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">3. Instructions are executed</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">4. The print() function displays text</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">5. You see the output</div>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>Learning Python</pre>
+                </div>
+
+                <p>
+                    This is a simplified view of the process.
+                    The exact internal steps depend on the Python
+                    implementation and environment.
+                </p>
+  </section>
+  
+            <section>
+                <h2>6. Understanding Execution Order</h2>
+                <p>
+                    Python generally follows the order of instructions
+                    in your program. Let's see how changing the order
+                    changes the output.
+                </p>
+
+                <h3>Example 1: First order</h3>
+                <div class="code-example">
+                    <pre>print("One")
+print("Two")
+print("Three")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>One
+Two
+Three</pre>
+                </div>
+
+                <h3>Example 2: Different order</h3>
+                <div class="code-example">
+                    <pre>print("Three")
+print("One")
+print("Two")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>Three
+One
+Two</pre>
+                </div>
+
+                <p>
+                    Python does not automatically rearrange your
+                    instructions. It follows the order in which
+                    the statements are executed.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> Execution order is
+                        important. Later lessons will show how
+                        conditions, loops, and functions can change
+                        the normal flow of a program.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. What Happens When There Is an Error?</h2>
+                <p>
+                    Sometimes Python cannot execute a program because
+                    the code contains a mistake. These mistakes are
+                    called errors.
+                </p>
+
+                <h3>Syntax Errors</h3>
+                <p>
+                    A syntax error occurs when code does not follow
+                    the rules of Python's grammar.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello"</pre>
+                </div>
+
+                <p>
+                    The closing parenthesis is missing. Python cannot
+                    correctly parse this statement.
+                </p>
+
+                <h3>Runtime Errors</h3>
+                <p>
+                    A runtime error happens while a program is running.
+                    The code may be syntactically valid, but an operation
+                    cannot be completed.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = 10 / 0
+print(number)</pre>
+                </div>
+
+                <p>
+                    This attempts to divide a number by zero.
+                    Python raises a <code>ZeroDivisionError</code>.
+                </p>
+
+                <h3>Why should you understand errors?</h3>
+                <ul>
+                    <li>Errors help identify problems in your code.</li>
+                    <li>Error messages often point towards the problem.</li>
+                    <li>Reading errors helps you learn how Python behaves.</li>
+                    <li>Debugging helps you find and correct mistakes.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Tip:</strong> An error is information
+                        about something that needs attention. Read
+                        the message carefully instead of immediately
+                        changing random lines of code.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>8. Experiment With Code</h2>
+                <p>
+                    Predict the output of each program before
+                    running it in your editor.
+                </p>
+
+                <h3>Experiment 1</h3>
+                <div class="code-example">
+                    <pre>print("Python")
+print("is")
+print("interesting")</pre>
+                </div>
+
+                <p>
+                    Think about which message appears first,
+                    second, and third.
+                </p>
+
+                <h3>Experiment 2</h3>
+                <div class="code-example">
+                    <pre>print(5 + 5)
+print(10 * 2)
+print(30 - 5)</pre>
+                </div>
+
+                <p>
+                    Calculate the results yourself, then run
+                    the program to check your prediction.
+                </p>
+
+                <h3>Experiment 3</h3>
+                <div class="code-example">
+                    <pre>print("Start")
+print(2 + 3)
+print("Finish")</pre>
+                </div>
+
+                <p>
+                    Notice how Python can display text and
+                    calculated numbers in the same program.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Practice habit:</strong> Predict,
+                        run, observe, and understand. This simple
+                        habit will help you develop programming
+                        logic.
+                    </p>
+                </div>
+  </section>
+  
+            <section>
+                <h2>9. Knowledge Check</h2>
+                <p>
+                    Test what you learned in this lesson.
+                </p>
+
+                <div class="quiz-box">
+                    <div class="quiz-question">
+                        <h3>Question 1: How does Python normally execute simple sequential statements?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. From bottom to top
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. From top to bottom
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. In a random order
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. It skips every second line
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 2: Which Python implementation compiles source code into bytecode?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. Notepad
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. HTML
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. CPython
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. CSS
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 3: What type of error occurs when a closing parenthesis is missing?</h3>
+
+                        <button class="quiz-option" data-correct="true">
+                            A. Syntax error
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. Network error
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. Hardware error
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. Database error
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 4: What happens when Python executes 10 / 0?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. It returns 0
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. It returns 10
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. It raises a ZeroDivisionError
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. It prints "Hello"
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>10. Module 1 Recap</h2>
+                <p>
+                    Congratulations! You have reached the end
+                    of Module 1: Introduction to Python.
+                </p>
+
+                <p>
+                    Throughout this module, you learned:
+                </p>
+
+                <ul>
+                    <li>What Python is and why it is useful.</li>
+                    <li>Where Python is used in the real world.</li>
+                    <li>How Python processes and executes programs.</li>
+                    <li>How to install Python on your computer.</li>
+                    <li>How to set up a code editor.</li>
+                    <li>How to write and run your first Python program.</li>
+                    <li>How to understand execution order and basic errors.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>What's next?</strong> In Module 2,
+                        you will begin learning Python fundamentals,
+                        including syntax, variables, data types,
+                        numbers, strings, and user input.
+                    </p>
+                </div>
+            </section>
+        </article>
+
+        <section class="completion-box">
+            <h2>Lesson Completion</h2>
+            <p>
+                Finished the lesson and experiments?
+                Mark this lesson as completed to update your progress.
+            </p>
+
+            <button class="complete-button" id="complete-lesson">
+                Mark as Completed
+            </button>
+
+            <p class="completion-status" id="completion-status" aria-live="polite"></p>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-7.html">← Previous Lesson</a>
+            <a href="../module-2/index.html">Next Module →</a>
+        </nav>
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 1;
+        const LESSON_NUMBER = 8;
+
+        // Quiz interaction
+        document.querySelectorAll(".quiz-question").forEach(question => {
+            const options = question.querySelectorAll(".quiz-option");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    if (question.dataset.answered === "true") return;
+
+                    question.dataset.answered = "true";
+
+                    if (option.dataset.correct === "true") {
+                        option.classList.add("correct");
+                        feedback.textContent = "Correct! Well done.";
+                    } else {
+                        option.classList.add("incorrect");
+                        feedback.textContent =
+                            "Not quite. The correct answer is highlighted.";
+
+                        question.querySelector('[data-correct="true"]')
+                            .classList.add("correct");
+                    }
+
+                    options.forEach(button => {
+                        button.disabled = true;
+                    });
+                });
+            });
+        });
+
+        // Lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            }
+        }
+
+        completeButton.addEventListener("click", () => {
+            if (
+                window.SwypyyCourse &&
+                typeof window.SwypyyCourse.markLessonCompleted === "function"
+            ) {
+                window.SwypyyCourse.markLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                );
+
+                updateCompletionStatus();
+            } else {
+                completionStatus.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+            }
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+    </html>
