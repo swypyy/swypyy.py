@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090711">
+
+    <title>Learn Python | Swypyy.py</title>
+    <meta name="description" content="Learn Python programming step by step with Swypyy.py. Explore lessons, practice coding, and build your skills.">
+
+    <link rel="icon" type="image/png" href="../assets/s-logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/course.css">
+
+    <script src="https://unpkg.com/lucide@0.468.0"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="course-header">
+        <div class="container header-content">
+
+            <a href="../" class="brand">
+                Swypyy<span>.py</span>
+            </a>
+
+            <nav class="header-nav">
+                <a href="../">Home</a>
+                <a href="#modules">All Modules</a>
+                <a href="#progress">My Progress</a>
+            </nav>
+
+            <a href="#modules" class="header-button">
+                Start Learning
+                <i data-lucide="arrow-up-right"></i>
+            </a>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="course-hero">
+            <div class="container">
+
+                <span class="eyebrow">
+                    <i data-lucide="code-2"></i>
+                    THE PYTHON LEARNING PATH
+                </span>
+
+                <h1>
+                    Learn Python.<br>
+                    <span class="gradient-text">Build something great.</span>
+                </h1>
+
+                <p class="hero-description">
+                    From your first line of code to building real projects,
+                    learn Python through clear explanations and practical examples.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#modules" class="button primary-button">
+                        Explore Modules
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+
+                    <a href="#progress" class="button secondary-button">
+                        View My Progress
+                    </a>
+                </div>
+
+                <div class="course-stats">
+                    <div class="stat">
+                        <strong>8</strong>
+                        <span>Modules</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>86</strong>
+                        <span>Lessons</span>
+                    </div>
+
+                    <div class="stat">
+                        <strong>Free</strong>
+                        <span>Learning</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="progress-section" id="progress">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">YOUR LEARNING JOURNEY</span>
+                    <h2>My Progress</h2>
+                    <p>Keep track of the lessons you complete.</p>
+                </div>
+
+                <div class="progress-card">
+
+                    <div class="progress-top">
+                        <div>
+                            <h3>Course Completion</h3>
+                            <p id="progress-message">Your journey starts here.</p>
+                        </div>
+
+                        <strong id="progress-percentage">0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="course-progress-bar"></div>
+                    </div>
+
+                    <div class="progress-bottom">
+                        <span><strong id="completed-count">0</strong> of 86 lessons completed</span>
+                        <span>8 modules</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- MODULES -->
+        <section class="modules-section" id="modules">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">THE COMPLETE COURSE</span>
+                    <h2>Explore the Modules</h2>
+                    <p>
+                        Follow the learning path from Python basics
+                        to practical projects.
+                    </p>
+                </div>
+
+                <div class="module-grid">
+
+                    <!-- MODULE 1 -->
+                    <article class="module-card">
+                        <div class="module-number">01</div>
+                        <div class="module-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <span class="module-label">BEGINNER</span>
+                        <h3>Introduction to Python</h3>
+                        <p>
+                            Discover Python, set up your environment,
+                            and write your first program.
+                        </p>
+                        <div class="module-footer">
+                            <span>8 Lessons</span>
+                            <a href="module-1.html" aria-label="Open Introduction to Python">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="1"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 2 -->
+                    <article class="module-card">
+                        <div class="module-number">02</div>
+                        <div class="module-icon">
+                            <i data-lucide="blocks"></i>
+                        </div>
+                        <span class="module-label">BEGINNER</span>
+                        <h3>Python Fundamentals</h3>
+                        <p>
+                            Understand variables, data types,
+                            strings, input, output, and syntax.
+                        </p>
+                        <div class="module-footer">
+                            <span>10 Lessons</span>
+                            <a href="module-2.html" aria-label="Open Python Fundamentals">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="2"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 3 -->
+                    <article class="module-card">
+                        <div class="module-number">03</div>
+                        <div class="module-icon">
+                            <i data-lucide="git-branch"></i>
+                        </div>
+                        <span class="module-label">BEGINNER</span>
+                        <h3>Decision Making and Conditional Statements</h3>
+                        <p>
+                            Make programs respond intelligently
+                            using conditions and logical operators.
+                        </p>
+                        <div class="module-footer">
+                            <span>10 Lessons</span>
+                            <a href="module-3.html" aria-label="Open Decision Making">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="3"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 4 -->
+                    <article class="module-card">
+                        <div class="module-number">04</div>
+                        <div class="module-icon">
+                            <i data-lucide="repeat"></i>
+                        </div>
+                        <span class="module-label">BEGINNER TO INTERMEDIATE</span>
+                        <h3>Loops and Iteration</h3>
+                        <p>
+                            Repeat instructions efficiently
+                            using Python loops and iteration.
+                        </p>
+                        <div class="module-footer">
+                            <span>11 Lessons</span>
+                            <a href="module-4.html" aria-label="Open Loops and Iteration">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="4"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 5 -->
+                    <article class="module-card">
+                        <div class="module-number">05</div>
+                        <div class="module-icon">
+                            <i data-lucide="database"></i>
+                        </div>
+                        <span class="module-label">INTERMEDIATE</span>
+                        <h3>Python Data Structures</h3>
+                        <p>
+                            Organise and manage information
+                            with lists, tuples, sets, and dictionaries.
+                        </p>
+                        <div class="module-footer">
+                            <span>11 Lessons</span>
+                            <a href="module-5.html" aria-label="Open Python Data Structures">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="5"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 6 -->
+                    <article class="module-card">
+                        <div class="module-number">06</div>
+                        <div class="module-icon">
+                            <i data-lucide="function-square"></i>
+                        </div>
+                        <span class="module-label">INTERMEDIATE</span>
+                        <h3>Functions and Modules</h3>
+                        <p>
+                            Write reusable code with functions,
+                            parameters, return values, and modules.
+                        </p>
+                        <div class="module-footer">
+                            <span>12 Lessons</span>
+                            <a href="module-6.html" aria-label="Open Functions and Modules">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="6"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 7 -->
+                    <article class="module-card">
+                        <div class="module-number">07</div>
+                        <div class="module-icon">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <span class="module-label">ADVANCED</span>
+                        <h3>Advanced Python</h3>
+                        <p>
+                            Explore object-oriented programming,
+                            file handling, exceptions, and more.
+                        </p>
+                        <div class="module-footer">
+                            <span>14 Lessons</span>
+                            <a href="module-7.html" aria-label="Open Advanced Python">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="7"></div>
+                        </div>
+                    </article>
+
+
+                    <!-- MODULE 8 -->
+                    <article class="module-card">
+                        <div class="module-number">08</div>
+                        <div class="module-icon">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                        <span class="module-label">PRACTICAL</span>
+                        <h3>Practical Projects and Real-World Python</h3>
+                        <p>
+                            Apply your skills with libraries,
+                            APIs, databases, and real projects.
+                        </p>
+                        <div class="module-footer">
+                            <span>10 Lessons</span>
+                            <a href="module-8.html" aria-label="Open Practical Projects">
+                                <i data-lucide="arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="module-progress">
+                            <div class="module-progress-fill" data-module-progress="8"></div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- LEARNING NOTE -->
+        <section class="learning-note">
+            <div class="container">
+                <div class="note-card">
+                    <i data-lucide="lightbulb"></i>
+                    <div>
+                        <h3>Learn at your own pace</h3>
+                        <p>
+                            Every lesson is available to explore.
+                            Your progress is saved on your device,
+                            so you can continue where you left off.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="course-footer">
+        <div class="container footer-content">
+            <a href="../" class="brand">
+                Swypyy<span>.py</span>
+            </a>
+
+            <p>Learn. Build. Grow.</p>
+
+            <p>© <span id="current-year"></span> Swypyy.py</p>
+        </div>
+    </footer>
+
+
+    <script src="js/course.js"></script>
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+
+</body>
+          </html>
