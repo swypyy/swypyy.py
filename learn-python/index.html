@@ -51,12 +51,6 @@
                 Swypyy<span>.py</span>
             </a>
 
-            <nav class="header-nav">
-                <a href="../">Home</a>
-                <a href="#modules">All Modules</a>
-                <a href="#progress">My Progress</a>
-            </nav>
-
             <a href="#modules" class="header-button">
                 Start Learning
                 <i data-lucide="arrow-up-right"></i>
@@ -66,58 +60,16 @@
     </header>
 
 
+    <!-- BACK TO HOMEPAGE -->
+    <div class="container" style="padding-top: 20px;">
+        <a href="../" class="button secondary-button">
+            <i data-lucide="arrow-left"></i>
+            Back to Homepage
+        </a>
+    </div>
+
+
     <main>
-
-        <!-- HERO -->
-        <section class="course-hero">
-            <div class="container">
-
-                <span class="eyebrow">
-                    <i data-lucide="code-2"></i>
-                    THE PYTHON LEARNING PATH
-                </span>
-
-                <h1>
-                    Learn Python.<br>
-                    <span class="gradient-text">Build something great.</span>
-                </h1>
-
-                <p class="hero-description">
-                    From your first line of code to building real projects,
-                    learn Python through clear explanations and practical examples.
-                </p>
-
-                <div class="hero-actions">
-                    <a href="#modules" class="button primary-button">
-                        Explore Modules
-                        <i data-lucide="arrow-right"></i>
-                    </a>
-
-                    <a href="#progress" class="button secondary-button">
-                        View My Progress
-                    </a>
-                </div>
-
-                <div class="course-stats">
-                    <div class="stat">
-                        <strong>8</strong>
-                        <span>Modules</span>
-                    </div>
-
-                    <div class="stat">
-                        <strong>86</strong>
-                        <span>Lessons</span>
-                    </div>
-
-                    <div class="stat">
-                        <strong>Free</strong>
-                        <span>Learning</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
 
         <!-- PROGRESS -->
         <section class="progress-section" id="progress">
@@ -387,40 +339,8 @@
     </main>
 
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container footer-content">
-
-            <a href="https://swypyy.github.io/"
-               class="footer-brand"
-               aria-label="By Swypyy. Visit the main Swypyy website"
-               target="_blank"
-               rel="noopener noreferrer">
-
-                <span>By</span>
-
-                <img
-                    src="../assets/logo.png"
-                    alt="Swypyy"
-                    class="footer-logo"
-                >
-
-                <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-            </a>
-
-            <p>
-                © <span id="current-year"></span> Swypyy. All rights reserved.
-            </p>
-
-        </div>
-    </footer>
-
-
     <script src="js/course.js"></script>
     <script>
-        document.getElementById("current-year").textContent =
-            new Date().getFullYear();
-
         if (window.lucide) {
             lucide.createIcons();
         }
