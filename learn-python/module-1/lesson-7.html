@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your First Python Program | Swypyy.py</title>
+    <link rel="stylesheet" href="../css/course.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px 22px 70px;
+        }
+
+        .lesson-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            font-size: clamp(30px, 6vw, 43px);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .lesson-description {
+            color: #b8b2c9;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .lesson-content section {
+            margin-bottom: 35px;
+        }
+
+        .lesson-content h2 {
+            font-size: 23px;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .lesson-content h3 {
+            font-size: 17px;
+            margin: 20px 0 9px;
+            color: #ddd6fe;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c4bfd0;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 23px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 7px;
+        }
+
+        .lesson-content code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 14px 0 7px;
+            text-transform: uppercase;
+        }
+
+        .lesson-note {
+            background: #1c172e;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+        }
+
+        .lesson-note p {
+            margin: 0;
+        }
+
+        .quiz-box,
+        .completion-box {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .quiz-question {
+            margin-bottom: 22px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #211a32;
+            color: #e5e0ed;
+            border: 1px solid #403451;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 9px 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .quiz-option:hover {
+            border-color: #a78bfa;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: #123020;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #351919;
+        }
+
+        .quiz-feedback {
+            min-height: 24px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c4bfd0;
+        }
+
+        .completion-box {
+            text-align: center;
+        }
+
+        .completion-box p {
+            color: #c4bfd0;
+            margin-bottom: 16px;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            background: #7c3aed;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .completion-status {
+            color: #a78bfa;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-top: 1px solid #302541;
+            padding-top: 25px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                padding: 25px 16px 50px;
+            }
+
+            .lesson-content h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="lesson-page">
+        <nav class="lesson-top">
+            <a href="index.html">← Back to Module 1</a>
+            <a href="../index.html">View All Modules</a>
+        </nav>
+
+        <header>
+            <div class="lesson-label">Module 1 · Lesson 7</div>
+            <h1 class="lesson-title">Your First Python Program</h1>
+            <p class="lesson-description">
+                It is time to write your first Python program!
+                Learn how to display messages, understand the
+                print() function, perform simple calculations,
+                and run your own code.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+            <section>
+                <h2>1. Introduction</h2>
+                <p>
+                    You have learned what Python is, where it is used,
+                    how it works, and how to set up a code editor.
+                    Now it is time to put that knowledge into practice.
+                </p>
+                <p>
+                    In this lesson, you will write a simple Python
+                    program and learn how to run it.
+                </p>
+                <p>
+                    A program is a set of instructions that tells a
+                    computer what to do. Even a small instruction
+                    can be a complete program.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Your first goal:</strong> Make Python
+                        display the message "Hello, World!" on the screen.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Meet the print() Function</h2>
+                <p>
+                    Python provides a built-in function called
+                    <code>print()</code>. It displays information
+                    in the output area or terminal.
+                </p>
+                <p>
+                    For example:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello!")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>Hello!</pre>
+                </div>
+
+                <p>
+                    When Python executes this instruction, it displays
+                    the text <code>Hello!</code>.
+                </p>
+  </section>
+  
+            <section>
+                <h2>3. Writing Your First Python Program</h2>
+                <p>
+                    Let's create a Python file and write your first
+                    complete program.
+                </p>
+
+                <h3>Step 1: Create a file</h3>
+                <p>
+                    Open your code editor and create a new file named
+                    <code>hello.py</code>.
+                </p>
+
+                <h3>Step 2: Write the code</h3>
+                <p>
+                    Type the following instruction:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello, World!")</pre>
+                </div>
+
+                <h3>Step 3: Save the file</h3>
+                <p>
+                    Save your file with the name
+                    <code>hello.py</code>.
+                </p>
+
+                <h3>Step 4: Run the program</h3>
+                <p>
+                    Open your terminal in the project folder and
+                    run the appropriate command.
+                </p>
+
+                <div class="code-example">
+                    <pre># Windows
+python hello.py
+
+# macOS or Linux
+python3 hello.py</pre>
+                </div>
+
+                <div class="output-label">Expected Output</div>
+                <div class="code-example">
+                    <pre>Hello, World!</pre>
+                </div>
+
+                <p>
+                    That's your first Python program. The computer
+                    followed your instruction and displayed the message.
+                </p>
+            </section>
+
+            <section>
+                <h2>4. Understanding the Code</h2>
+                <p>
+                    Let's understand each part of this instruction:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello, World!")</pre>
+                </div>
+
+                <h3>print</h3>
+                <p>
+                    <code>print</code> is the name of Python's
+                    built-in function used to display information.
+                </p>
+
+                <h3>Parentheses ( )</h3>
+                <p>
+                    Parentheses contain the information that we
+                    pass to the function. In this example, the
+                    message is inside the parentheses.
+                </p>
+
+                <h3>Quotation Marks " "</h3>
+                <p>
+                    Quotation marks tell Python that the content
+                    between them is text.
+                </p>
+
+                <h3>The Text or String</h3>
+                <p>
+                    <code>"Hello, World!"</code> is a string.
+                    A string is a sequence of characters used
+                    to represent text.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> The quotation marks
+                        are part of the Python code. They are not
+                        included in the displayed output.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>5. Displaying Multiple Lines</h2>
+                <p>
+                    You can use multiple <code>print()</code>
+                    statements to display several lines.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Welcome to Python!")
+print("This is my first program.")
+print("I am learning programming.")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>Welcome to Python!
+This is my first program.
+I am learning programming.</pre>
+                </div>
+
+                <p>
+                    Each <code>print()</code> statement normally
+                    moves the output to a new line.
+                </p>
+
+                <p>
+                    Python executes these instructions in order,
+                    starting with the first line.
+                </p>
+  </section>
+  
+            <section>
+                <h2>6. Printing Numbers and Calculations</h2>
+                <p>
+                    The <code>print()</code> function can display
+                    numbers as well as text.
+                </p>
+
+                <h3>Printing a number</h3>
+                <div class="code-example">
+                    <pre>print(100)
+print(25.5)</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>100
+25.5</pre>
+                </div>
+
+                <h3>Printing calculations</h3>
+                <p>
+                    Python can also calculate mathematical
+                    expressions inside <code>print()</code>.
+                </p>
+
+                <div class="code-example">
+                    <pre>print(10 + 5)
+print(20 - 8)
+print(6 * 4)
+print(20 / 5)</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+                <div class="code-example">
+                    <pre>15
+12
+24
+4.0</pre>
+                </div>
+
+                <p>
+                    Python calculates each expression and displays
+                    its result.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Notice:</strong> Text is written inside
+                        quotation marks, while numbers and mathematical
+                        expressions can be written without them.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Common Beginner Mistakes</h2>
+                <p>
+                    Small typing mistakes can prevent a program
+                    from running correctly. Here are some common
+                    examples.
+                </p>
+
+                <h3>Mistake 1: Missing quotation marks</h3>
+                <div class="code-example">
+                    <pre># Incorrect
+print(Hello)
+
+# Correct
+print("Hello")</pre>
+                </div>
+                <p>
+                    Text should be placed inside quotation marks.
+                    Without them, Python may interpret the word as
+                    a variable name.
+                </p>
+
+                <h3>Mistake 2: Missing a closing parenthesis</h3>
+                <div class="code-example">
+                    <pre># Incorrect
+print("Hello"
+
+# Correct
+print("Hello")</pre>
+                </div>
+                <p>
+                    Every opening parenthesis needs a matching
+                    closing parenthesis.
+                </p>
+
+                <h3>Mistake 3: Incorrect spelling</h3>
+                <div class="code-example">
+                    <pre># Incorrect
+pritn("Hello")
+
+# Correct
+print("Hello")</pre>
+                </div>
+                <p>
+                    Python function names must be spelled correctly.
+                    <code>pritn</code> and <code>print</code> are
+                    different names.
+                </p>
+
+                <h3>Mistake 4: Using mismatched quotation marks</h3>
+                <div class="code-example">
+                    <pre># Incorrect
+print("Hello')
+
+# Correct
+print("Hello")</pre>
+                </div>
+                <p>
+                    Use matching quotation marks around your text.
+                    You can use matching single quotes or double quotes.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Practice Exercises</h2>
+                <p>
+                    Now it is your turn. Try these exercises in
+                    your Python editor.
+                </p>
+
+                <h3>Exercise 1: Introduce Yourself</h3>
+                <p>
+                    Write a program that displays three lines:
+                </p>
+                <ul>
+                    <li>Your name or a nickname.</li>
+                    <li>Your favourite subject.</li>
+                    <li>One thing you want to learn.</li>
+                </ul>
+
+                <p>Example output:</p>
+                <div class="code-example">
+                    <pre>My name is Alex.
+My favourite subject is Science.
+I want to learn Python.</pre>
+                </div>
+
+                <h3>Exercise 2: Simple Calculations</h3>
+                <p>
+                    Write a program that displays the results of
+                    these calculations:
+                </p>
+                <ul>
+                    <li>45 + 15</li>
+                    <li>100 - 35</li>
+                    <li>12 × 5</li>
+                    <li>81 ÷ 9</li>
+                </ul>
+
+                <p>Example code for the first calculation:</p>
+                <div class="code-example">
+                    <pre>print(45 + 15)</pre>
+                </div>
+
+                <div class="lesson-note">
+                    <p>
+                        Try completing both exercises yourself before
+                        looking at any solutions. Learning programming
+                        requires practice, not just reading examples.
+                    </p>
+                </div>
+  </section>
+  
+            <section>
+                <h2>9. Knowledge Check</h2>
+                <p>
+                    Answer these questions to test your understanding.
+                </p>
+
+                <div class="quiz-box">
+                    <div class="quiz-question">
+                        <h3>Question 1: Which function displays output in Python?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. show()
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. print()
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. display_text()
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. output()
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 2: What is the output of this code?</h3>
+
+                        <div class="code-example">
+                            <pre>print(10 + 5)</pre>
+                        </div>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. 105
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. 15
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. 10 + 5
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. Error
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 3: Which is the correct way to display Hello?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. print Hello
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. print = "Hello"
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. print("Hello")
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. "Hello" print()
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 4: What does Python normally do after a print() statement?</h3>
+
+                        <button class="quiz-option" data-correct="true">
+                            A. Moves to a new output line
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. Closes the program immediately
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. Deletes the previous output
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. Restarts the computer
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>10. Lesson Summary</h2>
+                <p>
+                    In this lesson, you learned:
+                </p>
+                <ul>
+                    <li>How to write and run your first Python program.</li>
+                    <li>How the <code>print()</code> function works.</li>
+                    <li>Why parentheses and quotation marks are used.</li>
+                    <li>How to display multiple lines of text.</li>
+                    <li>How to print numbers and calculations.</li>
+                    <li>How to identify and correct common mistakes.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> Your first program
+                        may be simple, but it is the beginning of
+                        learning how to give computers instructions.
+                        Keep experimenting and practising.
+                    </p>
+                </div>
+            </section>
+        </article>
+
+        <section class="completion-box">
+            <h2>Lesson Completion</h2>
+            <p>
+                Finished the lesson and practice exercises?
+                Mark it as completed to update your course progress.
+            </p>
+
+            <button class="complete-button" id="complete-lesson">
+                Mark as Completed
+            </button>
+
+            <p class="completion-status" id="completion-status" aria-live="polite"></p>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-6.html">← Previous Lesson</a>
+            <a href="lesson-8.html">Next Lesson →</a>
+        </nav>
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 1;
+        const LESSON_NUMBER = 7;
+
+        // Quiz interaction
+        document.querySelectorAll(".quiz-question").forEach(question => {
+            const options = question.querySelectorAll(".quiz-option");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    if (question.dataset.answered === "true") return;
+
+                    question.dataset.answered = "true";
+
+                    if (option.dataset.correct === "true") {
+                        option.classList.add("correct");
+                        feedback.textContent = "Correct! Well done.";
+                    } else {
+                        option.classList.add("incorrect");
+                        feedback.textContent =
+                            "Not quite. The correct answer is highlighted.";
+
+                        question.querySelector('[data-correct="true"]')
+                            .classList.add("correct");
+                    }
+
+                    options.forEach(button => {
+                        button.disabled = true;
+                    });
+                });
+            });
+        });
+
+        // Lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            }
+        }
+
+        completeButton.addEventListener("click", () => {
+            if (
+                window.SwypyyCourse &&
+                typeof window.SwypyyCourse.markLessonCompleted === "function"
+            ) {
+                window.SwypyyCourse.markLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                );
+
+                updateCompletionStatus();
+            } else {
+                completionStatus.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+            }
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+                          </html>
