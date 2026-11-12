@@ -1,188 +1,123 @@
-/* =========================================
-   SWYPYY.PY - MAIN JAVASCRIPT
-========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-    const body = document.body;
-
-    const mobileBreakpoint = window.matchMedia("(max-width: 760px)");
-
-
-    /* =====================================
-       LUCIDE ICONS
-    ===================================== */
-
-    function refreshIcons() {
+    // Initialize Lucide icons
+    function initializeIcons() {
         if (window.lucide) {
             window.lucide.createIcons();
         }
     }
 
-    refreshIcons();
+    initializeIcons();
 
 
-    /* =====================================
-       MOBILE NAVIGATION
-    ===================================== */
+    // Update footer year automatically
+    const yearElement = document.getElementById("current-year");
 
-    function setMenuOpen(isOpen) {
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
+
+    // Mobile navigation
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    function openMenu() {
         if (!menuToggle || !navLinks) return;
 
-        navLinks.classList.toggle("active", isOpen);
+        navLinks.classList.add("active");
 
-        menuToggle.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation menu");
 
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "Close navigation" : "Open navigation"
-        );
+        menuToggle.innerHTML = '<i data-lucide="x"></i>';
 
-        body.classList.toggle("menu-open", isOpen);
-
-        menuToggle.innerHTML = isOpen
-            ? '<i data-lucide="x" aria-hidden="true"></i>'
-            : '<i data-lucide="menu" aria-hidden="true"></i>';
-
-        refreshIcons();
+        initializeIcons();
     }
 
+    function closeMenu() {
+        if (!menuToggle || !navLinks) return;
 
-    function toggleMenu() {
+        navLinks.classList.remove("active");
 
-        const isOpen = navLinks.classList.contains("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
 
-        setMenuOpen(!isOpen);
+        menuToggle.innerHTML = '<i data-lucide="menu"></i>';
 
+        initializeIcons();
     }
-
 
     if (menuToggle && navLinks) {
 
-        // Hamburger button
-        menuToggle.addEventListener("click", (event) => {
+        // Toggle menu
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.contains("active");
 
-            event.stopPropagation();
-
-            toggleMenu();
-
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
 
-        // Close after selecting a navigation link
+        // Close menu after selecting a link
         navLinks.querySelectorAll("a").forEach((link) => {
-
             link.addEventListener("click", () => {
-
-                setMenuOpen(false);
-
+                closeMenu();
             });
-
         });
 
 
-        // Close when clicking outside the navigation
+        // Close menu when clicking outside
         document.addEventListener("click", (event) => {
-
             const clickedInsideMenu = navLinks.contains(event.target);
             const clickedToggle = menuToggle.contains(event.target);
 
             if (!clickedInsideMenu && !clickedToggle) {
-
-                setMenuOpen(false);
-
+                closeMenu();
             }
-
         });
 
 
-        // Close using Escape key
+        // Close menu with Escape key
         document.addEventListener("keydown", (event) => {
-
-            if (
-                event.key === "Escape" &&
-                navLinks.classList.contains("active")
-            ) {
-
-                setMenuOpen(false);
-
+            if (event.key === "Escape") {
+                closeMenu();
                 menuToggle.focus();
-
             }
-
         });
 
 
-        // Close menu when switching to desktop
-        function handleBreakpointChange(event) {
-
-            if (!event.matches) {
-
-                setMenuOpen(false);
-
+        // Close mobile menu when returning to desktop
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 760) {
+                closeMenu();
             }
-
-        }
-
-        if (mobileBreakpoint.addEventListener) {
-
-            mobileBreakpoint.addEventListener(
-                "change",
-                handleBreakpointChange
-            );
-
-        } else {
-
-            // Older browser support
-            mobileBreakpoint.addListener(handleBreakpointChange);
-
-        }
+        });
 
     }
 
 
-    /* =====================================
-       FOOTER YEAR
-    ===================================== */
-
-    const yearElement = document.getElementById("current-year");
-
-    if (yearElement) {
-
-        yearElement.textContent = new Date().getFullYear();
-
-    }
-
-
-    /* =====================================
-       SMOOTH INTERNAL NAVIGATION
-    ===================================== */
-
+    // Smooth scrolling for internal section links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
         link.addEventListener("click", (event) => {
-
             const targetId = link.getAttribute("href");
 
             if (!targetId || targetId === "#") return;
 
-            const target = document.querySelector(targetId);
+            const targetElement = document.querySelector(targetId);
 
-            if (!target) return;
+            if (!targetElement) return;
 
             event.preventDefault();
 
-            target.scrollIntoView({
+            targetElement.scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
-
         });
 
     });
