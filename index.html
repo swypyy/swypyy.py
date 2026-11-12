@@ -4,164 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Swypyy.py | Learn Python From Zero</title>
-    <meta name="description" content="Learn Python programming from scratch with free lessons, interactive exercises and practical projects on Swypyy.py.">
+    <title>Swypyy.py | Learn Python</title>
+    <meta name="description" content="Explore Python programming with Swypyy.py. Learn coding through a simple, modern learning experience.">
     <meta name="theme-color" content="#07060b">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/s-logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="js/script.js" defer></script>
 </head>
 
 <body>
 
-<!-- Header -->
-<header class="navbar">
-    <div class="container nav-content">
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="container nav-content">
 
-        <a href="./" class="logo" aria-label="Swypyy.py Home">
-            Swypyy<span class="brand-accent">.py</span>
-        </a>
+            <a href="./" class="logo" aria-label="Swypyy.py Home">
+                Swypyy<span class="brand-accent">.py</span>
+            </a>
 
-        <a href="courses/python/" class="button button-small nav-cta">
-            Start Learning
-            <i data-lucide="arrow-up-right" aria-hidden="true"></i>
-        </a>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-links"
+            >
+                <i data-lucide="menu"></i>
+            </button>
 
-    </div>
-</header>
+            <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+                <a href="./" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="courses/python/" class="nav-link">Learn .py</a>
+            </nav>
 
+        </div>
+    </header>
+
+
+    <!-- HERO -->
     <main>
 
-        <!-- HERO -->
-        <section class="hero" id="home">
+        <section class="hero">
             <div class="container hero-content">
 
                 <div class="hero-text">
-
-                    <div class="eyebrow">
-                        <span class="status-dot"></span>
-                        FREE PYTHON LEARNING PLATFORM
-                    </div>
+                    <span class="eyebrow">
+                        YOUR CODING JOURNEY STARTS HERE
+                    </span>
 
                     <h1>
-                        Your Python journey
-                        <span class="gradient-text">starts here.</span>
+                        Learn to code.<br>
+                        Build your <span class="gradient-text">future.</span>
                     </h1>
 
-                    <p class="hero-description">
-                        From your first line of code to building real projects.
-                        Learn Python step by step, practise your skills and
-                        become a confident programmer.
+                    <p>
+                        Discover programming with a simple, practical,
+                        and beginner-friendly learning experience.
                     </p>
 
-                    <div class="hero-actions">
-                        <a href="courses/python/" class="button">
-                            Start Learning Python
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-
-                        <a href="#features" class="button button-outline">
-                            Explore Platform
-                        </a>
-                    </div>
-
-                    <div class="hero-note">
-                        <i data-lucide="check-circle-2"></i>
-                        Free to learn. No account required.
-                    </div>
-
+                    <a href="courses/python/" class="button">
+                        Explore Python
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
                 </div>
 
-
-                <!-- CODE PREVIEW -->
                 <div class="hero-visual">
+                    <div class="code-card">
 
-                    <div class="code-window">
-
-                        <div class="window-header">
+                        <div class="code-header">
                             <div class="window-dots">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-
-                            <span class="window-title">hello_world.py</span>
-
-                            <i data-lucide="code-2"></i>
+                            <span>hello_world.py</span>
                         </div>
 
                         <div class="code-content">
-                            <div class="code-line">
-                                <span class="line-number">1</span>
-                                <span><span class="code-purple">print</span>(<span class="code-green">"Hello, World!"</span>)</span>
-                            </div>
-
-                            <div class="code-line">
-                                <span class="line-number">2</span>
-                                <span></span>
-                            </div>
-
-                            <div class="code-line">
-                                <span class="line-number">3</span>
-                                <span><span class="code-comment"># Your journey begins here</span></span>
-                            </div>
-
-                            <div class="code-line">
-                                <span class="line-number">4</span>
-                                <span><span class="code-purple">print</span>(<span class="code-green">"Welcome to Swypyy.py"</span>)</span>
-                            </div>
-                        </div>
-
-                        <div class="terminal">
-                            <div class="terminal-label">
-                                <span class="terminal-dot"></span>
-                                OUTPUT
-                            </div>
-
-                            <p>Hello, World!</p>
-                            <p>Welcome to Swypyy.py</p>
-                            <span class="terminal-cursor">_</span>
+                            <p><span class="code-purple">print</span>(<span class="code-green">"Hello, World!"</span>)</p>
+                            <p class="code-comment"># Your journey begins here.</p>
+                            <p><span class="code-purple">print</span>(<span class="code-green">"Welcome to Swypyy.py"</span>)</p>
                         </div>
 
                     </div>
-
-                    <div class="floating-tag tag-python">
-                        <i data-lucide="code"></i>
-                        Python 3
-                    </div>
-
-                    <div class="floating-tag tag-free">
-                        <i data-lucide="graduation-cap"></i>
-                        Learn for free
-                    </div>
-
                 </div>
 
             </div>
         </section>
 
 
-        <!-- INTRODUCTION -->
-        <section class="intro-section">
+        <!-- INTRO -->
+        <section class="intro section">
             <div class="container intro-content">
 
-                <span class="section-label">WHY SWYPYY.PY?</span>
+                <span class="eyebrow">ABOUT SWYPYY.PY</span>
 
                 <h2>
-                    Programming shouldn't feel
-                    <span class="gradient-text">complicated.</span>
+                    Programming made <span class="gradient-text">simpler.</span>
                 </h2>
 
                 <p>
-                    We break Python into simple lessons, clear examples and
-                    practical challenges. No previous programming experience
-                    needed. Just start learning.
+                    Learning to code doesn't have to be complicated.
+                    Swypyy.py makes your first steps into programming
+                    easier with clear explanations and practical learning.
                 </p>
 
             </div>
@@ -169,13 +123,13 @@
 
 
         <!-- FEATURES -->
-        <section class="features-section" id="features">
+        <section class="features section" id="features">
             <div class="container">
 
                 <div class="section-heading">
-                    <span class="section-label">THE LEARNING EXPERIENCE</span>
-                    <h2>Learn. Practise. <span class="gradient-text">Build.</span></h2>
-                    <p>Everything you need to begin your programming journey.</p>
+                    <span class="eyebrow">WHY SWYPYY.PY?</span>
+                    <h2>Built for <span class="gradient-text">learners.</span></h2>
+                    <p>A focused learning experience without unnecessary complexity.</p>
                 </div>
 
                 <div class="feature-grid">
@@ -184,54 +138,32 @@
                         <div class="feature-icon">
                             <i data-lucide="book-open"></i>
                         </div>
-
-                        <h3>Step-by-step lessons</h3>
-
+                        <h3>Easy to Understand</h3>
                         <p>
-                            Learn Python concepts in a structured order,
-                            starting with the absolute basics.
+                            Learn programming concepts through clear
+                            explanations designed for beginners.
                         </p>
                     </article>
 
-
                     <article class="feature-card">
                         <div class="feature-icon">
-                            <i data-lucide="terminal"></i>
+                            <i data-lucide="code-2"></i>
                         </div>
-
-                        <h3>Practical exercises</h3>
-
+                        <h3>Practical Learning</h3>
                         <p>
-                            Test your understanding with coding challenges
-                            and hands-on practice.
+                            Understand concepts by exploring code
+                            examples and applying what you learn.
                         </p>
                     </article>
 
-
                     <article class="feature-card">
                         <div class="feature-icon">
-                            <i data-lucide="rocket"></i>
+                            <i data-lucide="trending-up"></i>
                         </div>
-
-                        <h3>Real projects</h3>
-
+                        <h3>Learn at Your Pace</h3>
                         <p>
-                            Turn what you learn into useful Python projects
-                            and build your skills.
-                        </p>
-                    </article>
-
-
-                    <article class="feature-card">
-                        <div class="feature-icon">
-                            <i data-lucide="chart-no-axes-combined"></i>
-                        </div>
-
-                        <h3>Track your progress</h3>
-
-                        <p>
-                            Keep track of completed lessons and your
-                            learning journey.
+                            Build your knowledge step by step and
+                            progress at a comfortable pace.
                         </p>
                     </article>
 
@@ -240,25 +172,26 @@
         </section>
 
 
-        <!-- FINAL CTA -->
-        <section class="cta-section">
-            <div class="container cta-content">
+        <!-- CALL TO ACTION -->
+        <section class="cta-section section">
+            <div class="container">
 
-                <span class="section-label">START SOMETHING NEW</span>
+                <div class="cta-card">
+                    <span class="eyebrow">READY TO BEGIN?</span>
 
-                <h2>
-                    Your first line of code
-                    <span class="gradient-text">is waiting.</span>
-                </h2>
+                    <h2>
+                        Start your Python <span class="gradient-text">journey.</span>
+                    </h2>
 
-                <p>
-                    Take the first step. Learn Python with Swypyy.py.
-                </p>
+                    <p>
+                        Take your first step into the world of programming.
+                    </p>
 
-                <a href="courses/python/" class="button">
-                    Start Your Journey
-                    <i data-lucide="arrow-right"></i>
-                </a>
+                    <a href="courses/python/" class="button">
+                        Learn Python
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
 
             </div>
         </section>
@@ -270,13 +203,17 @@
     <footer class="footer">
         <div class="container footer-content">
 
-            <div class="footer-bottom">
-                <span>© <span id="current-year"></span> Swypyy.py</span>
-                <span>Built for curious minds.</span>
-            </div>
+            <a href="./" class="logo">
+                Swypyy<span class="brand-accent">.py</span>
+            </a>
+
+            <p>© <span id="current-year"></span> Swypyy.py. All rights reserved.</p>
 
         </div>
     </footer>
+
+
+    <script src="js/script.js"></script>
 
 </body>
 </html>
