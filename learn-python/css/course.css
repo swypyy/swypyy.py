@@ -367,13 +367,13 @@ button {
 /* MODULE SECTION */
 
 .modules-section {
-    padding: 70px 0 90px;
+    padding: 45px 0 65px;
 }
 
 .module-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
 }
 
 /* MODULE CARDS */
