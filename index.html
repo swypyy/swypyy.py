@@ -25,27 +25,33 @@
         <div class="container nav-content">
 
             <a href="./" class="logo">
-                <span class="logo-icon">S</span>
-                <span>Swypyy<span class="brand-accent">.py</span></span>
+                Swypyy<span class="brand-accent">.py</span>
             </a>
 
-            <nav class="nav-links" id="nav-links">
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="courses/python/">Learn Python</a>
-            </nav>
+            <div class="nav-right">
 
-            <div class="nav-actions">
-                <a href="courses/python/" class="button button-small">
+                <nav class="nav-links" id="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="courses/python/">Learn Python</a>
+                </nav>
+
+                <a href="courses/python/" class="button button-small nav-cta">
                     Start Learning
                     <i data-lucide="arrow-up-right"></i>
                 </a>
 
-                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false"
+                    aria-controls="nav-links"
+                >
                     <i data-lucide="menu"></i>
                 </button>
-            </div>
 
+            </div>
         </div>
     </header>
 
@@ -254,46 +260,6 @@
         </section>
 
 
-        <!-- COURSE PREVIEW -->
-        <section class="course-section">
-            <div class="container">
-
-                <div class="course-card">
-
-                    <div class="course-info">
-                        <span class="section-label">YOUR FIRST COURSE</span>
-
-                        <h2>Python for beginners</h2>
-
-                        <p>
-                            Start with the fundamentals and gradually
-                            develop the skills needed to create your
-                            own programs.
-                        </p>
-
-                        <div class="course-details">
-                            <span><i data-lucide="layers"></i> Beginner to advanced</span>
-                            <span><i data-lucide="infinity"></i> Learn at your pace</span>
-                        </div>
-
-                        <a href="courses/python/" class="button">
-                            Explore Python Course
-                            <i data-lucide="arrow-right"></i>
-                        </a>
-                    </div>
-
-                    <div class="python-art">
-                        <div class="python-symbol">Py</div>
-                        <span>PYTHON</span>
-                        <small>YOUR NEXT SKILL STARTS HERE</small>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
         <!-- FINAL CTA -->
         <section class="cta-section">
             <div class="container cta-content">
@@ -320,18 +286,9 @@
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- SIMPLE FOOTER -->
     <footer class="footer">
         <div class="container footer-content">
-
-            <a href="./" class="logo">
-                <span class="logo-icon">S</span>
-                <span>Swypyy<span class="brand-accent">.py</span></span>
-            </a>
-
-            <p>
-                Making programming easier, one lesson at a time.
-            </p>
 
             <div class="footer-bottom">
                 <span>© <span id="current-year"></span> Swypyy.py</span>
