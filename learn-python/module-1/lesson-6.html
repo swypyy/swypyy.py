@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Up a Code Editor | Swypyy.py</title>
+    <link rel="stylesheet" href="../css/course.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .lesson-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px 22px 70px;
+        }
+
+        .lesson-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            font-size: clamp(30px, 6vw, 43px);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .lesson-description {
+            color: #b8b2c9;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .lesson-content section {
+            margin-bottom: 35px;
+        }
+
+        .lesson-content h2 {
+            font-size: 23px;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .lesson-content h3 {
+            font-size: 17px;
+            margin: 20px 0 9px;
+            color: #ddd6fe;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c4bfd0;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 23px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 7px;
+        }
+
+        .lesson-content code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 14px 0 7px;
+            text-transform: uppercase;
+        }
+
+        .lesson-note {
+            background: #1c172e;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+        }
+
+        .lesson-note p {
+            margin: 0;
+        }
+
+        .lesson-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 17px 0;
+            font-size: 14px;
+        }
+
+        .lesson-table th,
+        .lesson-table td {
+            border: 1px solid #352b46;
+            padding: 12px;
+            text-align: left;
+            color: #c4bfd0;
+        }
+
+        .lesson-table th {
+            background: #211a32;
+            color: #ddd6fe;
+        }
+
+        .quiz-box,
+        .completion-box {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .quiz-question {
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #211a32;
+            color: #e5e0ed;
+            border: 1px solid #403451;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 9px 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .quiz-option:hover {
+            border-color: #a78bfa;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: #123020;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #351919;
+        }
+
+        .quiz-feedback {
+            min-height: 24px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c4bfd0;
+        }
+
+        .completion-box {
+            text-align: center;
+        }
+
+        .completion-box p {
+            margin-bottom: 16px;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            background: #7c3aed;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .completion-status {
+            color: #a78bfa;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-top: 1px solid #302541;
+            padding-top: 25px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                padding: 25px 16px 50px;
+            }
+
+            .lesson-content h2 {
+                font-size: 21px;
+            }
+
+            .lesson-table {
+                font-size: 12px;
+            }
+
+            .lesson-table th,
+            .lesson-table td {
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="lesson-page">
+        <nav class="lesson-top">
+            <a href="index.html">← Back to Module 1</a>
+            <a href="../index.html">View All Modules</a>
+        </nav>
+
+        <header>
+            <div class="lesson-label">Module 1 · Lesson 6</div>
+            <h1 class="lesson-title">Setting Up a Code Editor</h1>
+            <p class="lesson-description">
+                Learn how to choose a code editor, install Visual Studio Code,
+                configure it for Python, and write and run your first program
+                inside an editor.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+            <section>
+                <h2>1. Introduction to Code Editors</h2>
+                <p>
+                    In the previous lesson, you learned how to install Python
+                    on your computer. Now you need a comfortable place to
+                    write and manage your Python programs.
+                </p>
+                <p>
+                    A <strong>code editor</strong> is an application designed
+                    to help programmers write and work with code. It makes
+                    programming easier through useful features such as
+                    syntax highlighting, automatic suggestions, and error
+                    detection.
+                </p>
+                <p>
+                    You can write Python code in a basic text editor, but a
+                    dedicated code editor provides tools that make larger
+                    programs easier to understand and maintain.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. Text Editor vs Code Editor vs IDE</h2>
+                <p>
+                    These three terms are related, but they do not mean
+                    exactly the same thing.
+                </p>
+
+                <table class="lesson-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Purpose</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Text Editor</td>
+                            <td>Creates and edits plain text files.</td>
+                            <td>Notepad</td>
+                        </tr>
+                        <tr>
+                            <td>Code Editor</td>
+                            <td>Helps write and manage source code.</td>
+                            <td>VS Code</td>
+                        </tr>
+                        <tr>
+                            <td>IDE</td>
+                            <td>Combines coding, running, debugging, and other development tools.</td>
+                            <td>PyCharm</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> A code editor focuses on
+                        writing code. An IDE usually provides a more complete
+                        development environment. Modern code editors can
+                        also gain many IDE-like features through extensions.
+                    </p>
+                </div>
+  </section>
+  
+            <section>
+                <h2>3. Popular Editors for Python</h2>
+                <p>
+                    There are several tools you can use to write Python
+                    programs. Here are some popular choices:
+                </p>
+
+                <h3>Visual Studio Code (VS Code)</h3>
+                <p>
+                    A free, lightweight code editor developed by Microsoft.
+                    It supports Python through an extension and offers
+                    features such as autocomplete, debugging, and an
+                    integrated terminal.
+                </p>
+
+                <h3>PyCharm</h3>
+                <p>
+                    A Python-focused IDE developed by JetBrains. It provides
+                    advanced tools for writing, testing, and managing Python
+                    projects. It has a free Community Edition.
+                </p>
+
+                <h3>IDLE</h3>
+                <p>
+                    IDLE is a simple development environment included with
+                    many standard Python installations. It is useful for
+                    beginners who want to start writing Python without
+                    installing another editor.
+                </p>
+
+                <h3>Jupyter Notebook</h3>
+                <p>
+                    Jupyter Notebook lets you write and run code in separate
+                    cells. It is especially useful for experiments, data
+                    analysis, and learning through interactive examples.
+                </p>
+            </section>
+
+            <section>
+                <h2>4. Installing Visual Studio Code</h2>
+                <p>
+                    In this lesson, we will use Visual Studio Code (VS Code)
+                    as our example editor.
+                </p>
+
+                <ol>
+                    <li>Open the official VS Code website.</li>
+                    <li>Choose the download option for your operating system.</li>
+                    <li>Download the installer.</li>
+                    <li>Open the installer and follow the installation instructions.</li>
+                    <li>Launch Visual Studio Code after installation.</li>
+                </ol>
+
+                <div class="lesson-note">
+                    <p>
+                        Download VS Code only from its official website:
+                        <strong>https://code.visualstudio.com/</strong>
+                    </p>
+                </div>
+
+                <p>
+                    VS Code is available for Windows, macOS, and Linux.
+                    The installation steps may look slightly different
+                    depending on your operating system.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. Setting Up Python in VS Code</h2>
+                <p>
+                    Installing VS Code does not automatically give it every
+                    Python development feature. You should install the
+                    official Python extension.
+                </p>
+
+                <h3>Step 1: Open Extensions</h3>
+                <p>
+                    Open VS Code and select the Extensions icon in the
+                    sidebar. You can also open the Extensions panel using
+                    <code>Ctrl + Shift + X</code> on Windows or Linux.
+                </p>
+
+                <h3>Step 2: Search for Python</h3>
+                <p>
+                    Type <strong>Python</strong> in the Extensions search
+                    box. Find the Python extension published by Microsoft
+                    and select Install.
+                </p>
+
+                <h3>Step 3: Select Your Python Interpreter</h3>
+                <p>
+                    Open the Command Palette using
+                    <code>Ctrl + Shift + P</code> on Windows or Linux.
+                    Search for:
+                </p>
+
+                <div class="code-example">
+                    <pre>Python: Select Interpreter</pre>
+                </div>
+
+                <p>
+                    Select the Python installation you want to use. The
+                    interpreter is the Python program that runs your code.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Important:</strong> If Python does not appear
+                        in the list, check that Python is installed correctly.
+                        You may need to restart VS Code after installation.
+                    </p>
+                </div>
+  </section>
+                  
+            <section>
+                <h2>6. Creating Your First Python Project</h2>
+                <p>
+                    A project is a folder containing the files related to
+                    a program. Keeping your work organized makes it easier
+                    to find and manage your code.
+                </p>
+
+                <ol>
+                    <li>Create a folder on your computer named <code>PythonPractice</code>.</li>
+                    <li>Open VS Code.</li>
+                    <li>Select <strong>File → Open Folder</strong>.</li>
+                    <li>Choose the <code>PythonPractice</code> folder.</li>
+                    <li>Create a new file named <code>hello.py</code>.</li>
+                </ol>
+
+                <p>
+                    The <code>.py</code> extension tells your computer that
+                    the file contains Python source code.
+                </p>
+
+                <div class="code-example">
+                    <pre>PythonPractice/
+└── hello.py</pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Writing and Running Python Code</h2>
+                <p>
+                    Open <code>hello.py</code> and type the following
+                    program:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello from VS Code!")
+print("I am learning Python.")</pre>
+                </div>
+
+                <p>
+                    Save the file. You can now run it using the editor's
+                    Run Python File option, if available.
+                </p>
+
+                <p>
+                    Another way is to open the integrated terminal in VS
+                    Code. Select <strong>Terminal → New Terminal</strong>
+                    and enter the appropriate command:
+                </p>
+
+                <h3>Windows</h3>
+                <div class="code-example">
+                    <pre>python hello.py</pre>
+                </div>
+
+                <p>On some Windows installations, you can also use:</p>
+                <div class="code-example">
+                    <pre>py hello.py</pre>
+                </div>
+
+                <h3>macOS and Linux</h3>
+                <div class="code-example">
+                    <pre>python3 hello.py</pre>
+                </div>
+
+                <div class="output-label">Expected Output</div>
+                <div class="code-example">
+                    <pre>Hello from VS Code!
+I am learning Python.</pre>
+                </div>
+
+                <p>
+                    Congratulations! You have written and run a Python
+                    program using a code editor.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Understanding Common Editor Features</h2>
+
+                <h3>Syntax Highlighting</h3>
+                <p>
+                    The editor displays different parts of your code in
+                    different colours. For example, Python keywords,
+                    strings, and numbers may each have different colours.
+                    This makes code easier to read.
+                </p>
+
+                <h3>Autocomplete</h3>
+                <p>
+                    Autocomplete suggests possible words, functions, and
+                    code while you type. It can save time and help you
+                    discover available features.
+                </p>
+
+                <h3>Error Highlighting</h3>
+                <p>
+                    The editor can underline or highlight possible problems
+                    in your code. These warnings help you notice mistakes,
+                    although not every warning means your program will fail.
+                </p>
+
+                <h3>Debugging</h3>
+                <p>
+                    Debugging tools help you examine how a program runs.
+                    You can pause execution, inspect variable values, and
+                    follow the program step by step.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Common Setup Problems</h2>
+
+                <h3>Python is not recognized</h3>
+                <p>
+                    Your terminal may not be able to find the Python
+                    installation. Check whether Python is installed and
+                    whether its command is available in your system PATH.
+                    On Windows, try <code>py --version</code>.
+                </p>
+
+                <h3>No Python interpreter selected</h3>
+                <p>
+                    Open the Command Palette and choose
+                    <code>Python: Select Interpreter</code>. Then select
+                    your installed Python version.
+                </p>
+
+                <h3>Python extension is missing</h3>
+                <p>
+                    Open the Extensions panel, search for the Python
+                    extension published by Microsoft, and install it.
+                </p>
+
+                <h3>Changes are not appearing</h3>
+                <p>
+                    Save your file before running it. Check that you are
+                    running the correct file from the correct project folder.
+                </p>
+  </section>
+                  
+            <section>
+                <h2>10. Knowledge Check</h2>
+                <p>
+                    Test what you have learned in this lesson.
+                </p>
+
+                <div class="quiz-box">
+                    <div class="quiz-question">
+                        <h3>Question 1: What is a code editor used for?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. Playing music
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. Writing and managing source code
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. Connecting to the internet only
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. Replacing the operating system
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 2: Which extension helps VS Code work with Python?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. Java Extension
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. HTML Preview
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. Python extension published by Microsoft
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. Image Editor
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 3: What does the .py extension represent?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. An image file
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. A Python source code file
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. A video file
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. A music file
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 4: What is the purpose of selecting a Python interpreter?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. To change the editor's background
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. To rename the project folder
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. To choose the Python installation used to run code
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. To delete Python files
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Lesson Summary</h2>
+                <p>
+                    In this lesson, you learned:
+                </p>
+                <ul>
+                    <li>What a code editor is and why programmers use one.</li>
+                    <li>The difference between text editors, code editors, and IDEs.</li>
+                    <li>About popular Python development tools.</li>
+                    <li>How to install Visual Studio Code.</li>
+                    <li>How to install the Python extension and select an interpreter.</li>
+                    <li>How to create a Python project and run a program.</li>
+                    <li>How common editor features help you write code.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Practice task:</strong> Create a file named
+                        <code>about_me.py</code>. Write three
+                        <code>print()</code> statements that display
+                        information about your favourite subject, hobby,
+                        and learning goal. Run the program in your editor.
+                    </p>
+                </div>
+            </section>
+        </article>
+
+        <section class="completion-box">
+            <h2>Lesson Completion</h2>
+            <p>
+                Finished reading and practising? Mark this lesson as
+                completed to update your course progress.
+            </p>
+            <button class="complete-button" id="complete-lesson">
+                Mark as Completed
+            </button>
+            <p class="completion-status" id="completion-status" aria-live="polite"></p>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-5.html">← Previous Lesson</a>
+            <a href="lesson-7.html">Next Lesson →</a>
+        </nav>
+    </main>
+
+    <script src="../js/course.js"></script>
+    <script>
+        const MODULE_NUMBER = 1;
+        const LESSON_NUMBER = 6;
+
+        // Quiz interaction
+        document.querySelectorAll(".quiz-question").forEach(question => {
+            const options = question.querySelectorAll(".quiz-option");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    if (question.dataset.answered === "true") return;
+
+                    question.dataset.answered = "true";
+
+                    if (option.dataset.correct === "true") {
+                        option.classList.add("correct");
+                        feedback.textContent = "Correct! Well done.";
+                    } else {
+                        option.classList.add("incorrect");
+                        feedback.textContent =
+                            "Not quite. The correct answer is highlighted.";
+                        question.querySelector('[data-correct="true"]')
+                            .classList.add("correct");
+                    }
+
+                    options.forEach(button => {
+                        button.disabled = true;
+                    });
+                });
+            });
+        });
+
+        // Lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            }
+        }
+
+        completeButton.addEventListener("click", () => {
+            if (
+                window.SwypyyCourse &&
+                typeof window.SwypyyCourse.markLessonCompleted === "function"
+            ) {
+                window.SwypyyCourse.markLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                );
+                updateCompletionStatus();
+            } else {
+                completionStatus.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+            }
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+</html>
