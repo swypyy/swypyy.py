@@ -535,26 +535,69 @@ button {
     line-height: 1.8;
 }
 
-/* FOOTER */
+/* ========================================
+   FOOTER
+======================================== */
 
-.course-footer {
+.footer {
+    padding: 35px 0;
+    background: var(--surface);
     border-top: 1px solid var(--border);
-    background: var(--background-soft);
 }
 
 .footer-content {
-    min-height: 85px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-brand:hover {
+    opacity: 0.8;
+}
+
+.footer-logo {
+    display: block;
+    width: 105px;
+    max-height: 40px;
+    height: auto;
+    object-fit: contain;
+}
+
+.footer-brand i {
+    width: 16px;
+    height: 16px;
+    color: var(--brand-light);
 }
 
 .footer-content p {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 0.82rem;
+    text-align: right;
 }
+
+@media (max-width: 760px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .footer-content p {
+        text-align: center;
+    }
+   }
 
 /* RESPONSIVE TABLET */
 
