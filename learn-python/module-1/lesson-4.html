@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Understand how Python works, how the interpreter executes code and how Python programs produce output.">
+    <title>How Python Works | Swypyy.py</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .lesson-page {
+            width: min(100% - 32px, 850px);
+            margin: 0 auto;
+            padding: 32px 0 60px;
+        }
+
+        .lesson-top-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top-links a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top-links a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-heading {
+            margin-bottom: 32px;
+        }
+
+        .lesson-label {
+            display: inline-block;
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.14);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 20px;
+            padding: 7px 13px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .lesson-heading h1 {
+            font-size: clamp(30px, 6vw, 44px);
+            line-height: 1.2;
+            margin: 0 0 14px;
+            color: #f5f3ff;
+        }
+
+        .lesson-heading p {
+            color: #a1a1aa;
+            line-height: 1.8;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.85;
+        }
+
+        .lesson-content section {
+            margin-bottom: 32px;
+        }
+
+        .lesson-content h2 {
+            color: #f5f3ff;
+            font-size: 22px;
+            margin: 0 0 14px;
+        }
+
+        .lesson-content h3 {
+            color: #ddd6fe;
+            font-size: 17px;
+            margin: 20px 0 8px;
+        }
+
+        .lesson-content p {
+            margin: 0 0 14px;
+        }
+
+        .lesson-content ul {
+            padding-left: 22px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-content strong {
+            color: #e9d5ff;
+        }
+
+        .example-card,
+        .info-card,
+        .quiz-card,
+        .summary-card {
+            background: #15121f;
+            border: 1px solid #30283f;
+            border-radius: 14px;
+            padding: 20px;
+            margin: 18px 0;
+        }
+
+        .example-card h3,
+        .info-card h3 {
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #09080e;
+            border: 1px solid #30283f;
+            border-radius: 10px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 14px 0;
+        }
+
+        .code-block pre {
+            margin: 0;
+            color: #c4b5fd;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .output-label {
+            color: #a1a1aa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 12px 0 6px;
+            text-transform: uppercase;
+        }
+
+        .lesson-note {
+            background: rgba(124, 58, 237, 0.10);
+            border-left: 3px solid #8b5cf6;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 22px 12px;
+            margin: 18px 0;
+            background: #100e18;
+            border: 1px solid #30283f;
+            border-radius: 12px;
+        }
+
+        .flow-step {
+            background: #211a30;
+            border: 1px solid #60439a;
+            color: #e9d5ff;
+            border-radius: 9px;
+            padding: 13px 15px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 115px;
+        }
+
+        .flow-arrow {
+            color: #a78bfa;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .flow-caption {
+            width: 100%;
+            text-align: center;
+            color: #a1a1aa;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 13px 15px;
+            margin: 10px 0;
+            border: 1px solid #393044;
+            border-radius: 9px;
+            background: #100e18;
+            color: #e4e4e7;
+            cursor: pointer;
+            font: inherit;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .quiz-option:hover:not(:disabled) {
+            border-color: #8b5cf6;
+            background: #1b1528;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.10);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.10);
+        }
+
+        .quiz-feedback {
+            margin-top: 14px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .completion-panel {
+            background: #15121f;
+            border: 1px solid #49366a;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 36px;
+            text-align: center;
+        }
+
+        .completion-panel h2 {
+            color: #f5f3ff;
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .completion-panel p {
+            color: #a1a1aa;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            padding: 12px 20px;
+            color: white;
+            background: #7c3aed;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button:disabled {
+            background: #3f3158;
+            cursor: default;
+        }
+
+        .completion-status {
+            color: #c4b5fd;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            border-top: 1px solid #30283f;
+            padding-top: 24px;
+            margin-top: 32px;
+        }
+
+        .lesson-navigation a {
+            display: inline-block;
+            padding: 11px 15px;
+            border: 1px solid #393044;
+            border-radius: 9px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                width: min(100% - 24px, 850px);
+                padding-top: 22px;
+            }
+
+            .lesson-content h2 {
+                font-size: 20px;
+            }
+
+            .example-card,
+            .info-card,
+            .quiz-card,
+            .summary-card {
+                padding: 16px;
+            }
+
+            .flow-diagram {
+                flex-direction: column;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <main class="lesson-page">
+
+        <div class="lesson-top-links">
+            <a href="index.html">← Back to Module 1</a>
+            <a href="../index.html">View All Modules</a>
+        </div>
+
+        <header class="lesson-heading">
+            <span class="lesson-label">MODULE 1 · LESSON 4</span>
+            <h1>How Python Works</h1>
+            <p>
+                Have you ever wondered what happens after you press the
+                Run button? Learn how Python code is processed and how
+                the computer produces the result.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+
+            <section>
+                <h2>1. Introduction</h2>
+
+                <p>
+                    When you write a Python program, you are giving
+                    instructions to a computer. But computers do not
+                    directly understand Python code.
+                </p>
+
+                <p>
+                    A computer's processor works with machine instructions.
+                    Python uses software called an <strong>interpreter</strong>
+                    to help execute the program.
+                </p>
+
+                <p>
+                    Let's understand this process step by step.
+                </p>
+
+                <div class="lesson-note">
+                    <strong>Key idea:</strong> Python code is written by
+                    programmers, and the Python implementation processes
+                    that code so the computer can execute it.
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Writing Python Code</h2>
+
+                <p>
+                    A Python program is usually written in a text editor
+                    or code editor. The instructions are saved in a file
+                    with the <strong>.py</strong> extension.
+                </p>
+
+                <p>
+                    For example, a file named <strong>hello.py</strong>
+                    can contain this program:
+                </p>
+
+                <div class="code-block">
+                    <pre>print("Hello, Python!")</pre>
+                </div>
+
+                <p>
+                    This instruction tells Python to display the text
+                    <strong>Hello, Python!</strong> on the screen.
+                </p>
+
+                <h3>What is source code?</h3>
+
+                <p>
+                    The human-readable instructions written by a programmer
+                    are called <strong>source code</strong>.
+                </p>
+
+                <p>
+                    Python source code is generally easy for humans to read
+                    and understand compared with low-level machine instructions.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. The Python Interpreter</h2>
+
+                <p>
+                    An interpreter is a program that processes source code
+                    and helps execute its instructions.
+                </p>
+
+                <p>
+                    When you run a Python program, the Python implementation
+                    reads the code, checks it and carries out the instructions
+                    according to Python's rules.
+                </p>
+
+                <h3>What does the interpreter do?</h3>
+
+                <ul>
+                    <li>Reads the Python source code.</li>
+                    <li>Checks whether the code follows Python's syntax rules.</li>
+                    <li>Processes the instructions.</li>
+                    <li>Executes the program and produces results.</li>
+                </ul>
+
+                <div class="info-card">
+                    <h3>Important distinction</h3>
+
+                    <p>
+                        In the common CPython implementation, Python source
+                        code is compiled into bytecode, which is then
+                        executed by the Python virtual machine.
+                    </p>
+
+                    <p>
+                        So the simplified idea of an interpreter reading
+                        and executing code is useful for beginners, but
+                        the real process has additional steps.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. From Code to Output</h2>
+
+                <p>
+                    Let's look at a simplified view of how a Python
+                    program runs.
+                </p>
+
+                <div class="flow-diagram">
+                    <div class="flow-step">Python Source Code</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Python Interpreter</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Program Execution</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-step">Output</div>
+
+                    <div class="flow-caption">
+                        A simplified representation of the execution process.
+                    </div>
+                </div>
+
+                <h3>Step-by-step example</h3>
+
+                <p>
+                    Consider this program:
+                </p>
+
+                <div class="code-block">
+                    <pre>name = "Ravi"
+print("Hello,", name)</pre>
+                </div>
+
+                <p>When this program runs:</p>
+
+                <ol>
+                    <li>Python processes the first instruction and stores
+                        the text "Ravi" in the variable <strong>name</strong>.</li>
+                    <li>Python processes the second instruction.</li>
+                    <li>The <strong>print()</strong> function displays
+                        the message using the stored value.</li>
+                </ol>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-block">
+                    <pre>Hello, Ravi</pre>
+                </div>
+
+                <p>
+                    The output is the result produced when the program runs.
+                </p>
+  </section>
+  
+            <section>
+                <h2>5. Python Is an Interpreted Language</h2>
+
+                <p>
+                    Python is commonly described as an
+                    <strong>interpreted programming language</strong>.
+                    This means its code is executed through a software
+                    implementation rather than being directly translated
+                    into a standalone machine-code program in the usual
+                    beginner-level workflow.
+                </p>
+
+                <h3>What does interpreted mean?</h3>
+
+                <p>
+                    In Python's common implementation, source code is
+                    compiled into an intermediate form called
+                    <strong>bytecode</strong>. The Python virtual machine
+                    then executes that bytecode.
+                </p>
+
+                <p>
+                    This process makes it easier to run Python programs
+                    across different operating systems when a suitable
+                    Python implementation is installed.
+                </p>
+
+                <div class="lesson-note">
+                    Python's execution model is more detailed than simply
+                    reading one line at a time. The word
+                    "interpreted" is a useful general description, not
+                    a complete explanation of every implementation.
+                </div>
+            </section>
+
+            <section>
+                <h2>6. Python Implementations</h2>
+
+                <p>
+                    Python is a programming language with several
+                    implementations. An implementation is software
+                    that follows Python's language rules and runs
+                    Python programs.
+                </p>
+
+                <h3>CPython</h3>
+
+                <p>
+                    <strong>CPython</strong> is the standard and most
+                    widely used implementation of Python. It is written
+                    mainly in the C programming language.
+                </p>
+
+                <h3>Other implementations</h3>
+
+                <ul>
+                    <li><strong>PyPy:</strong> An alternative implementation
+                        that uses a Just-In-Time compiler to improve
+                        performance in many situations.</li>
+                    <li><strong>Jython:</strong> An implementation designed
+                        to run Python on the Java platform.</li>
+                    <li><strong>IronPython:</strong> An implementation
+                        designed for the .NET ecosystem.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    Beginners generally start with CPython when installing
+                    Python from the official Python website.
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Practical Example</h2>
+
+                <p>
+                    Let's follow one complete program and understand
+                    what happens when it runs.
+                </p>
+
+                <div class="example-card">
+                    <h3>Program: Calculate the square of a number</h3>
+
+                    <div class="code-block">
+                        <pre>number = 6
+square = number * number
+
+print("Number:", number)
+print("Square:", square)</pre>
+                    </div>
+
+                    <div class="output-label">Output</div>
+
+                    <div class="code-block">
+                        <pre>Number: 6
+Square: 36</pre>
+                    </div>
+
+                    <h3>Understanding the execution</h3>
+
+                    <ul>
+                        <li>Python processes the instruction that assigns
+                            6 to the variable <strong>number</strong>.</li>
+                        <li>It calculates <strong>number * number</strong>
+                            and stores the result in <strong>square</strong>.</li>
+                        <li>The first print statement displays the number.</li>
+                        <li>The second print statement displays the square.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    You can run this example using the Python interpreter
+                    installed on your computer or a browser-based Python
+                    environment.
+                </p>
+            </section>
+
+            <section class="quiz-card">
+                <h2>8. Knowledge Check</h2>
+
+                <p>
+                    Choose the correct answer to test your understanding.
+                </p>
+
+                <div class="quiz-question">
+                    <h3>Question 1</h3>
+
+                    <p>
+                        What is the main role of the Python interpreter?
+                    </p>
+
+                    <button class="quiz-option" type="button">
+                        A. To design computer hardware
+                    </button>
+
+                    <button class="quiz-option" type="button" data-correct="true">
+                        B. To process Python code and help execute it
+                    </button>
+
+                    <button class="quiz-option" type="button">
+                        C. To create internet connections
+                    </button>
+
+                    <button class="quiz-option" type="button">
+                        D. To replace the operating system
+                    </button>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <section class="summary-card">
+                <h2>9. Lesson Summary</h2>
+
+                <p>
+                    Python programs contain instructions written by
+                    programmers. A Python implementation processes
+                    these instructions and executes the program.
+                </p>
+
+                <ul>
+                    <li>Python source code is commonly saved in .py files.</li>
+                    <li>The Python interpreter processes the source code.</li>
+                    <li>CPython compiles source code into bytecode.</li>
+                    <li>The Python virtual machine executes bytecode.</li>
+                    <li>Program execution produces results or output.</li>
+                    <li>CPython is the most widely used Python implementation.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <strong>Key takeaway:</strong> Writing code is only
+                    one part of programming. Understanding how a program
+                    runs helps you become a better programmer.
+                </div>
+            </section>
+
+        </article>
+
+        <div class="completion-panel">
+            <h2>Lesson completed?</h2>
+
+            <p>
+                Mark this lesson as completed after you have finished
+                reading and practising. Your progress is saved in this browser.
+            </p>
+
+            <button class="complete-button" id="complete-lesson" type="button">
+                Mark as Completed
+            </button>
+
+            <p class="completion-status" id="completion-status" aria-live="polite">
+                Not completed yet.
+            </p>
+        </div>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-3.html">← Previous Lesson</a>
+            <a href="lesson-5.html">Next Lesson →</a>
+        </nav>
+
+  </main>
+  
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 1;
+        const LESSON_NUMBER = 4;
+
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            const course = window.SwypyyCourse;
+
+            if (!course) {
+                completionStatus.textContent =
+                    "Progress system could not be loaded.";
+                completeButton.disabled = true;
+                return;
+            }
+
+            const completed = course.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            if (completed) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            } else {
+                completionStatus.textContent = "Not completed yet.";
+                completeButton.textContent = "Mark as Completed";
+                completeButton.disabled = false;
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            const course = window.SwypyyCourse;
+
+            if (!course) {
+                completionStatus.textContent =
+                    "Progress system could not be loaded.";
+                return;
+            }
+
+            course.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            updateCompletionStatus();
+        });
+
+        const quizOptions = document.querySelectorAll(".quiz-option");
+        const quizFeedback = document.querySelector(".quiz-feedback");
+
+        quizOptions.forEach(function (option) {
+            option.addEventListener("click", function () {
+                if (option.disabled) {
+                    return;
+                }
+
+                const correctAnswer =
+                    document.querySelector('[data-correct="true"]');
+
+                quizOptions.forEach(function (item) {
+                    item.disabled = true;
+                });
+
+                if (option.dataset.correct === "true") {
+                    option.classList.add("correct");
+                    quizFeedback.textContent =
+                        "Correct! The Python interpreter processes Python code and helps execute it.";
+                    quizFeedback.style.color = "#4ade80";
+                } else {
+                    option.classList.add("incorrect");
+                    correctAnswer.classList.add("correct");
+
+                    quizFeedback.textContent =
+                        "Not quite. The correct answer is B.";
+                    quizFeedback.style.color = "#f87171";
+                }
+            });
+        });
+
+        updateCompletionStatus();
+
+        window.addEventListener("storage", updateCompletionStatus);
+    </script>
+</body>
+  </html>
