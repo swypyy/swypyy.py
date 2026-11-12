@@ -389,7 +389,7 @@ img {
 
 
 /* =========================================
-   CODE WINDOW
+    CODE WINDOW
    ========================================= */
 
 .hero-visual {
@@ -833,6 +833,7 @@ img {
     }
 
     .nav-content {
+        position: relative;
         min-height: 70px;
     }
 
@@ -841,7 +842,10 @@ img {
     }
 
     .nav-right {
+        flex: 1;
+        justify-content: flex-end;
         gap: 11px;
+        margin-left: 0;
     }
 
     .nav-actions {
@@ -850,22 +854,22 @@ img {
 
     .nav-right > .button,
     .nav-cta {
-        min-height: 40px;
-        padding: 0 12px;
-        font-size: 0.76rem;
+        display: none;
     }
 
     .menu-toggle {
         display: grid;
         width: 41px;
         height: 41px;
+        margin-left: auto;
     }
 
     .nav-links {
         position: absolute;
-        top: 70px;
+        top: calc(100% + 1px);
         left: 0;
         right: 0;
+        z-index: 50;
 
         display: none;
         flex-direction: column;
@@ -991,180 +995,61 @@ img {
     }
 
     .nav-links {
-        top: 66px;
+        top: calc(100% + 1px);
     }
 
     .hero {
         padding: 65px 0 75px;
     }
 
-    .eyebrow {
-        font-size: 0.61rem;
-        letter-spacing: 0.7px;
-        padding: 8px 11px;
+    .hero-content {
+        gap: 50px;
     }
 
     .hero h1 {
-        font-size: clamp(2.5rem, 11vw, 3.3rem);
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
         letter-spacing: -2px;
     }
 
     .hero-description {
-        font-size: 0.94rem;
-        line-height: 1.8;
-    }
-
-    .hero-actions {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .hero-actions .button {
-        width: 100%;
+        line-height: 1.75;
     }
 
     .hero-note {
-        font-size: 0.79rem;
+        font-size: 0.82rem;
     }
 
-    .hero-content {
-        gap: 55px;
-    }
-
-    .hero-visual {
-        padding: 8px;
-    }
-
-    .window-header {
-        min-height: 48px;
-        padding: 0 14px;
-    }
-
-    .code-content {
-        padding: 23px 12px;
-        font-size: 0.64rem;
-        line-height: 2.7;
-    }
-
-    .code-line {
-        gap: 13px;
-    }
-
-    .terminal {
-        padding: 18px;
-        font-size: 0.7rem;
+    .coding-window,
+    .code-window {
+        border-radius: 16px;
     }
 
     .floating-tag {
-        padding: 9px 11px;
-        font-size: 0.68rem;
-    }
-
-    .floating-tag i {
-        width: 15px;
+        padding: 10px 12px;
+        font-size: 0.74rem;
     }
 
     .tag-python {
-        right: -2px;
+        top: -6px;
+        right: 0;
     }
 
     .tag-free {
-        left: -3px;
+        bottom: -12px;
+        left: 0;
     }
 
-    .intro-content h2,
-    .section-heading h2 {
-        font-size: 2rem;
-        letter-spacing: -1px;
-    }
-
-    .intro-content p,
-    .section-heading p {
-        font-size: 0.92rem;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
+    .intro-section,
+    .features-section {
+        padding: 65px 0;
     }
 
     .feature-card {
-        padding: 24px;
-    }
-
-    .feature-card h3 {
-        font-size: 1.02rem;
-    }
-
-    .feature-card p {
-        font-size: 0.87rem;
-    }
-
-    .cta-content h2 {
-        font-size: 2.2rem;
-        letter-spacing: -1.2px;
-    }
-
-    .cta-content p {
-        font-size: 0.9rem;
+        padding: 20px 18px;
     }
 
     .footer-bottom {
         flex-direction: column;
-        align-items: center;
-        gap: 7px;
         text-align: center;
-    }
-}
-
-
-/* =========================================
-   VERY SMALL SCREENS
-   ========================================= */
-
-@media (max-width: 360px) {
-
-    .logo {
-        font-size: 1.3rem;
-    }
-
-    .nav-cta {
-        padding: 0 8px;
-        font-size: 0.65rem;
-    }
-
-    .menu-toggle {
-        width: 35px;
-        height: 35px;
-    }
-
-    .hero h1 {
-        font-size: 2.35rem;
-    }
-
-    .eyebrow {
-        font-size: 0.56rem;
-    }
-}
-
-
-/* =========================================
-   ACCESSIBILITY
-   ========================================= */
-
-:focus-visible {
-    outline: 2px solid var(--brand-light);
-    outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
     }
 }
