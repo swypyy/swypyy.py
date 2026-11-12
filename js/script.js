@@ -1,109 +1,190 @@
 /* =========================================
    SWYPYY.PY - MAIN JAVASCRIPT
-   ========================================= */
+========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ---------- LUCIDE ICONS ----------
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+    const body = document.body;
 
-    if (window.lucide) {
-        lucide.createIcons();
+    const mobileBreakpoint = window.matchMedia("(max-width: 760px)");
+
+
+    /* =====================================
+       LUCIDE ICONS
+    ===================================== */
+
+    function refreshIcons() {
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
     }
 
-    // ---------- CURRENT YEAR ----------
+    refreshIcons();
+
+
+    /* =====================================
+       MOBILE NAVIGATION
+    ===================================== */
+
+    function setMenuOpen(isOpen) {
+
+        if (!menuToggle || !navLinks) return;
+
+        navLinks.classList.toggle("active", isOpen);
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation" : "Open navigation"
+        );
+
+        body.classList.toggle("menu-open", isOpen);
+
+        menuToggle.innerHTML = isOpen
+            ? '<i data-lucide="x" aria-hidden="true"></i>'
+            : '<i data-lucide="menu" aria-hidden="true"></i>';
+
+        refreshIcons();
+    }
+
+
+    function toggleMenu() {
+
+        const isOpen = navLinks.classList.contains("active");
+
+        setMenuOpen(!isOpen);
+
+    }
+
+
+    if (menuToggle && navLinks) {
+
+        // Hamburger button
+        menuToggle.addEventListener("click", (event) => {
+
+            event.stopPropagation();
+
+            toggleMenu();
+
+        });
+
+
+        // Close after selecting a navigation link
+        navLinks.querySelectorAll("a").forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                setMenuOpen(false);
+
+            });
+
+        });
+
+
+        // Close when clicking outside the navigation
+        document.addEventListener("click", (event) => {
+
+            const clickedInsideMenu = navLinks.contains(event.target);
+            const clickedToggle = menuToggle.contains(event.target);
+
+            if (!clickedInsideMenu && !clickedToggle) {
+
+                setMenuOpen(false);
+
+            }
+
+        });
+
+
+        // Close using Escape key
+        document.addEventListener("keydown", (event) => {
+
+            if (
+                event.key === "Escape" &&
+                navLinks.classList.contains("active")
+            ) {
+
+                setMenuOpen(false);
+
+                menuToggle.focus();
+
+            }
+
+        });
+
+
+        // Close menu when switching to desktop
+        function handleBreakpointChange(event) {
+
+            if (!event.matches) {
+
+                setMenuOpen(false);
+
+            }
+
+        }
+
+        if (mobileBreakpoint.addEventListener) {
+
+            mobileBreakpoint.addEventListener(
+                "change",
+                handleBreakpointChange
+            );
+
+        } else {
+
+            // Older browser support
+            mobileBreakpoint.addListener(handleBreakpointChange);
+
+        }
+
+    }
+
+
+    /* =====================================
+       FOOTER YEAR
+    ===================================== */
 
     const yearElement = document.getElementById("current-year");
 
     if (yearElement) {
+
         yearElement.textContent = new Date().getFullYear();
+
     }
 
-    // ---------- MOBILE NAVIGATION ----------
 
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-    const navbar = menuToggle ? menuToggle.closest(".navbar") : null;
+    /* =====================================
+       SMOOTH INTERNAL NAVIGATION
+    ===================================== */
 
-    if (menuToggle && navLinks && navbar) {
-        const setMenuOpen = (isOpen, returnFocus = false) => {
-            navLinks.classList.toggle("active", isOpen);
-            navbar.classList.toggle("menu-open", isOpen);
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
-            menuToggle.setAttribute(
-                "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
-            );
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
 
-            if (returnFocus) {
-                menuToggle.focus();
-            }
-        };
+        link.addEventListener("click", (event) => {
 
-        menuToggle.addEventListener("click", event => {
-            event.stopPropagation();
-            setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
-        });
-
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => setMenuOpen(false));
-        });
-
-        document.addEventListener("click", event => {
-            if (
-                menuToggle.getAttribute("aria-expanded") === "true" &&
-                !navLinks.contains(event.target) &&
-                !menuToggle.contains(event.target)
-            ) {
-                setMenuOpen(false);
-            }
-        });
-
-        document.addEventListener("keydown", event => {
-            if (
-                event.key === "Escape" &&
-                menuToggle.getAttribute("aria-expanded") === "true"
-            ) {
-                setMenuOpen(false, true);
-            }
-        });
-
-        // Reset the mobile drawer if the viewport changes to desktop.
-        const desktopViewport = window.matchMedia("(min-width: 761px)");
-        desktopViewport.addEventListener("change", () => setMenuOpen(false));
-    }
-
-    // ---------- SMOOTH SCROLLING ----------
-
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", event => {
             const targetId = link.getAttribute("href");
 
-            if (!targetId || targetId === "#") {
-                return;
-            }
+            if (!targetId || targetId === "#") return;
 
             const target = document.querySelector(targetId);
 
-            if (target) {
-                event.preventDefault();
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
+            if (!target) return;
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
         });
+
     });
-
-    // ---------- CONSOLE MESSAGE ----------
-
-    console.log(
-        "%cWelcome to Swypyy.py!",
-        "color: #a78bfa; font-size: 18px; font-weight: bold;"
-    );
-
-    console.log(
-        "%cYour Python learning journey starts here.",
-        "color: #c084fc; font-size: 12px;"
-    );
 
 });
