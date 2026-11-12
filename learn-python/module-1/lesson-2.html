@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Why Learn Python? | Swypyy.py</title>
+    <meta name="description" content="Discover why Python is worth learning, its advantages, and the opportunities it offers.">
+
+    <link rel="icon" href="../../assets/s-logo.png">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .lesson-page {
+            width: min(100% - 32px, 850px);
+            margin: 40px auto 60px;
+        }
+
+        .lesson-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .lesson-back,
+        .all-modules {
+            color: var(--text-muted, #a5a0b5);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .lesson-back:hover,
+        .all-modules:hover {
+            color: var(--primary-light, #a78bfa);
+        }
+
+        .lesson-heading {
+            margin-bottom: 35px;
+        }
+
+        .lesson-label {
+            color: var(--primary-light, #a78bfa);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .lesson-heading h1 {
+            font-size: clamp(30px, 5vw, 44px);
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .lesson-subtitle {
+            color: var(--text-muted, #a5a0b5);
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .lesson-content {
+            color: var(--text, #f5f3ff);
+            line-height: 1.8;
+        }
+
+        .lesson-section {
+            margin-bottom: 34px;
+        }
+
+        .lesson-section h2 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-section p {
+            color: var(--text-secondary, #c4bfd1);
+            margin-bottom: 14px;
+        }
+
+        .lesson-section ul {
+            padding-left: 22px;
+            color: var(--text-secondary, #c4bfd1);
+        }
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-code {
+            background: #100d18;
+            border: 1px solid var(--border, #30283e);
+            border-radius: 12px;
+            padding: 18px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .lesson-code pre {
+            margin: 0;
+            color: #d8b4fe;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .output-label {
+            color: var(--text-muted, #a5a0b5);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .lesson-note {
+            background: rgba(139, 92, 246, 0.08);
+            border-left: 3px solid var(--primary, #8b5cf6);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+            color: var(--text-secondary, #c4bfd1);
+        }
+
+        .lesson-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+
+        .lesson-table th,
+        .lesson-table td {
+            padding: 12px;
+            border: 1px solid var(--border, #30283e);
+            text-align: left;
+        }
+
+        .lesson-table th {
+            background: var(--surface-light, #1c172b);
+        }
+
+        .lesson-table td {
+            color: var(--text-secondary, #c4bfd1);
+        }
+
+        .knowledge-check {
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+
+        .knowledge-check h3 {
+            margin: 0 0 14px;
+            font-size: 18px;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 12px 14px;
+            margin: 9px 0;
+            text-align: left;
+            color: var(--text, #f5f3ff);
+            background: var(--surface-light, #1c172b);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 8px;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary, #8b5cf6);
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+        }
+
+        .quiz-feedback {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-secondary, #c4bfd1);
+        }
+
+        .lesson-summary {
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .lesson-summary h2 {
+            margin-top: 0;
+        }
+
+        .lesson-completion {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 35px;
+            padding: 20px;
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 12px;
+        }
+
+        .lesson-completion p {
+            margin: 0;
+            color: var(--text-muted, #a5a0b5);
+            font-size: 14px;
+        }
+
+        .complete-button,
+        .lesson-nav a {
+            display: inline-block;
+            padding: 11px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .complete-button {
+            color: white;
+            background: #7c3aed;
+            border: 1px solid #7c3aed;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button.completed {
+            background: #292139;
+            border-color: #8b5cf6;
+            color: #c4b5fd;
+        }
+
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .lesson-nav a {
+            color: var(--text, #f5f3ff);
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+        }
+
+        .lesson-nav a:hover {
+            border-color: var(--primary, #8b5cf6);
+        }
+
+        @media (max-width: 520px) {
+            .lesson-page {
+                margin-top: 25px;
+            }
+
+            .lesson-section h2 {
+                font-size: 20px;
+            }
+
+            .lesson-completion {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .complete-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  
+<main class="lesson-page">
+
+    <div class="lesson-top">
+        <a class="lesson-back" href="index.html">
+            ← Back to Module 1
+        </a>
+
+        <a class="all-modules" href="../index.html">
+            View All Modules
+        </a>
+    </div>
+
+    <header class="lesson-heading">
+        <div class="lesson-label">Module 01 · Lesson 02</div>
+
+        <h1>Why Learn Python?</h1>
+
+        <p class="lesson-subtitle">
+            Discover what makes Python popular, explore its advantages,
+            and understand how learning Python can help you build useful skills.
+        </p>
+    </header>
+
+    <article class="lesson-content">
+
+        <section class="lesson-section">
+            <h2>1. Introduction</h2>
+
+            <p>
+                There are many programming languages available, such as
+                Python, Java, C, C++, and JavaScript.
+            </p>
+
+            <p>
+                So why do millions of people choose Python?
+                The main reasons are its readable syntax, versatility,
+                large community, and wide range of applications.
+            </p>
+
+            <p>
+                Python is useful for beginners who are learning programming
+                as well as experienced developers building complex software.
+            </p>
+
+            <div class="lesson-note">
+                <strong>Key idea:</strong> Python is not just easy to start
+                learning. It is also powerful enough to build real-world applications.
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>2. Easy to Read and Learn</h2>
+
+            <p>
+                One of Python's biggest advantages is its readable syntax.
+                Many Python statements look similar to ordinary English.
+            </p>
+
+            <p>Compare these two examples.</p>
+
+            <div class="output-label">Python</div>
+
+            <div class="lesson-code">
+                <pre><code>print("Welcome to Python!")</code></pre>
+            </div>
+
+            <div class="output-label">Output</div>
+
+            <div class="lesson-code">
+                <pre><code>Welcome to Python!</code></pre>
+            </div>
+
+            <p>
+                This simple statement is easy to understand.
+                You do not need to write a large amount of code
+                just to display a message.
+            </p>
+        </section>
+
+        <section class="lesson-section">
+            <h2>3. Python Is Versatile</h2>
+
+            <p>
+                A versatile programming language can be used for many
+                different types of tasks. Python is used across several
+                fields of technology.
+            </p>
+
+            <table class="lesson-table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>What Python Can Do</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Web Development</td>
+                        <td>Build websites and web applications.</td>
+                    </tr>
+                    <tr>
+                        <td>Artificial Intelligence</td>
+                        <td>Develop intelligent computer systems.</td>
+                    </tr>
+                    <tr>
+                        <td>Data Science</td>
+                        <td>Analyze and visualize data.</td>
+                    </tr>
+                    <tr>
+                        <td>Automation</td>
+                        <td>Automate repetitive computer tasks.</td>
+                    </tr>
+                    <tr>
+                        <td>Scientific Computing</td>
+                        <td>Perform calculations and simulations.</td>
+                    </tr>
+                    <tr>
+                        <td>Game Development</td>
+                        <td>Create games and interactive projects.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="lesson-section">
+            <h2>4. A Large Community</h2>
+
+            <p>
+                Python has a large worldwide community of learners,
+                programmers, teachers, and developers.
+            </p>
+
+            <p>This means you can find:</p>
+
+            <ul>
+                <li>Documentation explaining Python features.</li>
+                <li>Tutorials and learning resources.</li>
+                <li>Answers to common programming problems.</li>
+                <li>Open-source projects to study and learn from.</li>
+                <li>Libraries created by other developers.</li>
+            </ul>
+
+            <div class="lesson-note">
+                <strong>Why does this matter?</strong>
+                When you encounter a programming problem, you can often
+                find explanations and examples from the Python community.
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <h2>5. Python Has Many Libraries</h2>
+
+            <p>
+                A library is a collection of reusable code that helps
+                programmers perform particular tasks.
+            </p>
+
+            <p>
+                Instead of writing everything from the beginning,
+                developers can use existing libraries.
+            </p>
+
+            <ul>
+                <li><strong>NumPy:</strong> Numerical calculations and arrays.</li>
+                <li><strong>Pandas:</strong> Working with structured data.</li>
+                <li><strong>Matplotlib:</strong> Creating graphs and visualizations.</li>
+                <li><strong>Requests:</strong> Making HTTP requests.</li>
+                <li><strong>Flask:</strong> Building web applications.</li>
+            </ul>
+
+            <p>
+                You will learn how to work with external libraries
+                in a later module.
+            </p>
+        </section>
+
+        <section class="lesson-section">
+            <h2>6. Python Is Useful for Students</h2>
+
+            <p>
+                Python can be especially useful for students because it
+                connects programming with subjects such as mathematics,
+                science, and technology.
+            </p>
+
+            <p>For example, Python can calculate the area of a rectangle:</p>
+
+            <div class="lesson-code">
+                <pre><code>length = 10
+width = 5
+
+area = length * width
+
+print("Area:", area)</code></pre>
+            </div>
+
+            <div class="output-label">Output</div>
+
+            <div class="lesson-code">
+                <pre><code>Area: 50</code></pre>
+            </div>
+
+            <p>
+                You can use similar programs to explore mathematical
+                calculations, scientific data, and simple simulations.
+            </p>
+        </section>
+
+        <section class="lesson-section">
+            <h2>7. Career and Learning Opportunities</h2>
+
+            <p>
+                Learning Python can help you develop programming skills
+                that are useful in many technical fields.
+            </p>
+
+            <p>Python is commonly used by:</p>
+
+            <ul>
+                <li>Software developers.</li>
+                <li>Data analysts.</li>
+                <li>Machine learning engineers.</li>
+                <li>Scientific researchers.</li>
+                <li>Automation engineers.</li>
+                <li>Web developers.</li>
+            </ul>
+
+            <p>
+                Learning Python does not automatically guarantee a job.
+                However, it gives you a useful foundation for further
+                study and practical projects.
+            </p>
+  </section>
+  
+        <section class="lesson-section">
+            <h2>8. Quick Knowledge Check</h2>
+
+            <div class="knowledge-check">
+                <h3>Which of the following is a major advantage of Python?</h3>
+
+                <button class="quiz-option" type="button" data-correct="false">
+                    A. It can only be used for mathematics.
+                </button>
+
+                <button class="quiz-option" type="button" data-correct="true">
+                    B. It has readable syntax and many applications.
+                </button>
+
+                <button class="quiz-option" type="button" data-correct="false">
+                    C. It cannot work with external libraries.
+                </button>
+
+                <button class="quiz-option" type="button" data-correct="false">
+                    D. It only runs on one operating system.
+                </button>
+
+                <p class="quiz-feedback" id="quiz-feedback" aria-live="polite">
+                    Select an answer to check your understanding.
+                </p>
+            </div>
+        </section>
+
+        <section class="lesson-section">
+            <div class="lesson-summary">
+                <h2>9. Lesson Summary</h2>
+
+                <p>In this lesson, you learned that:</p>
+
+                <ul>
+                    <li>Python has readable and beginner-friendly syntax.</li>
+                    <li>Python can be used in many different fields.</li>
+                    <li>It has a large worldwide developer community.</li>
+                    <li>Python provides many useful libraries.</li>
+                    <li>It can help students explore mathematics and science.</li>
+                    <li>Python skills can support further learning and career development.</li>
+                </ul>
+
+                <p>
+                    In the next lesson, we'll explore the different fields
+                    where Python is used in the real world.
+                </p>
+            </div>
+        </section>
+
+    </article>
+
+    <section class="lesson-completion">
+        <div>
+            <strong id="completion-heading">Finished this lesson?</strong>
+            <p id="completion-message">
+                Mark it as completed to update your course progress.
+            </p>
+        </div>
+
+        <button class="complete-button" id="complete-button" type="button">
+            Mark as Completed
+        </button>
+    </section>
+
+    <nav class="lesson-nav" aria-label="Lesson navigation">
+        <a href="lesson-1.html">
+            ← Previous Lesson
+        </a>
+
+        <a href="lesson-3.html">
+            Next Lesson →
+        </a>
+    </nav>
+
+  </main>
+  
+<script src="../js/course.js"></script>
+
+<script>
+    const MODULE_NUMBER = 1;
+    const LESSON_NUMBER = 2;
+
+    const completeButton = document.getElementById("complete-button");
+    const completionHeading = document.getElementById("completion-heading");
+    const completionMessage = document.getElementById("completion-message");
+
+    function updateCompletionStatus() {
+        const course = window.SwypyyCourse;
+
+        if (!course) {
+            completionMessage.textContent =
+                "Progress tracking could not be loaded. Please refresh the page.";
+            completeButton.disabled = true;
+            return;
+        }
+
+        const completed = course.isLessonCompleted(
+            MODULE_NUMBER,
+            LESSON_NUMBER
+        );
+
+        completeButton.textContent = completed
+            ? "✓ Completed"
+            : "Mark as Completed";
+
+        completeButton.classList.toggle("completed", completed);
+
+        completionHeading.textContent = completed
+            ? "Lesson completed!"
+            : "Finished this lesson?";
+
+        completionMessage.textContent = completed
+            ? "Your progress has been saved."
+            : "Mark it as completed to update your course progress.";
+    }
+
+    completeButton.addEventListener("click", function () {
+        const course = window.SwypyyCourse;
+
+        if (!course) return;
+
+        course.markLessonCompleted(MODULE_NUMBER, LESSON_NUMBER);
+        updateCompletionStatus();
+    });
+
+    document.querySelectorAll(".quiz-option").forEach(option => {
+        option.addEventListener("click", function () {
+            const feedback = document.getElementById("quiz-feedback");
+
+            document.querySelectorAll(".quiz-option").forEach(button => {
+                button.classList.remove("correct", "incorrect");
+                button.disabled = true;
+            });
+
+            if (this.dataset.correct === "true") {
+                this.classList.add("correct");
+                feedback.textContent =
+                    "Correct! Python has readable syntax and can be used in many fields.";
+            } else {
+                this.classList.add("incorrect");
+                feedback.textContent =
+                    "Not quite. The correct answer is B: It has readable syntax and many applications.";
+
+                document.querySelector('[data-correct="true"]')
+                    .classList.add("correct");
+            }
+        });
+    });
+
+    updateCompletionStatus();
+
+    window.addEventListener("storage", updateCompletionStatus);
+</script>
+
+</body>
+</html>
