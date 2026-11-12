@@ -17,6 +17,28 @@
     <link rel="stylesheet" href="css/course.css">
 
     <script src="https://unpkg.com/lucide@0.468.0"></script>
+
+    <style>
+        .module-footer > .learn-button {
+            min-width: 82px;
+            height: 36px;
+            padding: 0 11px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .module-footer > .learn-button i {
+            width: 16px;
+            height: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -162,8 +184,8 @@
                         </p>
                         <div class="module-footer">
                             <span>8 Lessons</span>
-                            <a href="module-1.html" aria-label="Open Introduction to Python">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-1/" class="learn-button" aria-label="Learn Introduction to Python">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -186,8 +208,8 @@
                         </p>
                         <div class="module-footer">
                             <span>10 Lessons</span>
-                            <a href="module-2.html" aria-label="Open Python Fundamentals">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-2/" class="learn-button" aria-label="Learn Python Fundamentals">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -210,8 +232,8 @@
                         </p>
                         <div class="module-footer">
                             <span>10 Lessons</span>
-                            <a href="module-3.html" aria-label="Open Decision Making">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-3/" class="learn-button" aria-label="Learn Decision Making">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -234,8 +256,8 @@
                         </p>
                         <div class="module-footer">
                             <span>11 Lessons</span>
-                            <a href="module-4.html" aria-label="Open Loops and Iteration">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-4/" class="learn-button" aria-label="Learn Loops and Iteration">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -258,8 +280,8 @@
                         </p>
                         <div class="module-footer">
                             <span>11 Lessons</span>
-                            <a href="module-5.html" aria-label="Open Python Data Structures">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-5/" class="learn-button" aria-label="Learn Python Data Structures">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -282,8 +304,8 @@
                         </p>
                         <div class="module-footer">
                             <span>12 Lessons</span>
-                            <a href="module-6.html" aria-label="Open Functions and Modules">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-6/" class="learn-button" aria-label="Learn Functions and Modules">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -306,8 +328,8 @@
                         </p>
                         <div class="module-footer">
                             <span>14 Lessons</span>
-                            <a href="module-7.html" aria-label="Open Advanced Python">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-7/" class="learn-button" aria-label="Learn Advanced Python">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -330,8 +352,8 @@
                         </p>
                         <div class="module-footer">
                             <span>10 Lessons</span>
-                            <a href="module-8.html" aria-label="Open Practical Projects">
-                                <i data-lucide="arrow-up-right"></i>
+                            <a href="module-8/" class="learn-button" aria-label="Learn Practical Projects">
+                                Learn <i data-lucide="arrow-up-right"></i>
                             </a>
                         </div>
                         <div class="module-progress">
@@ -365,7 +387,7 @@
     </main>
 
 
-        <!-- FOOTER -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container footer-content">
 
@@ -396,10 +418,13 @@
 
     <script src="js/course.js"></script>
     <script>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+
         if (window.lucide) {
             lucide.createIcons();
         }
     </script>
 
 </body>
-          </html>
+    </html>
