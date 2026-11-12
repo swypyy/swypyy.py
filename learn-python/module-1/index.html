@@ -24,15 +24,15 @@
         }
 
         .module-back:hover {
-            color: var(--brand, #a78bfa);
+            color: var(--primary-light, #a78bfa);
         }
 
         .module-heading {
             margin-bottom: 32px;
         }
 
-        .module-label {
-            color: var(--brand, #a78bfa);
+        .module-page .module-label {
+            color: var(--primary-light, #a78bfa);
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 1.5px;
@@ -42,6 +42,7 @@
         .module-heading h1 {
             margin: 10px 0;
             font-size: clamp(30px, 5vw, 42px);
+            line-height: 1.25;
         }
 
         .module-description {
@@ -50,7 +51,14 @@
             max-width: 650px;
         }
 
-        .module-progress {
+        /* MODULE PROGRESS CARD */
+
+        .module-page-progress {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            overflow: visible;
             background: var(--surface, #15121e);
             border: 1px solid var(--border, #30283e);
             border-radius: 14px;
@@ -58,38 +66,55 @@
             margin-bottom: 28px;
         }
 
-        .progress-info {
+        .module-page .progress-info {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-bottom: 14px;
             font-size: 14px;
         }
 
-        .progress-track {
+        .module-page .progress-info strong {
+            color: var(--text, #f5f3ff);
+        }
+
+        .module-page .progress-info span {
+            color: var(--text-secondary, #b6b0c7);
+        }
+
+        .module-page .progress-track {
+            width: 100%;
             height: 8px;
-            background: #30283e;
+            margin: 0;
+            background: var(--surface-light, #1c172b);
             border-radius: 20px;
             overflow: hidden;
         }
 
-        .progress-fill {
+        .module-page .progress-fill {
             width: 0%;
             height: 100%;
-            background: #a78bfa;
+            background: var(--primary-light, #a78bfa);
             border-radius: inherit;
             transition: width 0.25s ease;
         }
 
+        /* LESSON LIST */
+
         .lesson-list {
             display: grid;
+            grid-template-columns: minmax(0, 1fr);
             gap: 12px;
         }
 
-        .lesson-item {
+        .module-page .lesson-item {
             display: flex;
             align-items: center;
             gap: 16px;
+            width: 100%;
+            min-width: 0;
             padding: 18px;
             background: var(--surface, #15121e);
             border: 1px solid var(--border, #30283e);
@@ -99,14 +124,14 @@
             transition: border-color 0.2s ease;
         }
 
-        .lesson-item:hover {
-            border-color: #8b5cf6;
+        .module-page .lesson-item:hover {
+            border-color: var(--primary, #8b5cf6);
         }
 
-        .lesson-number {
-            width: 38px;
-            height: 38px;
-            flex-shrink: 0;
+        .module-page .lesson-number {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
             display: grid;
             place-items: center;
             border-radius: 10px;
@@ -115,31 +140,47 @@
             font-weight: 700;
         }
 
-        .lesson-details {
-            flex: 1;
+        .module-page .lesson-details {
+            flex: 1 1 auto;
             min-width: 0;
+            display: block;
         }
 
-        .lesson-details h2 {
+        .module-page .lesson-details h2 {
+            display: block;
             font-size: 16px;
+            line-height: 1.5;
             margin: 0 0 5px;
             font-weight: 600;
+            overflow-wrap: anywhere;
         }
 
-        .lesson-details p {
+        .module-page .lesson-details p {
+            display: block;
             color: var(--text-muted, #a5a0b5);
             font-size: 13px;
+            line-height: 1.6;
             margin: 0;
+            overflow-wrap: anywhere;
         }
 
-        .lesson-status {
-            color: #a78bfa;
+        .module-page .lesson-status {
+            flex: 0 0 22px;
+            width: 22px;
+            color: var(--primary-light, #a78bfa);
             font-size: 21px;
             font-weight: 700;
+            text-align: center;
         }
 
-        .module-footer {
+        /* PAGE FOOTER */
+
+        .module-page-footer {
+            display: block;
+            width: 100%;
             margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
             text-align: center;
             color: var(--text-muted, #a5a0b5);
             font-size: 13px;
@@ -148,19 +189,34 @@
         @media (max-width: 520px) {
             .module-page {
                 margin-top: 32px;
+                margin-bottom: 24px;
             }
 
-            .lesson-item {
+            .module-heading h1 {
+                font-size: 32px;
+            }
+
+            .module-page .lesson-item {
                 padding: 14px;
                 gap: 12px;
             }
 
-            .lesson-details h2 {
+            .module-page .lesson-number {
+                width: 40px;
+                height: 40px;
+                flex-basis: 40px;
+            }
+
+            .module-page .lesson-details h2 {
                 font-size: 14px;
             }
 
-            .lesson-details p {
+            .module-page .lesson-details p {
                 font-size: 12px;
+            }
+
+            .module-page .progress-info {
+                font-size: 13px;
             }
         }
     </style>
@@ -186,7 +242,8 @@
             </p>
         </header>
 
-        <section class="module-progress">
+        <section class="module-page-progress">
+
             <div class="progress-info">
                 <strong>Module Progress</strong>
                 <span id="progress-text">0 of 8 completed</span>
@@ -203,6 +260,7 @@
             >
                 <div class="progress-fill" id="progress-fill"></div>
             </div>
+
         </section>
 
         <section>
@@ -210,80 +268,80 @@
 
                 <a class="lesson-item" href="lesson-1.html" data-lesson="1">
                     <span class="lesson-number">01</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>What is Python?</h2>
                         <p>Understand Python and what makes it a programming language.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-2.html" data-lesson="2">
                     <span class="lesson-number">02</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Why Learn Python?</h2>
                         <p>Discover why Python is a useful language to learn.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-3.html" data-lesson="3">
                     <span class="lesson-number">03</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Where is Python Used?</h2>
                         <p>Explore the different fields where Python is used.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-4.html" data-lesson="4">
                     <span class="lesson-number">04</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>How Python Works</h2>
                         <p>Learn how Python code is executed by a computer.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-5.html" data-lesson="5">
                     <span class="lesson-number">05</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Installing Python</h2>
                         <p>Learn how to install Python on your computer.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-6.html" data-lesson="6">
                     <span class="lesson-number">06</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Setting Up a Code Editor</h2>
                         <p>Prepare an editor for writing and running Python code.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-7.html" data-lesson="7">
                     <span class="lesson-number">07</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Your First Python Program</h2>
                         <p>Write and run your first Python program.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
                 <a class="lesson-item" href="lesson-8.html" data-lesson="8">
                     <span class="lesson-number">08</span>
-                    <span class="lesson-details">
+                    <div class="lesson-details">
                         <h2>Understanding Your First Program</h2>
                         <p>Understand what happens when your first program runs.</p>
-                    </span>
+                    </div>
                     <span class="lesson-status" aria-label="Not completed"></span>
                 </a>
 
             </div>
         </section>
 
-        <footer class="module-footer">
+        <footer class="module-page-footer">
             © <span id="current-year"></span> Swypyy.py
         </footer>
 
@@ -296,8 +354,10 @@
             new Date().getFullYear();
 
         function updateModulePage() {
-            const completed = window.SwypyyCourse
-                ? window.SwypyyCourse.getModuleCompletedCount(1)
+            const course = window.SwypyyCourse;
+
+            const completed = course
+                ? course.getModuleCompletedCount(1)
                 : 0;
 
             document.getElementById("progress-text").textContent =
@@ -315,10 +375,12 @@
                 const lessonNumber = Number(item.dataset.lesson);
                 const status = item.querySelector(".lesson-status");
 
-                const isCompleted = window.SwypyyCourse &&
-                    window.SwypyyCourse.isLessonCompleted(1, lessonNumber);
+                const isCompleted = course
+                    ? course.isLessonCompleted(1, lessonNumber)
+                    : false;
 
                 status.textContent = isCompleted ? "✓" : "";
+
                 status.setAttribute(
                     "aria-label",
                     isCompleted ? "Completed" : "Not completed"
@@ -332,4 +394,4 @@
     </script>
 
 </body>
-  </html>
+    </html>
