@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07060b">
 
     <title>Swypyy.py | Learn Python</title>
     <meta name="description" content="Explore Python programming with Swypyy.py. Learn coding through a simple, modern learning experience.">
-    <meta name="theme-color" content="#07060b">
 
     <link rel="icon" type="image/png" href="assets/s-logo.png">
 
@@ -16,12 +16,12 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.468.0"></script>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- HEADER -->
     <header class="navbar">
         <div class="container nav-content">
 
@@ -29,18 +29,20 @@
                 Swypyy<span class="brand-accent">.py</span>
             </a>
 
+            <!-- MOBILE MENU BUTTON -->
             <button
+                id="menuBtn"
                 class="menu-toggle"
-                id="menu-toggle"
                 type="button"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
-                aria-controls="nav-links"
+                aria-controls="mobileMenu"
             >
-                <i data-lucide="menu"></i>
+                <i data-lucide="menu" aria-hidden="true"></i>
             </button>
 
-            <nav class="nav-links" id="nav-links" aria-label="Main navigation">
+            <!-- DESKTOP NAVIGATION -->
+            <nav class="nav-links" aria-label="Primary navigation">
                 <a href="./" class="nav-link">Home</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="courses/python/" class="nav-link">Learn .py</a>
@@ -50,13 +52,64 @@
     </header>
 
 
-    <!-- HERO -->
+    <!-- FULL-SCREEN MOBILE MENU -->
+    <div
+        id="mobileMenu"
+        class="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+        inert
+    >
+
+        <!-- CLOSE BUTTON -->
+        <button
+            id="closeMenuBtn"
+            class="mobile-menu-close"
+            type="button"
+            aria-label="Close navigation menu"
+        >
+            <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+
+        <!-- MOBILE NAVIGATION LINKS -->
+        <nav class="mobile-menu-links" aria-label="Mobile navigation links">
+
+            <a href="./" class="mobile-nav-link">
+                <span>Home</span>
+                <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+
+            <a href="#features" class="mobile-nav-link">
+                <span>Features</span>
+                <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+
+            <a href="courses/python/" class="mobile-nav-link">
+                <span>Learn .py</span>
+                <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+            </a>
+
+        </nav>
+
+        <div class="mobile-menu-footer">
+            <span>SWYPYY.PY</span>
+            <span>Learn. Build. Grow.</span>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
     <main>
 
-        <section class="hero">
+        <!-- HERO -->
+        <section class="hero" id="home">
             <div class="container hero-content">
 
                 <div class="hero-text">
+
                     <span class="eyebrow">
                         YOUR CODING JOURNEY STARTS HERE
                     </span>
@@ -73,36 +126,50 @@
 
                     <a href="courses/python/" class="button">
                         Explore Python
-                        <i data-lucide="arrow-up-right"></i>
+                        <i data-lucide="arrow-up-right" aria-hidden="true"></i>
                     </a>
+
                 </div>
 
                 <div class="hero-visual">
+
                     <div class="code-card">
 
                         <div class="code-header">
+
                             <div class="window-dots">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
+
                             <span>hello_world.py</span>
+
                         </div>
 
                         <div class="code-content">
-                            <p><span class="code-purple">print</span>(<span class="code-green">"Hello, World!"</span>)</p>
-                            <p class="code-comment"># Your journey begins here.</p>
-                            <p><span class="code-purple">print</span>(<span class="code-green">"Welcome to Swypyy.py"</span>)</p>
+                            <p>
+                                <span class="code-purple">print</span>(<span class="code-green">"Hello, World!"</span>)
+                            </p>
+
+                            <p class="code-comment">
+                                # Your journey begins here.
+                            </p>
+
+                            <p>
+                                <span class="code-purple">print</span>(<span class="code-green">"Welcome to Swypyy.py"</span>)
+                            </p>
                         </div>
 
                     </div>
+
                 </div>
 
             </div>
         </section>
 
 
-        <!-- INTRO -->
+        <!-- INTRODUCTION -->
         <section class="intro section">
             <div class="container intro-content">
 
@@ -127,47 +194,68 @@
             <div class="container">
 
                 <div class="section-heading">
+
                     <span class="eyebrow">WHY SWYPYY.PY?</span>
-                    <h2>Built for <span class="gradient-text">learners.</span></h2>
-                    <p>A focused learning experience without unnecessary complexity.</p>
+
+                    <h2>
+                        Built for <span class="gradient-text">learners.</span>
+                    </h2>
+
+                    <p>
+                        A focused learning experience without unnecessary complexity.
+                    </p>
+
                 </div>
 
                 <div class="feature-grid">
 
                     <article class="feature-card">
+
                         <div class="feature-icon">
-                            <i data-lucide="book-open"></i>
+                            <i data-lucide="book-open" aria-hidden="true"></i>
                         </div>
+
                         <h3>Easy to Understand</h3>
+
                         <p>
                             Learn programming concepts through clear
                             explanations designed for beginners.
                         </p>
+
                     </article>
 
                     <article class="feature-card">
+
                         <div class="feature-icon">
-                            <i data-lucide="code-2"></i>
+                            <i data-lucide="code-2" aria-hidden="true"></i>
                         </div>
+
                         <h3>Practical Learning</h3>
+
                         <p>
                             Understand concepts by exploring code
                             examples and applying what you learn.
                         </p>
+
                     </article>
 
                     <article class="feature-card">
+
                         <div class="feature-icon">
-                            <i data-lucide="trending-up"></i>
+                            <i data-lucide="trending-up" aria-hidden="true"></i>
                         </div>
+
                         <h3>Learn at Your Pace</h3>
+
                         <p>
                             Build your knowledge step by step and
                             progress at a comfortable pace.
                         </p>
+
                     </article>
 
                 </div>
+
             </div>
         </section>
 
@@ -177,6 +265,7 @@
             <div class="container">
 
                 <div class="cta-card">
+
                     <span class="eyebrow">READY TO BEGIN?</span>
 
                     <h2>
@@ -189,8 +278,9 @@
 
                     <a href="courses/python/" class="button">
                         Learn Python
-                        <i data-lucide="arrow-up-right"></i>
+                        <i data-lucide="arrow-up-right" aria-hidden="true"></i>
                     </a>
+
                 </div>
 
             </div>
@@ -203,11 +293,20 @@
     <footer class="footer">
         <div class="container footer-content">
 
-            <a href="https://swypyy.github.io/" class="logo">
-               By  <span class="brand-accent">  Swypyy</span>
+            <a
+                href="https://swypyy.github.io/"
+                class="footer-brand"
+                aria-label="By Swypyy. Visit the main Swypyy website"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                By <span class="brand-accent">Swypyy</span>
+                <i data-lucide="arrow-up-right" aria-hidden="true"></i>
             </a>
 
-            <p>© <span id="current-year"></span> Swypyy. All rights reserved.</p>
+            <p>
+                © <span id="current-year"></span> Swypyy.py. All rights reserved.
+            </p>
 
         </div>
     </footer>
