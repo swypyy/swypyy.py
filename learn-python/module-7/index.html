@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7: Advanced Python | Swypyy.py</title>
+
+    <link rel="icon" href="../../assets/s-logo.png">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .module-page {
+            width: min(100% - 40px, 850px);
+            margin: 0 auto;
+            padding: 45px 0 70px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 35px;
+        }
+
+        .back-link:hover {
+            color: #c4b5fd;
+        }
+
+        .module-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .module-title {
+            color: #ffffff;
+            font-size: clamp(28px, 5vw, 40px);
+            line-height: 1.2;
+            font-weight: 800;
+            margin: 0 0 14px;
+        }
+
+        .module-description {
+            color: #aaa3b8;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .progress-card {
+            background: #171323;
+            border: 1px solid rgba(167, 139, 250, 0.18);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 38px;
+        }
+
+        .progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .progress-top strong {
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        #progress-text {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .progress-track {
+            height: 8px;
+            width: 100%;
+            background: #30283f;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #7c3aed, #a78bfa);
+            border-radius: 20px;
+            transition: width 0.3s ease;
+        }
+
+        .lessons-heading {
+            color: #ffffff;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .lesson-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .lesson-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px;
+            background: #171323;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .lesson-card:hover {
+            background: #211a31;
+            border-color: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        .lesson-number {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(124, 58, 237, 0.15);
+            color: #c4b5fd;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .lesson-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lesson-info h3 {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 5px;
+        }
+
+        .lesson-info p {
+            color: #938ba3;
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .lesson-status {
+            color: #a78bfa;
+            font-size: 19px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .learning-note {
+            margin-top: 35px;
+            padding: 20px;
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(167, 139, 250, 0.18);
+            border-radius: 12px;
+        }
+
+        .learning-note h3 {
+            color: #c4b5fd;
+            font-size: 15px;
+            margin: 0 0 8px;
+        }
+
+        .learning-note p {
+            color: #aaa3b8;
+            font-size: 13px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 520px) {
+            .module-page {
+                width: min(100% - 28px, 850px);
+                padding-top: 30px;
+            }
+
+            .lesson-card {
+                padding: 15px 12px;
+                gap: 12px;
+            }
+
+            .lesson-info h3 {
+                font-size: 14px;
+            }
+
+            .lesson-info p {
+                font-size: 11px;
+            }
+
+            .progress-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="module-page">
+
+        <a href="../index.html" class="back-link">
+            ← Back to All Modules
+        </a>
+
+        <div class="module-label">Module 07 · Advanced</div>
+
+        <h1 class="module-title">Advanced Python</h1>
+
+        <p class="module-description">
+            Move beyond the fundamentals and explore advanced Python
+            concepts. Learn object-oriented programming, file handling,
+            exception handling, comprehensions, generators and decorators.
+        </p>
+
+        <section class="progress-card">
+            <div class="progress-top">
+                <strong>Module Progress</strong>
+                <span id="progress-text">0 of 14 completed</span>
+            </div>
+
+            <div class="progress-track">
+                <div
+                    id="progress-fill"
+                    role="progressbar"
+                    aria-label="Module progress"
+                    aria-valuemin="0"
+                    aria-valuemax="14"
+                    aria-valuenow="0"
+                ></div>
+            </div>
+        </section>
+
+        <h2 class="lessons-heading">Lessons in This Module</h2>
+
+        <section class="lesson-list">
+
+            <a href="lesson-1.html" class="lesson-card" data-lesson="1">
+                <div class="lesson-number">01</div>
+                <div class="lesson-info">
+                    <h3>Object-Oriented Programming (OOP)</h3>
+                    <p>Understand objects, classes and the principles of OOP.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-2.html" class="lesson-card" data-lesson="2">
+                <div class="lesson-number">02</div>
+                <div class="lesson-info">
+                    <h3>Classes and Objects</h3>
+                    <p>Create classes and build objects from them.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-3.html" class="lesson-card" data-lesson="3">
+                <div class="lesson-number">03</div>
+                <div class="lesson-info">
+                    <h3>Constructors (__init__)</h3>
+                    <p>Initialize objects using Python constructors.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-4.html" class="lesson-card" data-lesson="4">
+                <div class="lesson-number">04</div>
+                <div class="lesson-info">
+                    <h3>Instance and Class Attributes</h3>
+                    <p>Understand attributes that belong to objects and classes.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-5.html" class="lesson-card" data-lesson="5">
+                <div class="lesson-number">05</div>
+                <div class="lesson-info">
+                    <h3>Inheritance</h3>
+                    <p>Reuse and extend functionality from existing classes.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-6.html" class="lesson-card" data-lesson="6">
+                <div class="lesson-number">06</div>
+                <div class="lesson-info">
+                    <h3>Polymorphism</h3>
+                    <p>Explore how different objects can share the same interface.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-7.html" class="lesson-card" data-lesson="7">
+                <div class="lesson-number">07</div>
+                <div class="lesson-info">
+                    <h3>Encapsulation</h3>
+                    <p>Organize data and methods inside classes with controlled access.</p>
+                </div>
+                <span class="lesson-status"></span>
+  </a>
+  
+            <a href="lesson-8.html" class="lesson-card" data-lesson="8">
+                <div class="lesson-number">08</div>
+                <div class="lesson-info">
+                    <h3>Exception Handling</h3>
+                    <p>Handle errors gracefully using try, except and finally.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-9.html" class="lesson-card" data-lesson="9">
+                <div class="lesson-number">09</div>
+                <div class="lesson-info">
+                    <h3>File Handling</h3>
+                    <p>Read, write and manage files using Python.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-10.html" class="lesson-card" data-lesson="10">
+                <div class="lesson-number">10</div>
+                <div class="lesson-info">
+                    <h3>Working with JSON</h3>
+                    <p>Store and exchange structured data using JSON.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-11.html" class="lesson-card" data-lesson="11">
+                <div class="lesson-number">11</div>
+                <div class="lesson-info">
+                    <h3>List, Dictionary and Set Comprehensions</h3>
+                    <p>Create collections efficiently with concise expressions.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-12.html" class="lesson-card" data-lesson="12">
+                <div class="lesson-number">12</div>
+                <div class="lesson-info">
+                    <h3>Iterators and Generators</h3>
+                    <p>Understand iteration protocols and lazy value generation.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-13.html" class="lesson-card" data-lesson="13">
+                <div class="lesson-number">13</div>
+                <div class="lesson-info">
+                    <h3>Decorators</h3>
+                    <p>Extend function behaviour using decorator functions.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+            <a href="lesson-14.html" class="lesson-card" data-lesson="14">
+                <div class="lesson-number">14</div>
+                <div class="lesson-info">
+                    <h3>Module Challenge</h3>
+                    <p>Apply advanced Python concepts in a practical challenge.</p>
+                </div>
+                <span class="lesson-status"></span>
+            </a>
+
+        </section>
+
+        <section class="learning-note">
+            <h3>Learning Tip</h3>
+            <p>
+                Advanced topics become easier when you build small examples.
+                Experiment with classes, files and functions, and make sure
+                you understand each example before combining concepts.
+            </p>
+        </section>
+
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        function updateModulePage() {
+            const completedCount =
+                window.SwypyyCourse.getModuleCompletedCount(7);
+
+            const totalLessons = 14;
+            const percentage =
+                (completedCount / totalLessons) * 100;
+
+            document.getElementById("progress-text").textContent =
+                `${completedCount} of ${totalLessons} completed`;
+
+            const progressFill =
+                document.getElementById("progress-fill");
+
+            progressFill.style.width = `${percentage}%`;
+            progressFill.setAttribute(
+                "aria-valuenow",
+                completedCount
+            );
+
+            document.querySelectorAll(".lesson-card").forEach(card => {
+                const lessonNumber =
+                    Number(card.dataset.lesson);
+
+                const status =
+                    card.querySelector(".lesson-status");
+
+                if (
+                    window.SwypyyCourse.isLessonCompleted(
+                        7,
+                        lessonNumber
+                    )
+                ) {
+                    status.textContent = "✓";
+                    status.setAttribute("aria-label", "Completed");
+                } else {
+                    status.textContent = "";
+                    status.removeAttribute("aria-label");
+                }
+            });
+        }
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            updateModulePage
+        );
+
+        window.addEventListener(
+            "storage",
+            updateModulePage
+        );
+    </script>
+
+</body>
+  </html>
