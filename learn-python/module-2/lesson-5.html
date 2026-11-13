@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings and String Operations | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lesson-header {
+            margin-bottom: 35px;
+        }
+
+        .lesson-header a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .lesson-header a:hover {
+            color: #c4b5fd;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 35px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .lesson-description {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 23px;
+            margin: 42px 0 15px;
+        }
+
+        .lesson-content h3 {
+            color: #c4b5fd;
+            font-size: 18px;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p {
+            margin-bottom: 16px;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+            margin: 15px 0 22px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 9px;
+        }
+
+        .lesson-content strong {
+            color: #ffffff;
+        }
+
+        .lesson-content code {
+            background: #211a32;
+            color: #c4b5fd;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            color: #ddd6fe;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+            margin: 0;
+        }
+
+        .output-box {
+            background: #171323;
+            border-left: 3px solid #8b5cf6;
+            padding: 15px 18px;
+            border-radius: 7px;
+            margin: 15px 0 25px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            color: #e4e4e7;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .info-box {
+            background: rgba(124, 58, 237, 0.10);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 22px 0;
+        }
+
+        .info-box strong {
+            color: #c4b5fd;
+        }
+
+        .example-card {
+            background: #171323;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .example-card h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lesson-wrapper">
+
+    <header class="lesson-header">
+        <a href="index.html">← Back to Module 2</a>
+        <span style="float: right;">
+            <a href="../index.html">View All Modules</a>
+        </span>
+
+        <div class="lesson-number">MODULE 02 · LESSON 05</div>
+
+        <h1 class="lesson-title">Strings and String Operations</h1>
+
+        <p class="lesson-description">
+            Learn how to store, access, modify, combine, and format text
+            using Python strings.
+        </p>
+    </header>
+
+    <main class="lesson-content">
+
+        <section>
+            <h2>1. What Are Strings?</h2>
+
+            <p>
+                A string is a sequence of characters used to represent text
+                in Python. It can contain letters, numbers, symbols, spaces,
+                and other characters.
+            </p>
+
+            <p>
+                For example, names, messages, addresses, and sentences
+                are commonly stored as strings.
+            </p>
+
+            <div class="code-example">
+                <pre>name = "Ravi"
+message = "Welcome to Python!"
+city = "Kannur"
+
+print(name)
+print(message)
+print(city)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Ravi
+Welcome to Python!
+Kannur</pre>
+            </div>
+
+            <p>
+                In Python, strings belong to the built-in
+                <code>str</code> data type.
+            </p>
+
+            <div class="code-example">
+                <pre>language = "Python"
+
+print(type(language))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>&lt;class 'str'&gt;</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Text must be placed inside quotation marks to be recognised
+                as a string.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Creating Strings</h2>
+
+            <p>
+                Python allows you to create strings using single quotes,
+                double quotes, or triple quotes.
+            </p>
+
+            <h3>Single Quotes</h3>
+
+            <div class="code-example">
+                <pre>name = 'Anu'
+print(name)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Anu</pre>
+            </div>
+
+            <h3>Double Quotes</h3>
+
+            <div class="code-example">
+                <pre>message = "Hello, Python!"
+print(message)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Hello, Python!</pre>
+            </div>
+
+            <h3>Triple Quotes</h3>
+
+            <p>
+                Triple quotes are useful for creating strings that span
+                multiple lines.
+            </p>
+
+            <div class="code-example">
+                <pre>paragraph = """Python is easy to learn.
+It is powerful and versatile.
+It is used in many fields."""
+
+print(paragraph)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Python is easy to learn.
+It is powerful and versatile.
+It is used in many fields.</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                Single and double quotes work the same way for ordinary
+                strings. Choose the style that makes your text easier to write.
+            </div>
+  </section>
+  
+        <section>
+            <h2>3. Understanding String Indexing</h2>
+
+            <p>
+                Every character in a string has a position called an index.
+                Python uses zero-based indexing, which means the first
+                character is at index <code>0</code>.
+            </p>
+
+            <div class="example-card">
+                <h3>Example: Positive Indexing</h3>
+
+                <p>Consider this string:</p>
+
+                <div class="code-example">
+                    <pre>word = "PYTHON"</pre>
+                </div>
+
+                <p>Its character positions are:</p>
+
+                <div class="code-example">
+                    <pre>Character:  P   Y   T   H   O   N
+Index:      0   1   2   3   4   5</pre>
+                </div>
+
+                <p>You can access individual characters using their indexes.</p>
+
+                <div class="code-example">
+                    <pre>word = "PYTHON"
+
+print(word[0])
+print(word[2])
+print(word[5])</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>P
+T
+N</pre>
+                </div>
+            </div>
+
+            <h3>Negative Indexing</h3>
+
+            <p>
+                Python also supports negative indexes. These start from
+                the end of the string.
+            </p>
+
+            <div class="code-example">
+                <pre>word = "PYTHON"
+
+print(word[-1])
+print(word[-2])
+print(word[-6])</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>N
+O
+P</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Indexing starts at 0 from the left and -1 from the right.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. String Slicing</h2>
+
+            <p>
+                Slicing allows you to extract a portion of a string.
+                It uses this syntax:
+            </p>
+
+            <div class="code-example">
+                <pre>string[start:end]</pre>
+            </div>
+
+            <p>
+                The starting index is included, but the ending index is
+                excluded.
+            </p>
+
+            <div class="code-example">
+                <pre>word = "PYTHON"
+
+print(word[0:3])
+print(word[2:5])
+print(word[:4])
+print(word[2:])</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>PYT
+THO
+PYTH
+THON</pre>
+            </div>
+
+            <h3>Using a Step Value</h3>
+
+            <p>
+                Slicing also supports an optional step value:
+            </p>
+
+            <div class="code-example">
+                <pre>string[start:end:step]</pre>
+            </div>
+
+            <div class="code-example">
+                <pre>word = "PYTHON"
+
+print(word[::2])
+print(word[::-1])</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre> PTO
+NOHTYP</pre>
+            </div>
+
+            <p>
+                The first example selects every second character.
+                The second example reverses the string.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. String Length</h2>
+
+            <p>
+                Python provides the built-in <code>len()</code> function
+                to find the number of characters in a string.
+            </p>
+
+            <div class="code-example">
+                <pre>message = "Hello Python"
+
+print(len(message))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>12</pre>
+            </div>
+
+            <p>
+                Spaces and punctuation marks are also counted as characters.
+            </p>
+
+            <div class="code-example">
+                <pre>text = "Hi!"
+
+print(len(text))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>3</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Combining Strings</h2>
+
+            <p>
+                You can combine strings using the addition operator
+                <code>+</code>. This operation is called concatenation.
+            </p>
+
+            <div class="code-example">
+                <pre>first_name = "Ravi"
+last_name = "Kumar"
+
+full_name = first_name + " " + last_name
+
+print(full_name)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Ravi Kumar</pre>
+            </div>
+
+            <h3>Repeating Strings</h3>
+
+            <p>
+                The multiplication operator <code>*</code> repeats
+                a string a specified number of times.
+            </p>
+
+            <div class="code-example">
+                <pre>word = "Python "
+
+print(word * 3)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Python Python Python </pre>
+            </div>
+              </section>
+              
+        <section>
+            <h2>7. Useful String Methods</h2>
+
+            <p>
+                Python provides many built-in string methods that make
+                working with text easier.
+            </p>
+
+            <h3>upper()</h3>
+
+            <p>Converts all letters to uppercase.</p>
+
+            <div class="code-example">
+                <pre>text = "hello python"
+
+print(text.upper())</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>HELLO PYTHON</pre>
+            </div>
+
+            <h3>lower()</h3>
+
+            <p>Converts all letters to lowercase.</p>
+
+            <div class="code-example">
+                <pre>text = "HELLO PYTHON"
+
+print(text.lower())</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>hello python</pre>
+            </div>
+
+            <h3>title()</h3>
+
+            <p>Capitalises the first letter of each word.</p>
+
+            <div class="code-example">
+                <pre>text = "learn python programming"
+
+print(text.title())</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Learn Python Programming</pre>
+            </div>
+
+            <h3>capitalize()</h3>
+
+            <p>Capitalises the first character of the string.</p>
+
+            <div class="code-example">
+                <pre>text = "python is interesting"
+
+print(text.capitalize())</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Python is interesting</pre>
+            </div>
+
+            <h3>strip()</h3>
+
+            <p>
+                Removes whitespace from the beginning and end of a string.
+            </p>
+
+            <div class="code-example">
+                <pre>text = "   Hello Python   "
+
+print(text.strip())</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Hello Python</pre>
+            </div>
+
+            <h3>replace()</h3>
+
+            <p>Replaces one part of a string with another.</p>
+
+            <div class="code-example">
+                <pre>text = "I like Java"
+
+new_text = text.replace("Java", "Python")
+
+print(new_text)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>I like Python</pre>
+            </div>
+
+            <h3>find()</h3>
+
+            <p>
+                Returns the index of the first occurrence of a substring.
+                If it is not found, it returns -1.
+            </p>
+
+            <div class="code-example">
+                <pre>text = "Hello Python"
+
+print(text.find("Python"))
+print(text.find("Java"))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>6
+-1</pre>
+            </div>
+
+            <h3>count()</h3>
+
+            <p>Counts how many times a substring appears.</p>
+
+            <div class="code-example">
+                <pre>text = "banana"
+
+print(text.count("a"))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>3</pre>
+            </div>
+
+            <h3>startswith() and endswith()</h3>
+
+            <p>
+                These methods check whether a string starts or ends with
+                a particular sequence of characters.
+            </p>
+
+            <div class="code-example">
+                <pre>text = "python.org"
+
+print(text.startswith("python"))
+print(text.endswith(".org"))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>True
+True</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                String methods such as <code>upper()</code> and
+                <code>replace()</code> return new strings. They do not
+                change the original string.
+            </div>
+        </section>
+
+        <section>
+            <h2>8. String Formatting</h2>
+
+            <p>
+                String formatting allows you to insert variable values
+                into text.
+            </p>
+
+            <h3>Using f-strings</h3>
+
+            <p>
+                F-strings are a clear and convenient way to include
+                variables inside strings. Place <code>f</code> before
+                the opening quotation mark and put variables inside
+                curly brackets.
+            </p>
+
+            <div class="code-example">
+                <pre>name = "Anu"
+age = 16
+
+message = f"My name is {name} and I am {age} years old."
+
+print(message)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>My name is Anu and I am 16 years old.</pre>
+            </div>
+
+            <h3>Using format()</h3>
+
+            <p>
+                The <code>format()</code> method is another way to insert
+                values into a string.
+            </p>
+
+            <div class="code-example">
+                <pre>name = "Ravi"
+age = 17
+
+message = "My name is {} and I am {} years old.".format(name, age)
+
+print(message)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>My name is Ravi and I am 17 years old.</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                F-strings are generally the easiest option for beginners
+                when working with modern Python.
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Strings Are Immutable</h2>
+
+            <p>
+                Strings in Python are immutable. This means that once
+                a string is created, its individual characters cannot
+                be changed directly.
+            </p>
+
+            <p>The following code causes an error:</p>
+
+            <div class="code-example">
+                <pre>word = "Python"
+
+word[0] = "J"</pre>
+            </div>
+
+            <p>
+                Instead, create a new string using the desired changes.
+            </p>
+
+            <div class="code-example">
+                <pre>word = "Python"
+
+new_word = "J" + word[1:]
+
+print(new_word)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Jython</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Common String Mistakes</h2>
+
+            <h3>Mistake 1: Forgetting quotation marks</h3>
+
+            <div class="code-example">
+                <pre>name = Python</pre>
+            </div>
+
+            <p>
+                Python treats <code>Python</code> as a variable name,
+                not as text. Use quotation marks:
+            </p>
+
+            <div class="code-example">
+                <pre>name = "Python"</pre>
+            </div>
+
+            <h3>Mistake 2: Using an invalid index</h3>
+
+            <div class="code-example">
+                <pre>word = "Python"
+
+print(word[10])</pre>
+            </div>
+
+            <p>
+                This causes an <code>IndexError</code> because index 10
+                does not exist in the string.
+            </p>
+
+            <h3>Mistake 3: Trying to modify a string directly</h3>
+
+            <p>
+                Remember that strings are immutable. Create a new string
+                instead of changing an individual character.
+            </p>
+
+            <h3>Mistake 4: Confusing upper() with upper</h3>
+
+            <p>
+                String methods need parentheses when called.
+            </p>
+
+            <div class="code-example">
+                <pre>text = "hello"
+
+print(text.upper())</pre>
+            </div>
+                  </section>
+  
+        <section>
+            <h2>11. Practical Coding Exercises</h2>
+
+            <p>
+                Try these exercises to practise working with strings.
+            </p>
+
+            <div class="example-card">
+                <h3>Exercise 1: Personal Greeting</h3>
+
+                <p>
+                    Create a variable containing your name. Use an f-string
+                    to display a greeting.
+                </p>
+
+                <p><strong>Example output:</strong></p>
+
+                <div class="output-box">
+                    <pre>Hello, Anu! Welcome to Python.</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 2: Convert Text</h3>
+
+                <p>
+                    Create a string containing your favourite subject.
+                    Display it in uppercase and lowercase.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 3: Count Characters</h3>
+
+                <p>
+                    Create a string and use <code>len()</code> to display
+                    the number of characters in it.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 4: Reverse a Word</h3>
+
+                <p>
+                    Store a word in a variable and use slicing to reverse it.
+                </p>
+
+                <p><strong>Example:</strong> Python becomes nohtyP.</p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 5: Replace a Word</h3>
+
+                <p>
+                    Create the string <code>"I love Java"</code>.
+                    Use <code>replace()</code> to change Java to Python.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>12. Quick Knowledge Check</h2>
+
+            <p>
+                Answer these questions to test your understanding
+                of Python strings.
+            </p>
+
+            <div id="quiz-container">
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>1. Which data type represents text in Python?</h3>
+
+                    <label><input type="radio" name="q1" value="a"> int</label>
+                    <label><input type="radio" name="q1" value="b"> str</label>
+                    <label><input type="radio" name="q1" value="c"> float</label>
+                    <label><input type="radio" name="q1" value="d"> bool</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="c">
+                    <h3>2. Which function returns the length of a string?</h3>
+
+                    <label><input type="radio" name="q2" value="a"> type()</label>
+                    <label><input type="radio" name="q2" value="b"> count()</label>
+                    <label><input type="radio" name="q2" value="c"> len()</label>
+                    <label><input type="radio" name="q2" value="d"> size()</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="a">
+                    <h3>3. Which method converts text to uppercase?</h3>
+
+                    <label><input type="radio" name="q3" value="a"> upper()</label>
+                    <label><input type="radio" name="q3" value="b"> lower()</label>
+                    <label><input type="radio" name="q3" value="c"> strip()</label>
+                    <label><input type="radio" name="q3" value="d"> title()</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="d">
+                    <h3>4. What is the index of the first character in a string?</h3>
+
+                    <label><input type="radio" name="q4" value="a"> 1</label>
+                    <label><input type="radio" name="q4" value="b"> -1</label>
+                    <label><input type="radio" name="q4" value="c"> 2</label>
+                    <label><input type="radio" name="q4" value="d"> 0</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>5. What does string immutability mean?</h3>
+
+                    <label><input type="radio" name="q5" value="a"> Strings cannot contain spaces.</label>
+                    <label><input type="radio" name="q5" value="b"> Strings cannot be changed directly after creation.</label>
+                    <label><input type="radio" name="q5" value="c"> Strings can only contain letters.</label>
+                    <label><input type="radio" name="q5" value="d"> Strings cannot be printed.</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+            </div>
+
+            <button id="check-quiz" class="quiz-button" type="button">
+                Check Answers
+            </button>
+
+            <p id="quiz-result"></p>
+        </section>
+
+        <section>
+            <h2>13. Lesson Summary</h2>
+
+            <p>
+                In this lesson, you learned how to work with strings
+                in Python.
+            </p>
+
+            <ul>
+                <li>Strings store text and use the <code>str</code> data type.</li>
+                <li>Strings can use single, double, or triple quotes.</li>
+                <li>Indexing accesses individual characters.</li>
+                <li>Slicing extracts portions of a string.</li>
+                <li><code>len()</code> counts the characters in a string.</li>
+                <li>String methods help transform and search text.</li>
+                <li>F-strings make it easy to format text with variables.</li>
+                <li>Strings are immutable.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>What comes next?</strong>
+                In Lesson 6, you will learn about type conversion and
+                how to convert values from one data type to another.
+            </div>
+        </section>
+
+        <div class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+
+                <p>
+                    Finished learning and practising? Mark this lesson
+                    as completed to update your course progress.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </div>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-4.html">← Previous Lesson</a>
+            <a href="lesson-6.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+</div>
+
+<script src="../js/course.js"></script>
+
+<script>
+    const MODULE_NUMBER = 2;
+    const LESSON_NUMBER = 5;
+
+    // Quiz functionality
+    const checkQuizButton = document.getElementById("check-quiz");
+    const quizResult = document.getElementById("quiz-result");
+
+    checkQuizButton.addEventListener("click", function () {
+        const questions = document.querySelectorAll(".quiz-question");
+        let score = 0;
+        let unanswered = 0;
+
+        questions.forEach(function (question) {
+            const correctAnswer = question.dataset.answer;
+            const selected = question.querySelector("input:checked");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            if (!selected) {
+                unanswered++;
+                feedback.textContent = "Please select an answer.";
+                feedback.style.color = "#fbbf24";
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                score++;
+                feedback.textContent = "Correct!";
+                feedback.style.color = "#4ade80";
+            } else {
+                feedback.textContent =
+                    "Incorrect. The correct answer is " +
+                    correctAnswer.toUpperCase() + ".";
+                feedback.style.color = "#f87171";
+            }
+        });
+
+        quizResult.textContent =
+            "Your score: " + score + " / " + questions.length;
+
+        if (unanswered > 0) {
+            quizResult.textContent +=
+                " (" + unanswered + " question(s) unanswered)";
+        }
+    });
+
+    // Manual lesson completion
+    const completeButton = document.getElementById("complete-lesson");
+    const completionMessage = document.getElementById("completion-message");
+
+    function updateCompletionStatus() {
+        if (
+            window.SwypyyCourse &&
+            window.SwypyyCourse.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            )
+        ) {
+            completeButton.textContent = "✓ Completed";
+            completeButton.disabled = true;
+            completionMessage.textContent =
+                "This lesson is already marked as completed.";
+        }
+    }
+
+    completeButton.addEventListener("click", function () {
+        if (!window.SwypyyCourse) {
+            completionMessage.textContent =
+                "Progress system could not be loaded. Please refresh the page.";
+            return;
+        }
+
+        window.SwypyyCourse.markLessonCompleted(
+            MODULE_NUMBER,
+            LESSON_NUMBER
+        );
+
+        completeButton.textContent = "✓ Completed";
+        completeButton.disabled = true;
+
+        completionMessage.textContent =
+            "Lesson completed! Your course progress has been updated.";
+    });
+
+    updateCompletionStatus();
+</script>
+
+</body>
+  </html>
