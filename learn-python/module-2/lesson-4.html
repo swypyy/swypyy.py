@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers and Mathematical Operations | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lesson-header {
+            margin-bottom: 35px;
+        }
+
+        .lesson-header a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .lesson-header a:hover {
+            color: #c4b5fd;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 35px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .lesson-description {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 23px;
+            margin: 42px 0 15px;
+        }
+
+        .lesson-content h3 {
+            color: #c4b5fd;
+            font-size: 18px;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p {
+            margin-bottom: 16px;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+            margin: 15px 0 22px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 9px;
+        }
+
+        .lesson-content strong {
+            color: #ffffff;
+        }
+
+        .lesson-content code {
+            background: #211a32;
+            color: #c4b5fd;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            color: #ddd6fe;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+            margin: 0;
+        }
+
+        .output-box {
+            background: #171323;
+            border-left: 3px solid #8b5cf6;
+            padding: 15px 18px;
+            border-radius: 7px;
+            margin: 15px 0 25px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            color: #e4e4e7;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .info-box {
+            background: rgba(124, 58, 237, 0.10);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 22px 0;
+        }
+
+        .info-box strong {
+            color: #c4b5fd;
+        }
+
+        .example-card {
+            background: #171323;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .example-card h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lesson-wrapper">
+
+    <header class="lesson-header">
+        <a href="index.html">← Back to Module 2</a>
+        <span style="float: right;">
+            <a href="../index.html">View All Modules</a>
+        </span>
+
+        <div class="lesson-number">MODULE 02 · LESSON 04</div>
+
+        <h1 class="lesson-title">Numbers and Mathematical Operations</h1>
+
+        <p class="lesson-description">
+            Learn how Python works with numbers and performs mathematical
+            calculations using arithmetic operators.
+        </p>
+    </header>
+
+    <main class="lesson-content">
+
+        <section>
+            <h2>1. Introduction to Numbers in Python</h2>
+
+            <p>
+                Numbers are one of the most commonly used data types in
+                programming. Python allows us to store numbers, perform
+                calculations, compare values, and solve mathematical problems.
+            </p>
+
+            <p>
+                For example, Python can calculate the total price of products,
+                find the average of marks, calculate distances, and much more.
+            </p>
+
+            <p>
+                Unlike some programming languages, Python makes mathematical
+                operations simple and readable.
+            </p>
+
+            <div class="code-example">
+                <pre>print(10 + 5)
+print(20 - 8)
+print(6 * 4)
+print(20 / 5)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>15
+12
+24
+4.0</pre>
+            </div>
+
+            <p>
+                Python can perform these calculations directly without
+                requiring us to create variables first.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                Python follows standard mathematical rules when performing
+                calculations. The operators you use determine what operation
+                takes place.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Types of Numbers in Python</h2>
+
+            <p>
+                Python mainly provides three built-in numeric types:
+            </p>
+
+            <ul>
+                <li><strong>int:</strong> Whole numbers without decimal points.</li>
+                <li><strong>float:</strong> Numbers containing decimal points.</li>
+                <li><strong>complex:</strong> Numbers containing a real and an imaginary part.</li>
+            </ul>
+
+            <div class="example-card">
+                <h3>Integer (int)</h3>
+                <p>
+                    Integers are whole numbers. They can be positive, negative,
+                    or zero.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = 16
+temperature = -5
+score = 0
+
+print(type(age))
+print(type(temperature))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>&lt;class 'int'&gt;
+&lt;class 'int'&gt;</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Float (float)</h3>
+                <p>
+                    Floats are numbers that contain a decimal point.
+                </p>
+
+                <div class="code-example">
+                    <pre>price = 99.50
+height = 5.8
+pi = 3.14159
+
+print(type(price))
+print(type(height))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>&lt;class 'float'&gt;
+&lt;class 'float'&gt;</pre>
+                </div>
+            </div>
+  </section>
+  
+        <section>
+            <div class="example-card">
+                <h3>Complex Numbers (complex)</h3>
+
+                <p>
+                    Complex numbers contain two parts: a real part and an
+                    imaginary part. Python uses <code>j</code> to represent
+                    the imaginary unit.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = 3 + 4j
+
+print(number)
+print(type(number))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>(3+4j)
+&lt;class 'complex'&gt;</pre>
+                </div>
+
+                <p>
+                    Complex numbers are useful in advanced mathematics,
+                    engineering, and scientific computing.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Arithmetic Operators in Python</h2>
+
+            <p>
+                Arithmetic operators are symbols used to perform mathematical
+                calculations.
+            </p>
+
+            <p>Python supports these main arithmetic operators:</p>
+
+            <div class="code-example">
+                <pre>a = 10
+b = 3
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a % b)
+print(a ** b)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>13
+7
+30
+3.3333333333333335
+3
+1
+1000</pre>
+            </div>
+
+            <h3>Addition (+)</h3>
+            <p>
+                The addition operator adds two numbers.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 15 + 5
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>20</pre>
+            </div>
+
+            <h3>Subtraction (-)</h3>
+            <p>
+                The subtraction operator finds the difference between two
+                numbers.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 25 - 10
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>15</pre>
+            </div>
+
+            <h3>Multiplication (*)</h3>
+            <p>
+                The multiplication operator multiplies two numbers.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 6 * 7
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>42</pre>
+            </div>
+
+            <h3>Division (/)</h3>
+            <p>
+                The division operator divides one number by another.
+                It returns a float, even when the result is a whole number.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 20 / 4
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>5.0</pre>
+            </div>
+
+            <h3>Floor Division (//)</h3>
+            <p>
+                Floor division divides two numbers and rounds the result
+                down to the nearest whole integer when both operands are
+                integers.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 17 // 5
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>3</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                Floor division rounds down, not simply towards zero.
+                For example, <code>-17 // 5</code> produces <code>-4</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Modulus and Exponentiation</h2>
+
+            <h3>Modulus (%)</h3>
+
+            <p>
+                The modulus operator returns the remainder after division.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 17 % 5
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>2</pre>
+            </div>
+
+            <p>
+                This is useful when checking whether a number is even or odd.
+            </p>
+
+            <div class="code-example">
+                <pre>number = 12
+
+if number % 2 == 0:
+    print("Even number")
+else:
+    print("Odd number")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Even number</pre>
+            </div>
+
+            <h3>Exponentiation (**)</h3>
+
+            <p>
+                The exponentiation operator raises a number to a power.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 2 ** 4
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>16</pre>
+            </div>
+
+            <p>
+                Here, <code>2 ** 4</code> means 2 multiplied by itself
+                four times: 2 × 2 × 2 × 2.
+            </p>
+                                                  </section>
+  
+        <section>
+            <h2>5. Order of Operations (Operator Precedence)</h2>
+
+            <p>
+                When a mathematical expression contains multiple operators,
+                Python follows a specific order to decide which operation
+                should be performed first.
+            </p>
+
+            <p>
+                This is called <strong>operator precedence</strong>.
+                It follows rules similar to the mathematical BODMAS/PEMDAS
+                order.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 10 + 5 * 2
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>20</pre>
+            </div>
+
+            <p>
+                Multiplication happens before addition. Therefore, Python
+                calculates 5 × 2 first, then adds 10.
+            </p>
+
+            <h3>Basic order of precedence</h3>
+
+            <ol>
+                <li>Parentheses: <code>()</code></li>
+                <li>Exponentiation: <code>**</code></li>
+                <li>Multiplication, division, floor division, and modulus.</li>
+                <li>Addition and subtraction.</li>
+            </ol>
+
+            <div class="code-example">
+                <pre>print((10 + 5) * 2)
+print(2 ** 3 + 4)
+print(20 / 5 + 3)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>30
+12
+7.0</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                Use parentheses when you want to make the order of a
+                calculation clear. They also make complicated expressions
+                easier for humans to understand.
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Assignment Operators</h2>
+
+            <p>
+                Assignment operators are used to assign values to variables
+                and update their existing values.
+            </p>
+
+            <p>
+                The basic assignment operator is <code>=</code>.
+                Python also provides shorthand operators.
+            </p>
+
+            <div class="code-example">
+                <pre>number = 10
+
+number += 5
+print(number)
+
+number -= 3
+print(number)
+
+number *= 2
+print(number)
+
+number /= 4
+print(number)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>15
+12
+24
+6.0</pre>
+            </div>
+
+            <p>Here are some common assignment operators:</p>
+
+            <ul>
+                <li><code>+=</code> Adds a value and assigns the result.</li>
+                <li><code>-=</code> Subtracts a value and assigns the result.</li>
+                <li><code>*=</code> Multiplies and assigns the result.</li>
+                <li><code>/=</code> Divides and assigns the result.</li>
+                <li><code>//=</code> Performs floor division and assigns the result.</li>
+                <li><code>%=</code> Finds the remainder and assigns the result.</li>
+                <li><code>**=</code> Raises to a power and assigns the result.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>7. Working with Numbers and Variables</h2>
+
+            <p>
+                You can store numbers in variables and use those variables
+                in mathematical expressions.
+            </p>
+
+            <div class="example-card">
+                <h3>Example: Calculating the Area of a Rectangle</h3>
+
+                <p>
+                    The area of a rectangle is calculated by multiplying
+                    its length by its width.
+                </p>
+
+                <div class="code-example">
+                    <pre>length = 12
+width = 5
+
+area = length * width
+
+print("Area:", area)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Area: 60</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Example: Calculating an Average</h3>
+
+                <p>
+                    You can calculate the average of three numbers by adding
+                    them and dividing the total by 3.
+                </p>
+
+                <div class="code-example">
+                    <pre>mark1 = 80
+mark2 = 90
+mark3 = 70
+
+average = (mark1 + mark2 + mark3) / 3
+
+print("Average:", average)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Average: 80.0</pre>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>8. Common Mistakes When Working with Numbers</h2>
+
+            <h3>Mistake 1: Dividing by Zero</h3>
+
+            <p>
+                Division by zero is not allowed in Python. It raises a
+                <code>ZeroDivisionError</code>.
+            </p>
+
+            <div class="code-example">
+                <pre>result = 10 / 0</pre>
+            </div>
+
+            <h3>Mistake 2: Mixing Strings and Numbers</h3>
+
+            <p>
+                You cannot directly add a string and an integer using
+                the addition operator.
+            </p>
+
+            <div class="code-example">
+                <pre>age = 16
+print("Age: " + age)</pre>
+            </div>
+
+            <p>
+                Convert the number to a string or use an f-string instead.
+            </p>
+
+            <div class="code-example">
+                <pre>age = 16
+print("Age: " + str(age))
+
+# Another method
+print(f"Age: {age}")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Age: 16
+Age: 16</pre>
+            </div>
+
+            <h3>Mistake 3: Confusing / and //</h3>
+
+            <div class="code-example">
+                <pre>print(10 / 3)
+print(10 // 3)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>3.3333333333333335
+3</pre>
+            </div>
+  </section>
+  
+        <section>
+            <h2>9. Practical Coding Exercises</h2>
+
+            <p>
+                Practice the concepts you learned by solving these small
+                programming problems.
+            </p>
+
+            <div class="example-card">
+                <h3>Exercise 1: Basic Calculator</h3>
+
+                <p>
+                    Create two number variables and display their addition,
+                    subtraction, multiplication, and division results.
+                </p>
+
+                <p><strong>Expected output for 20 and 4:</strong></p>
+
+                <div class="output-box">
+                    <pre>Addition: 24
+Subtraction: 16
+Multiplication: 80
+Division: 5.0</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 2: Even or Odd</h3>
+
+                <p>
+                    Create a variable containing a number. Use the modulus
+                    operator to check whether it is even or odd.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 3: Calculate a Square</h3>
+
+                <p>
+                    Create a variable named <code>number</code> and calculate
+                    its square using the exponentiation operator.
+                </p>
+
+                <p><strong>Example:</strong> If the number is 6, the result should be 36.</p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 4: Calculate Total Price</h3>
+
+                <p>
+                    Store the price of one item and the quantity purchased
+                    in separate variables. Calculate and display the total price.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Quick Knowledge Check</h2>
+
+            <p>
+                Test your understanding of numbers and mathematical
+                operations in Python.
+            </p>
+
+            <div id="quiz-container">
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>1. Which data type is used for whole numbers?</h3>
+
+                    <label><input type="radio" name="q1" value="a"> float</label>
+                    <label><input type="radio" name="q1" value="b"> int</label>
+                    <label><input type="radio" name="q1" value="c"> str</label>
+                    <label><input type="radio" name="q1" value="d"> bool</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="c">
+                    <h3>2. Which operator is used for exponentiation?</h3>
+
+                    <label><input type="radio" name="q2" value="a"> *</label>
+                    <label><input type="radio" name="q2" value="b"> //</label>
+                    <label><input type="radio" name="q2" value="c"> **</label>
+                    <label><input type="radio" name="q2" value="d"> %</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="a">
+                    <h3>3. What is the result of 17 % 5?</h3>
+
+                    <label><input type="radio" name="q3" value="a"> 2</label>
+                    <label><input type="radio" name="q3" value="b"> 3</label>
+                    <label><input type="radio" name="q3" value="c"> 5</label>
+                    <label><input type="radio" name="q3" value="d"> 17</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>4. What is the result of 10 // 3?</h3>
+
+                    <label><input type="radio" name="q4" value="a"> 3.33</label>
+                    <label><input type="radio" name="q4" value="b"> 3</label>
+                    <label><input type="radio" name="q4" value="c"> 1</label>
+                    <label><input type="radio" name="q4" value="d"> 10</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="d">
+                    <h3>5. Which operator is used for multiplication?</h3>
+
+                    <label><input type="radio" name="q5" value="a"> +</label>
+                    <label><input type="radio" name="q5" value="b"> -</label>
+                    <label><input type="radio" name="q5" value="c"> /</label>
+                    <label><input type="radio" name="q5" value="d"> *</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+            </div>
+
+            <button id="check-quiz" class="quiz-button" type="button">
+                Check Answers
+            </button>
+
+            <p id="quiz-result"></p>
+        </section>
+
+        <section>
+            <h2>11. Lesson Summary</h2>
+
+            <p>
+                In this lesson, you learned how Python handles numbers
+                and performs mathematical calculations.
+            </p>
+
+            <ul>
+                <li>Python provides int, float, and complex numeric types.</li>
+                <li>Arithmetic operators perform mathematical calculations.</li>
+                <li>Floor division (//) returns the rounded-down quotient.</li>
+                <li>Modulus (%) returns the remainder.</li>
+                <li>Exponentiation (**) calculates powers.</li>
+                <li>Operator precedence determines calculation order.</li>
+                <li>Assignment operators update variable values.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>What comes next?</strong>
+                In Lesson 5, you will learn about strings and string
+                operations, including how to work with text in Python.
+            </div>
+        </section>
+
+        <div class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+                <p>
+                    Finished learning and practising? Mark this lesson
+                    as completed to update your course progress.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </div>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-3.html">← Previous Lesson</a>
+            <a href="lesson-5.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+</div>
+
+<script src="../js/course.js"></script>
+
+<script>
+    const MODULE_NUMBER = 2;
+    const LESSON_NUMBER = 4;
+
+    // Quiz functionality
+    const checkQuizButton = document.getElementById("check-quiz");
+    const quizResult = document.getElementById("quiz-result");
+
+    checkQuizButton.addEventListener("click", function () {
+        const questions = document.querySelectorAll(".quiz-question");
+        let score = 0;
+        let unanswered = 0;
+
+        questions.forEach(function (question) {
+            const correctAnswer = question.dataset.answer;
+            const selected = question.querySelector("input:checked");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            if (!selected) {
+                unanswered++;
+                feedback.textContent = "Please select an answer.";
+                feedback.style.color = "#fbbf24";
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                score++;
+                feedback.textContent = "Correct!";
+                feedback.style.color = "#4ade80";
+            } else {
+                feedback.textContent =
+                    "Incorrect. The correct answer is " +
+                    correctAnswer.toUpperCase() + ".";
+                feedback.style.color = "#f87171";
+            }
+        });
+
+        quizResult.textContent =
+            "Your score: " + score + " / " + questions.length;
+
+        if (unanswered > 0) {
+            quizResult.textContent +=
+                " (" + unanswered + " question(s) unanswered)";
+        }
+    });
+
+    // Manual lesson completion
+    const completeButton = document.getElementById("complete-lesson");
+    const completionMessage = document.getElementById("completion-message");
+
+    function updateCompletionStatus() {
+        if (
+            window.SwypyyCourse &&
+            window.SwypyyCourse.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            )
+        ) {
+            completeButton.textContent = "✓ Completed";
+            completeButton.disabled = true;
+            completionMessage.textContent =
+                "This lesson is already marked as completed.";
+        }
+    }
+
+    completeButton.addEventListener("click", function () {
+        if (!window.SwypyyCourse) {
+            completionMessage.textContent =
+                "Progress system could not be loaded. Please refresh the page.";
+            return;
+        }
+
+        window.SwypyyCourse.markLessonCompleted(
+            MODULE_NUMBER,
+            LESSON_NUMBER
+        );
+
+        completeButton.textContent = "✓ Completed";
+        completeButton.disabled = true;
+
+        completionMessage.textContent =
+            "Lesson completed! Your course progress has been updated.";
+    });
+
+    updateCompletionStatus();
+</script>
+
+</body>
+  </html>
