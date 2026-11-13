@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 3: Decision Making and Conditional Statements | Swypyy.py</title>
+    <meta name="description" content="Learn Python decision making, conditions, if statements, comparison operators, and logical operators in Module 3 of the free Swypyy.py course.">
+
+    <link rel="icon" href="../../assets/s-logo.png">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .module-page {
+            width: min(100% - 32px, 850px);
+            margin: 55px auto;
+        }
+
+        .module-back {
+            display: inline-block;
+            color: var(--text-muted, #a5a0b5);
+            text-decoration: none;
+            margin-bottom: 28px;
+        }
+
+        .module-back:hover {
+            color: var(--primary-light, #a78bfa);
+        }
+
+        .module-heading {
+            margin-bottom: 32px;
+        }
+
+        .module-page .module-label {
+            color: var(--primary-light, #a78bfa);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .module-heading h1 {
+            margin: 10px 0;
+            font-size: clamp(30px, 5vw, 42px);
+            line-height: 1.25;
+        }
+
+        .module-description {
+            color: var(--text-muted, #a5a0b5);
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        /* MODULE PROGRESS CARD */
+
+        .module-page-progress {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            overflow: visible;
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        .module-page .progress-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+
+        .module-page .progress-info strong {
+            color: var(--text, #f5f3ff);
+        }
+
+        .module-page .progress-info span {
+            color: var(--text-secondary, #b6b0c7);
+        }
+
+        .module-page .progress-track {
+            width: 100%;
+            height: 8px;
+            margin: 0;
+            background: var(--surface-light, #1c172b);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .module-page .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--primary-light, #a78bfa);
+            border-radius: inherit;
+            transition: width 0.25s ease;
+        }
+
+        /* LESSON LIST */
+
+        .lesson-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 12px;
+        }
+
+        .module-page .lesson-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            min-width: 0;
+            padding: 18px;
+            background: var(--surface, #15121e);
+            border: 1px solid var(--border, #30283e);
+            border-radius: 12px;
+            color: var(--text, #f4f1fa);
+            text-decoration: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .module-page .lesson-item:hover {
+            border-color: var(--primary, #8b5cf6);
+        }
+
+        .module-page .lesson-number {
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: #292139;
+            color: #c4b5fd;
+            font-weight: 700;
+        }
+
+        .module-page .lesson-details {
+            flex: 1 1 auto;
+            min-width: 0;
+            display: block;
+        }
+
+        .module-page .lesson-details h2 {
+            display: block;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 5px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .module-page .lesson-details p {
+            display: block;
+            color: var(--text-muted, #a5a0b5);
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .module-page .lesson-status {
+            flex: 0 0 22px;
+            width: 22px;
+            color: var(--primary-light, #a78bfa);
+            font-size: 21px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        @media (max-width: 520px) {
+            .module-page {
+                margin-top: 32px;
+                margin-bottom: 24px;
+            }
+
+            .module-heading h1 {
+                font-size: 32px;
+            }
+
+            .module-page .lesson-item {
+                padding: 14px;
+                gap: 12px;
+            }
+
+            .module-page .lesson-number {
+                width: 40px;
+                height: 40px;
+                flex-basis: 40px;
+            }
+
+            .module-page .lesson-details h2 {
+                font-size: 14px;
+            }
+
+            .module-page .lesson-details p {
+                font-size: 12px;
+            }
+
+            .module-page .progress-info {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="module-page">
+
+        <a class="module-back" href="../index.html">
+            ← Back to All Modules
+        </a>
+
+        <header class="module-heading">
+            <div class="module-label">Module 03 · Beginner</div>
+
+            <h1>Decision Making and Conditional Statements</h1>
+
+            <p class="module-description">
+                Learn how Python programs make decisions using conditions.
+                Explore if, else, and elif statements, comparison operators,
+                logical operators, and practical conditional programs.
+            </p>
+        </header>
+
+        <section class="module-page-progress">
+
+            <div class="progress-info">
+                <strong>Module Progress</strong>
+                <span id="progress-text">0 of 10 completed</span>
+            </div>
+
+            <div
+                class="progress-track"
+                role="progressbar"
+                aria-label="Module completion"
+                aria-valuemin="0"
+                aria-valuemax="10"
+                aria-valuenow="0"
+                id="progress-bar"
+            >
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+
+        </section>
+
+        <section>
+            <div class="lesson-list" id="lesson-list">
+
+                <a class="lesson-item" href="lesson-1.html" data-lesson="1">
+                    <span class="lesson-number">01</span>
+                    <div class="lesson-details">
+                        <h2>Introduction to Decision Making</h2>
+                        <p>Understand how programs make decisions using conditions.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-2.html" data-lesson="2">
+                    <span class="lesson-number">02</span>
+                    <div class="lesson-details">
+                        <h2>The if Statement</h2>
+                        <p>Learn how to execute code when a condition is true.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-3.html" data-lesson="3">
+                    <span class="lesson-number">03</span>
+                    <div class="lesson-details">
+                        <h2>The else Statement</h2>
+                        <p>Run alternative code when an if condition is false.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-4.html" data-lesson="4">
+                    <span class="lesson-number">04</span>
+                    <div class="lesson-details">
+                        <h2>The elif Statement</h2>
+                        <p>Check multiple conditions and choose between different outcomes.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-5.html" data-lesson="5">
+                    <span class="lesson-number">05</span>
+                    <div class="lesson-details">
+                        <h2>Comparison Operators</h2>
+                        <p>Compare values using operators such as ==, !=, &gt;, and &lt;.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+  </a>
+  
+                <a class="lesson-item" href="lesson-6.html" data-lesson="6">
+                    <span class="lesson-number">06</span>
+                    <div class="lesson-details">
+                        <h2>Logical Operators (and, or, not)</h2>
+                        <p>Combine conditions and control decisions using logical operators.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-7.html" data-lesson="7">
+                    <span class="lesson-number">07</span>
+                    <div class="lesson-details">
+                        <h2>Nested if Statements</h2>
+                        <p>Place conditional statements inside other conditional blocks.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-8.html" data-lesson="8">
+                    <span class="lesson-number">08</span>
+                    <div class="lesson-details">
+                        <h2>Conditional Expressions (Ternary Operator)</h2>
+                        <p>Write simple conditional expressions in a single line.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-9.html" data-lesson="9">
+                    <span class="lesson-number">09</span>
+                    <div class="lesson-details">
+                        <h2>Practical Conditional Programs</h2>
+                        <p>Apply conditional statements to solve practical programming problems.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+                <a class="lesson-item" href="lesson-10.html" data-lesson="10">
+                    <span class="lesson-number">10</span>
+                    <div class="lesson-details">
+                        <h2>Module Challenge</h2>
+                        <p>Test your understanding with a collection of conditional programming challenges.</p>
+                    </div>
+                    <span class="lesson-status" aria-label="Not completed"></span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        function updateModulePage() {
+            const course = window.SwypyyCourse;
+
+            const completed = course
+                ? course.getModuleCompletedCount(3)
+                : 0;
+
+            document.getElementById("progress-text").textContent =
+                `${completed} of 10 completed`;
+
+            document.getElementById("progress-fill").style.width =
+                `${(completed / 10) * 100}%`;
+
+            document.getElementById("progress-bar").setAttribute(
+                "aria-valuenow",
+                completed
+            );
+
+            document.querySelectorAll("[data-lesson]").forEach(item => {
+                const lessonNumber = Number(item.dataset.lesson);
+                const status = item.querySelector(".lesson-status");
+
+                const isCompleted = course
+                    ? course.isLessonCompleted(3, lessonNumber)
+                    : false;
+
+                status.textContent = isCompleted ? "✓" : "";
+
+                status.setAttribute(
+                    "aria-label",
+                    isCompleted ? "Completed" : "Not completed"
+                );
+            });
+        }
+
+        updateModulePage();
+
+        window.addEventListener("storage", updateModulePage);
+    </script>
+
+</body>
+  </html>
