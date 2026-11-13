@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Conversion | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lesson-header {
+            margin-bottom: 35px;
+        }
+
+        .lesson-header a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .lesson-header a:hover {
+            color: #c4b5fd;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 35px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .lesson-description {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 23px;
+            margin: 42px 0 15px;
+        }
+
+        .lesson-content h3 {
+            color: #c4b5fd;
+            font-size: 18px;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p {
+            margin-bottom: 16px;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+            margin: 15px 0 22px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 9px;
+        }
+
+        .lesson-content strong {
+            color: #ffffff;
+        }
+
+        .lesson-content code {
+            background: #211a32;
+            color: #c4b5fd;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            color: #ddd6fe;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+            margin: 0;
+        }
+
+        .output-box {
+            background: #171323;
+            border-left: 3px solid #8b5cf6;
+            padding: 15px 18px;
+            border-radius: 7px;
+            margin: 15px 0 25px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            color: #e4e4e7;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .info-box {
+            background: rgba(124, 58, 237, 0.10);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 22px 0;
+        }
+
+        .info-box strong {
+            color: #c4b5fd;
+        }
+
+        .example-card {
+            background: #171323;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .example-card h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lesson-wrapper">
+
+    <header class="lesson-header">
+        <a href="index.html">← Back to Module 2</a>
+        <span style="float: right;">
+            <a href="../index.html">View All Modules</a>
+        </span>
+
+        <div class="lesson-number">MODULE 02 · LESSON 06</div>
+
+        <h1 class="lesson-title">Type Conversion</h1>
+
+        <p class="lesson-description">
+            Learn how to convert values between different Python data types
+            and understand when type conversion is useful.
+        </p>
+    </header>
+
+    <main class="lesson-content">
+
+        <section>
+            <h2>1. What Is Type Conversion?</h2>
+
+            <p>
+                Type conversion is the process of changing a value from
+                one data type into another.
+            </p>
+
+            <p>
+                Python supports different data types such as integers,
+                floats, strings, and booleans. Sometimes, a program needs
+                to convert one type into another to perform an operation.
+            </p>
+
+            <p>For example:</p>
+
+            <div class="code-example">
+                <pre>number = "25"
+
+print(type(number))
+
+converted_number = int(number)
+
+print(type(converted_number))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>&lt;class 'str'&gt;
+&lt;class 'int'&gt;</pre>
+            </div>
+
+            <p>
+                Initially, <code>number</code> contains the string
+                <code>"25"</code>. The <code>int()</code> function
+                converts it into an integer.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                The value <code>"25"</code> is text, while
+                <code>25</code> is an integer. They may look similar,
+                but Python treats them differently.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Types of Type Conversion</h2>
+
+            <p>
+                Python type conversion is commonly divided into two types:
+            </p>
+
+            <ul>
+                <li><strong>Implicit Type Conversion:</strong> Python automatically converts a value from one compatible type to another in certain operations.</li>
+                <li><strong>Explicit Type Conversion:</strong> The programmer manually converts a value using functions such as <code>int()</code> or <code>str()</code>.</li>
+            </ul>
+
+            <div class="example-card">
+                <h3>Implicit Type Conversion</h3>
+
+                <p>
+                    Implicit conversion happens automatically. Python
+                    performs it when an operation involves compatible
+                    numeric types.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = 10
+decimal = 2.5
+
+result = number + decimal
+
+print(result)
+print(type(result))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>12.5
+&lt;class 'float'&gt;</pre>
+                </div>
+
+                <p>
+                    Python converts the integer to a float for the
+                    calculation, so the result is a float.
+                </p>
+            </div>
+  </section>
+  
+        <section>
+            <div class="example-card">
+                <h3>Explicit Type Conversion</h3>
+
+                <p>
+                    Explicit conversion happens when the programmer
+                    deliberately changes a value's type.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = "100"
+
+converted = int(number)
+
+print(converted)
+print(type(converted))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>100
+&lt;class 'int'&gt;</pre>
+                </div>
+
+                <p>
+                    Here, the programmer uses <code>int()</code> to
+                    convert a string into an integer.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Converting Values to Integers</h2>
+
+            <p>
+                The <code>int()</code> function converts compatible values
+                into integers.
+            </p>
+
+            <h3>Converting a Float to an Integer</h3>
+
+            <div class="code-example">
+                <pre>price = 49.99
+
+whole_number = int(price)
+
+print(whole_number)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>49</pre>
+            </div>
+
+            <p>
+                Notice that <code>int()</code> removes the decimal part.
+                It does not round the number to the nearest integer.
+            </p>
+
+            <h3>Converting a String to an Integer</h3>
+
+            <div class="code-example">
+                <pre>age = "16"
+
+age_number = int(age)
+
+print(age_number + 1)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>17</pre>
+            </div>
+
+            <p>
+                The string contains valid integer digits, so Python
+                can convert it successfully.
+            </p>
+
+            <div class="info-box">
+                <strong>Important:</strong>
+                A string such as <code>"hello"</code> cannot be converted
+                into an integer using <code>int()</code>. Python raises
+                a <code>ValueError</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Converting Values to Floats</h2>
+
+            <p>
+                The <code>float()</code> function converts compatible
+                values into floating-point numbers.
+            </p>
+
+            <h3>Converting an Integer to a Float</h3>
+
+            <div class="code-example">
+                <pre>number = 25
+
+decimal_number = float(number)
+
+print(decimal_number)
+print(type(decimal_number))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>25.0
+&lt;class 'float'&gt;</pre>
+            </div>
+
+            <h3>Converting a String to a Float</h3>
+
+            <div class="code-example">
+                <pre>price = "99.50"
+
+converted_price = float(price)
+
+print(converted_price)
+print(type(converted_price))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>99.5
+&lt;class 'float'&gt;</pre>
+            </div>
+
+            <p>
+                Python can convert a numeric string containing a decimal
+                point into a float.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Converting Values to Strings</h2>
+
+            <p>
+                The <code>str()</code> function converts a value into
+                its string representation.
+            </p>
+
+            <h3>Converting an Integer to a String</h3>
+
+            <div class="code-example">
+                <pre>age = 16
+
+age_text = str(age)
+
+print(age_text)
+print(type(age_text))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>16
+&lt;class 'str'&gt;</pre>
+            </div>
+
+            <h3>Combining Text and Numbers</h3>
+
+            <p>
+                You can use <code>str()</code> to convert a number
+                before joining it with another string.
+            </p>
+
+            <div class="code-example">
+                <pre>age = 16
+
+message = "I am " + str(age) + " years old."
+
+print(message)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>I am 16 years old.</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                You can also use an f-string to display numbers inside
+                text without manually calling <code>str()</code>.
+            </div>
+  </section>
+  
+        <section>
+            <h2>6. Converting Values to Booleans</h2>
+
+            <p>
+                The <code>bool()</code> function converts a value into
+                either <code>True</code> or <code>False</code>.
+            </p>
+
+            <p>
+                Python considers certain values to be false when converted
+                to a boolean.
+            </p>
+
+            <h3>Values That Become False</h3>
+
+            <ul>
+                <li><code>0</code> and <code>0.0</code></li>
+                <li><code>""</code>, an empty string</li>
+                <li><code>[]</code>, an empty list</li>
+                <li><code>{}</code>, an empty dictionary</li>
+                <li><code>None</code></li>
+                <li><code>False</code></li>
+            </ul>
+
+            <div class="code-example">
+                <pre>print(bool(0))
+print(bool(""))
+print(bool([]))
+print(bool(None))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>False
+False
+False
+False</pre>
+            </div>
+
+            <h3>Values That Become True</h3>
+
+            <p>
+                Most other values become <code>True</code>, including
+                non-zero numbers and non-empty strings.
+            </p>
+
+            <div class="code-example">
+                <pre>print(bool(10))
+print(bool(-5))
+print(bool("Python"))
+print(bool([1, 2, 3]))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>True
+True
+True
+True</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                The string <code>"False"</code> is not the same as
+                the boolean value <code>False</code>. Since it is a
+                non-empty string, <code>bool("False")</code> returns
+                <code>True</code>.
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Type Conversion with User Input</h2>
+
+            <p>
+                The <code>input()</code> function always returns the
+                entered value as a string.
+            </p>
+
+            <p>
+                If you want to perform mathematical calculations with
+                user input, you often need to convert that input first.
+            </p>
+
+            <h3>Example: Adding Two Numbers</h3>
+
+            <div class="code-example">
+                <pre>num1 = input("Enter first number: ")
+num2 = input("Enter second number: ")
+
+result = num1 + num2
+
+print(result)</pre>
+            </div>
+
+            <p>
+                If the user enters 10 and 20, the output is:
+            </p>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Enter first number: 10
+Enter second number: 20
+1020</pre>
+            </div>
+
+            <p>
+                This happens because both inputs are strings. The
+                <code>+</code> operator joins them instead of adding
+                them mathematically.
+            </p>
+
+            <h3>Correct Approach</h3>
+
+            <div class="code-example">
+                <pre>num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+result = num1 + num2
+
+print("Total:", result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>Enter first number: 10
+Enter second number: 20
+Total: 30</pre>
+            </div>
+
+            <p>
+                Now both inputs are converted into integers before
+                the addition takes place.
+            </p>
+        </section>
+
+        <section>
+            <h2>8. Converting Between Other Types</h2>
+
+            <p>
+                Python provides other conversion functions too.
+                Here are a few useful examples.
+            </p>
+
+            <h3>Converting a String to a List</h3>
+
+            <div class="code-example">
+                <pre>word = "Python"
+
+letters = list(word)
+
+print(letters)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>['P', 'y', 't', 'h', 'o', 'n']</pre>
+            </div>
+
+            <h3>Converting a List to a Tuple</h3>
+
+            <div class="code-example">
+                <pre>numbers = [10, 20, 30]
+
+result = tuple(numbers)
+
+print(result)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>(10, 20, 30)</pre>
+            </div>
+
+            <h3>Converting a List to a Set</h3>
+
+            <div class="code-example">
+                <pre>numbers = [1, 2, 2, 3, 3, 4]
+
+result = set(numbers)
+
+print(sorted(result))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">OUTPUT</div>
+                <pre>[1, 2, 3, 4]</pre>
+            </div>
+
+            <p>
+                A set stores unique values, so repeated elements are removed.
+                The example uses <code>sorted()</code> to display the
+                values in a predictable order.
+            </p>
+  </section>
+  
+        <section>
+            <h2>9. Common Type Conversion Errors</h2>
+
+            <h3>ValueError</h3>
+
+            <p>
+                A <code>ValueError</code> occurs when a conversion function
+                receives a value in an unsuitable format.
+            </p>
+
+            <div class="code-example">
+                <pre>number = int("hello")</pre>
+            </div>
+
+            <p>
+                Python cannot convert the word <code>"hello"</code>
+                into an integer.
+            </p>
+
+            <h3>TypeError</h3>
+
+            <p>
+                A <code>TypeError</code> can occur when an operation
+                uses incompatible data types.
+            </p>
+
+            <div class="code-example">
+                <pre>number = 10
+text = "5"
+
+result = number + text</pre>
+            </div>
+
+            <p>
+                Python does not automatically combine an integer and
+                a string using the addition operator.
+            </p>
+
+            <h3>Safe Conversion with try and except</h3>
+
+            <p>
+                You can handle invalid input using exception handling.
+                You will study this topic in more detail later.
+            </p>
+
+            <div class="code-example">
+                <pre>value = input("Enter a number: ")
+
+try:
+    number = int(value)
+    print("Number:", number)
+except ValueError:
+    print("Please enter a valid whole number.")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">EXAMPLE OUTPUT</div>
+                <pre>Enter a number: hello
+Please enter a valid whole number.</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Practical Coding Exercises</h2>
+
+            <p>
+                Try these exercises to practise type conversion.
+            </p>
+
+            <div class="example-card">
+                <h3>Exercise 1: Age Calculator</h3>
+
+                <p>
+                    Ask the user to enter their age. Convert the input
+                    into an integer and display their age next year.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 2: Simple Addition</h3>
+
+                <p>
+                    Ask the user for two numbers. Convert them into
+                    floats and display their sum.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 3: Convert to Text</h3>
+
+                <p>
+                    Store a number in a variable. Convert it into a
+                    string and display a sentence containing that number.
+                </p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 4: Boolean Conversion</h3>
+
+                <p>
+                    Use <code>bool()</code> to check the results of
+                    converting 0, 1, an empty string, and a non-empty
+                    string into booleans.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Quick Knowledge Check</h2>
+
+            <p>
+                Test your understanding of Python type conversion.
+            </p>
+
+            <div id="quiz-container">
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>1. Which function converts a value into an integer?</h3>
+
+                    <label><input type="radio" name="q1" value="a"> str()</label>
+                    <label><input type="radio" name="q1" value="b"> int()</label>
+                    <label><input type="radio" name="q1" value="c"> float()</label>
+                    <label><input type="radio" name="q1" value="d"> bool()</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="c">
+                    <h3>2. What type of value does input() return?</h3>
+
+                    <label><input type="radio" name="q2" value="a"> int</label>
+                    <label><input type="radio" name="q2" value="b"> float</label>
+                    <label><input type="radio" name="q2" value="c"> str</label>
+                    <label><input type="radio" name="q2" value="d"> bool</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="a">
+                    <h3>3. What is the result of int(8.9)?</h3>
+
+                    <label><input type="radio" name="q3" value="a"> 8</label>
+                    <label><input type="radio" name="q3" value="b"> 9</label>
+                    <label><input type="radio" name="q3" value="c"> 8.9</label>
+                    <label><input type="radio" name="q3" value="d"> Error</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="d">
+                    <h3>4. What does bool("") return?</h3>
+
+                    <label><input type="radio" name="q4" value="a"> None</label>
+                    <label><input type="radio" name="q4" value="b"> 0</label>
+                    <label><input type="radio" name="q4" value="c"> True</label>
+                    <label><input type="radio" name="q4" value="d"> False</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>5. Which error occurs when int("hello") is executed?</h3>
+
+                    <label><input type="radio" name="q5" value="a"> TypeError</label>
+                    <label><input type="radio" name="q5" value="b"> ValueError</label>
+                    <label><input type="radio" name="q5" value="c"> NameError</label>
+                    <label><input type="radio" name="q5" value="d"> IndexError</label>
+
+                    <p class="quiz-feedback"></p>
+                </div>
+
+            </div>
+
+            <button id="check-quiz" class="quiz-button" type="button">
+                Check Answers
+            </button>
+
+            <p id="quiz-result"></p>
+        </section>
+
+        <section>
+            <h2>12. Lesson Summary</h2>
+
+            <p>
+                In this lesson, you learned how to convert values
+                between different Python data types.
+            </p>
+
+            <ul>
+                <li>Type conversion changes a value from one data type to another.</li>
+                <li>Implicit conversion happens automatically in compatible operations.</li>
+                <li>Explicit conversion is performed using conversion functions.</li>
+                <li><code>int()</code> converts compatible values into integers.</li>
+                <li><code>float()</code> converts compatible values into floats.</li>
+                <li><code>str()</code> converts values into strings.</li>
+                <li><code>bool()</code> converts values into booleans.</li>
+                <li><code>input()</code> returns a string.</li>
+                <li>Invalid conversions can raise errors such as ValueError.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>What comes next?</strong>
+                In Lesson 7, you will learn how to take input from users
+                and build interactive Python programs.
+            </div>
+        </section>
+
+        <div class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+
+                <p>
+                    Finished learning and practising? Mark this lesson
+                    as completed to update your course progress.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </div>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-5.html">← Previous Lesson</a>
+            <a href="lesson-7.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+</div>
+
+<script src="../js/course.js"></script>
+
+<script>
+    const MODULE_NUMBER = 2;
+    const LESSON_NUMBER = 6;
+
+    // Quiz functionality
+    const checkQuizButton = document.getElementById("check-quiz");
+    const quizResult = document.getElementById("quiz-result");
+
+    checkQuizButton.addEventListener("click", function () {
+        const questions = document.querySelectorAll(".quiz-question");
+        let score = 0;
+        let unanswered = 0;
+
+        questions.forEach(function (question) {
+            const correctAnswer = question.dataset.answer;
+            const selected = question.querySelector("input:checked");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            if (!selected) {
+                unanswered++;
+                feedback.textContent = "Please select an answer.";
+                feedback.style.color = "#fbbf24";
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                score++;
+                feedback.textContent = "Correct!";
+                feedback.style.color = "#4ade80";
+            } else {
+                feedback.textContent =
+                    "Incorrect. The correct answer is " +
+                    correctAnswer.toUpperCase() + ".";
+                feedback.style.color = "#f87171";
+            }
+        });
+
+        quizResult.textContent =
+            "Your score: " + score + " / " + questions.length;
+
+        if (unanswered > 0) {
+            quizResult.textContent +=
+                " (" + unanswered + " question(s) unanswered)";
+        }
+    });
+
+    // Manual lesson completion
+    const completeButton = document.getElementById("complete-lesson");
+    const completionMessage = document.getElementById("completion-message");
+
+    function updateCompletionStatus() {
+        if (
+            window.SwypyyCourse &&
+            window.SwypyyCourse.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            )
+        ) {
+            completeButton.textContent = "✓ Completed";
+            completeButton.disabled = true;
+            completionMessage.textContent =
+                "This lesson is already marked as completed.";
+        }
+    }
+
+    completeButton.addEventListener("click", function () {
+        if (!window.SwypyyCourse) {
+            completionMessage.textContent =
+                "Progress system could not be loaded. Please refresh the page.";
+            return;
+        }
+
+        window.SwypyyCourse.markLessonCompleted(
+            MODULE_NUMBER,
+            LESSON_NUMBER
+        );
+
+        completeButton.textContent = "✓ Completed";
+        completeButton.disabled = true;
+
+        completionMessage.textContent =
+            "Lesson completed! Your course progress has been updated.";
+    });
+
+    updateCompletionStatus();
+</script>
+
+</body>
+  </html>
