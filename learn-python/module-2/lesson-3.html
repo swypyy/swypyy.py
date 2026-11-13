@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08070d">
+    <meta name="description" content="Learn Python data types including integers, floats, strings, booleans and None.">
+    <title>Data Types | Module 2 | Swypyy.py</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .lesson-page {
+            width: min(100% - 36px, 850px);
+            margin: 0 auto;
+            padding: 30px 0 80px;
+        }
+
+        .lesson-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .lesson-topbar a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .lesson-topbar a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-heading {
+            margin-bottom: 35px;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-heading h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 1.15;
+            margin: 0 0 15px;
+            color: #ffffff;
+        }
+
+        .lesson-heading p {
+            color: #aaa4b8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .lesson-content section {
+            margin: 0 0 42px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 1.45rem;
+            margin: 0 0 16px;
+        }
+
+        .lesson-content h3 {
+            color: #ddd6fe;
+            font-size: 1.08rem;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c0bacb;
+            line-height: 1.85;
+            font-size: 0.97rem;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-content strong {
+            color: #eee9ff;
+        }
+
+        .lesson-content code,
+        .inline-code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302641;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.88rem;
+            line-height: 1.85;
+        }
+
+        .example-label {
+            color: #a78bfa;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: #171225;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 20px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        .warning-box {
+            background: #211a15;
+            border-left: 3px solid #d69b55;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 20px 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+        }
+
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .type-card {
+            background: #15111f;
+            border: 1px solid #302641;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .type-card code {
+            color: #c4b5fd;
+            font-family: "JetBrains Mono", monospace;
+            font-weight: 600;
+        }
+
+        .type-card p {
+            margin: 8px 0 0;
+            font-size: 0.9rem;
+        }
+
+        .quiz-question {
+            background: #15111f;
+            border: 1px solid #302641;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 16px 0;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+        }
+
+        .quiz-question label {
+            display: block;
+            color: #c0bacb;
+            padding: 8px 0;
+            cursor: pointer;
+            line-height: 1.6;
+        }
+
+        .quiz-question input {
+            accent-color: #8b5cf6;
+            margin-right: 8px;
+        }
+
+        .quiz-feedback {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .quiz-button,
+        .complete-button {
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 20px;
+            background: #7c3aed;
+            color: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .quiz-button:hover,
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .lesson-completion {
+            background: #171225;
+            border: 1px solid #38294f;
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 45px;
+        }
+
+        .lesson-completion h2 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        .lesson-completion p {
+            color: #b9b1c8;
+            line-height: 1.7;
+        }
+
+        .complete-button:disabled {
+            background: #334b3c;
+            cursor: default;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #302641;
+        }
+
+        #quiz-result,
+        #completion-message {
+            color: #c4b5fd;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 520px) {
+            .type-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+  </head>
+  
+<body>
+    <main class="lesson-page">
+
+        <div class="lesson-topbar">
+            <a href="index.html">← Back to Module 2</a>
+            <a href="../index.html">View All Modules</a>
+        </div>
+
+        <header class="lesson-heading">
+            <div class="lesson-label">Module 02 · Lesson 03</div>
+            <h1>Data Types</h1>
+            <p>
+                Learn how Python classifies different kinds of information.
+                Understand integers, floating-point numbers, strings, booleans
+                and other important built-in data types.
+            </p>
+        </header>
+
+        <div class="lesson-content">
+
+            <section>
+                <h2>1. What Are Data Types?</h2>
+
+                <p>
+                    Every value in Python has a <strong>data type</strong>.
+                    A data type tells Python what kind of value it is working with
+                    and what operations can be performed on that value.
+                </p>
+
+                <p>
+                    For example, a person's age is usually represented as a whole
+                    number, their name as text, and their height as a decimal number.
+                    These values have different data types.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>name = "Anu"
+age = 16
+height = 1.65
+is_student = True</pre>
+                </div>
+
+                <p>Python provides several built-in data types.</p>
+
+                <div class="type-grid">
+                    <div class="type-card">
+                        <code>int</code>
+                        <p>Whole numbers, such as 10 and -5.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>float</code>
+                        <p>Numbers with decimal points, such as 3.14.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>str</code>
+                        <p>Text, such as "Hello".</p>
+                    </div>
+                    <div class="type-card">
+                        <code>bool</code>
+                        <p>Logical values: True or False.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>list</code>
+                        <p>An ordered collection of values.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>dict</code>
+                        <p>A collection of key-value pairs.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>tuple</code>
+                        <p>An ordered, immutable collection.</p>
+                    </div>
+                    <div class="type-card">
+                        <code>set</code>
+                        <p>A collection of unique values.</p>
+                    </div>
+                </div>
+
+                <p>
+                    This lesson focuses mainly on the basic types you will use
+                    frequently. Collections such as lists, tuples, sets and
+                    dictionaries will be explored in detail later.
+                </p>
+            </section>
+
+            <section>
+                <h2>2. Integer Data Type (int)</h2>
+
+                <p>
+                    An <strong>integer</strong> is a whole number without a decimal
+                    point. Integers can be positive, negative or zero.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Examples</div>
+                    <pre>age = 16
+temperature = -5
+students = 40
+balance = 0
+
+print(age)
+print(temperature)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>16
+-5</pre>
+                </div>
+
+                <p>
+                    Python uses the <code>int</code> type for these values.
+                    Integers are useful for counting objects, storing ages,
+                    and representing quantities that do not require fractions.
+                </p>
+
+                <h3>Integer arithmetic</h3>
+
+                <p>
+                    You can perform mathematical operations using integers.
+                </p>
+
+                <div class="code-example">
+                    <pre>a = 20
+b = 6
+
+print(a + b)
+print(a - b)
+print(a * b)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>26
+14
+120</pre>
+                </div>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> A value such as
+                        <code>25</code> is an integer, while
+                        <code>25.0</code> is a floating-point number.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Floating-Point Data Type (float)</h2>
+
+                <p>
+                    A <strong>float</strong> represents a number that contains
+                    a decimal point. It is useful for measurements, averages,
+                    prices and other values that can contain fractions.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Examples</div>
+                    <pre>height = 1.72
+price = 99.50
+temperature = -2.5
+average = 87.25
+
+print(height)
+print(price)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>1.72
+99.5</pre>
+                </div>
+
+                <p>
+                    Notice that Python displays <code>99.50</code> as
+                    <code>99.5</code>. Both represent the same numerical value.
+                </p>
+
+                <h3>Float calculations</h3>
+
+                <div class="code-example">
+                    <pre>length = 5.5
+width = 3.0
+
+area = length * width
+
+print(area)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>16.5</pre>
+                </div>
+
+                <div class="warning-box">
+                    <p>
+                        Floating-point numbers can sometimes produce tiny
+                        rounding differences because many decimal fractions
+                        cannot be represented exactly in binary. This is
+                        normal computer behaviour.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. String Data Type (str)</h2>
+
+                <p>
+                    A <strong>string</strong> is a sequence of characters used
+                    to represent text. Strings are written inside single quotes,
+                    double quotes or triple quotes.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Examples</div>
+                    <pre>name = "Ravi"
+city = 'Kannur'
+message = """Welcome to Python!"""
+
+print(name)
+print(city)
+print(message)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Ravi
+Kannur
+Welcome to Python!</pre>
+                </div>
+
+                <h3>Strings can contain different characters</h3>
+
+                <div class="code-example">
+                    <pre>word = "Python"
+number_text = "123"
+greeting = "Hello, World!"
+
+print(word)
+print(number_text)
+print(greeting)</pre>
+                </div>
+
+                <p>
+                    Even though <code>number_text</code> contains digits,
+                    it is still a string because it is surrounded by quotes.
+                </p>
+
+                <h3>Joining strings</h3>
+
+                <p>
+                    You can join strings using the <strong>+</strong> operator.
+                    This operation is called concatenation.
+                </p>
+
+                <div class="code-example">
+                    <pre>first_name = "Asha"
+last_name = "Kumar"
+
+full_name = first_name + " " + last_name
+
+print(full_name)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Asha Kumar</pre>
+                </div>
+                  </section>
+  
+            <section>
+                <h2>5. Boolean Data Type (bool)</h2>
+
+                <p>
+                    A <strong>boolean</strong> represents one of two logical
+                    values: <code>True</code> or <code>False</code>.
+                    Boolean values are commonly used in conditions and
+                    decision-making.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>is_raining = True
+is_sunny = False
+
+print(is_raining)
+print(is_sunny)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>True
+False</pre>
+                </div>
+
+                <p>
+                    Notice that <code>True</code> and <code>False</code> begin
+                    with capital letters in Python. Writing
+                    <code>true</code> or <code>false</code> in lowercase does
+                    not create boolean values.
+                </p>
+
+                <h3>Boolean values from comparisons</h3>
+
+                <p>
+                    Comparison operations produce boolean results.
+                </p>
+
+                <div class="code-example">
+                    <pre>print(10 > 5)
+print(8 == 3)
+print(7 != 2)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>True
+False
+True</pre>
+                </div>
+
+                <p>
+                    These results can later be used in
+                    <code>if</code> statements and loops.
+                </p>
+            </section>
+
+            <section>
+                <h2>6. Checking Data Types with type()</h2>
+
+                <p>
+                    Python provides the built-in <code>type()</code> function
+                    to identify the type of a value or variable.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>age = 16
+height = 1.72
+name = "Meera"
+is_student = True
+
+print(type(age))
+print(type(height))
+print(type(name))
+print(type(is_student))</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;
+&lt;class 'bool'&gt;</pre>
+                </div>
+
+                <p>
+                    The output tells you the type of each value:
+                </p>
+
+                <ul>
+                    <li><code>int</code> means integer.</li>
+                    <li><code>float</code> means floating-point number.</li>
+                    <li><code>str</code> means string.</li>
+                    <li><code>bool</code> means boolean.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Useful habit:</strong> When you are unsure what
+                        type a variable contains, use <code>type()</code> to
+                        investigate it.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Understanding None and NoneType</h2>
+
+                <p>
+                    Python has a special value called <code>None</code>.
+                    It represents the absence of a value or a value that has
+                    not been provided.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>result = None
+
+print(result)
+print(type(result))</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>None
+&lt;class 'NoneType'&gt;</pre>
+                </div>
+
+                <p>
+                    The type of <code>None</code> is called
+                    <code>NoneType</code>.
+                </p>
+
+                <h3>Why is None useful?</h3>
+
+                <p>
+                    Sometimes a program needs a variable before its final value
+                    is available. You can use <code>None</code> as a temporary
+                    placeholder.
+                </p>
+
+                <div class="code-example">
+                    <pre>selected_subject = None
+
+selected_subject = "Physics"
+
+print(selected_subject)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Physics</pre>
+                </div>
+
+                <div class="warning-box">
+                    <p>
+                        <code>None</code> is not the same as zero,
+                        <code>False</code> or an empty string
+                        (<code>""</code>). They are different values with
+                        different meanings.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>8. Mutable and Immutable Values</h2>
+
+                <p>
+                    Python objects can be described as <strong>mutable</strong>
+                    or <strong>immutable</strong>.
+                </p>
+
+                <ul>
+                    <li>
+                        <strong>Mutable:</strong> An object can be changed
+                        after it is created.
+                    </li>
+                    <li>
+                        <strong>Immutable:</strong> An object cannot be changed
+                        after it is created.
+                    </li>
+                </ul>
+
+                <p>
+                    Integers, floats, strings, booleans and tuples are examples
+                    of immutable types. Lists, dictionaries and sets are
+                    examples of mutable types.
+                </p>
+
+                <h3>Example: Strings are immutable</h3>
+
+                <div class="code-example">
+                    <pre>word = "Python"
+
+word = "Java"
+
+print(word)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Java</pre>
+                </div>
+
+                <p>
+                    This does not change the original string object. Instead,
+                    the variable is assigned to a different string.
+                </p>
+
+                <h3>Example: Lists are mutable</h3>
+
+                <div class="code-example">
+                    <pre>numbers = [10, 20, 30]
+
+numbers[0] = 99
+
+print(numbers)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>[99, 20, 30]</pre>
+                </div>
+
+                <p>
+                    The list itself has been modified. You will study lists
+                    and other collections in more detail in Module 5.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Common Data Type Mistakes</h2>
+
+                <h3>Mistake 1: Treating a number string as a number</h3>
+
+                <div class="code-example">
+                    <pre>number = "10"
+
+print(number + 5)</pre>
+                </div>
+
+                <p>
+                    This causes a <code>TypeError</code> because Python cannot
+                    directly add a string and an integer.
+                </p>
+
+                <h3>Mistake 2: Forgetting quotation marks</h3>
+
+                <div class="code-example">
+                    <pre>name = Ravi</pre>
+                </div>
+
+                <p>
+                    Python treats <code>Ravi</code> as a variable name rather
+                    than text. If that variable has not been defined, a
+                    <code>NameError</code> occurs.
+                </p>
+
+                <p>Correct version:</p>
+
+                <div class="code-example">
+                    <pre>name = "Ravi"</pre>
+                </div>
+
+                <h3>Mistake 3: Incorrect boolean spelling</h3>
+
+                <div class="code-example">
+                    <pre>is_active = true</pre>
+                </div>
+
+                <p>Correct version:</p>
+
+                <div class="code-example">
+                    <pre>is_active = True</pre>
+                </div>
+
+                <h3>Mistake 4: Confusing 10 and "10"</h3>
+
+                <div class="code-example">
+                    <pre>number = 10
+text = "10"
+
+print(type(number))
+print(type(text))</pre>
+                </div>
+
+                <p>
+                    The first value is an integer. The second value is a string.
+                    They may look similar, but Python treats them differently.
+                </p>
+            </section>
+
+            <section>
+                <h2>10. Practical Coding Exercises</h2>
+
+                <p>
+                    Try these exercises in your Python editor. Predict the
+                    output before running each program.
+                </p>
+
+                <h3>Exercise 1: Create different data types</h3>
+
+                <p>
+                    Create an integer, float, string and boolean variable.
+                    Print each value and its type using <code>type()</code>.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>age = 17
+height = 1.70
+name = "Arun"
+is_student = True
+
+print(type(age))
+print(type(height))
+print(type(name))
+print(type(is_student))</pre>
+                </div>
+
+                <h3>Exercise 2: Find the total</h3>
+
+                <p>
+                    Store the prices of three items in variables. Calculate
+                    and display their total.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>item1 = 25.50
+item2 = 40.00
+item3 = 15.50
+
+total = item1 + item2 + item3
+
+print(total)</pre>
+                </div>
+
+                <h3>Exercise 3: Compare two numbers</h3>
+
+                <p>
+                    Create two integer variables. Check whether the first
+                    number is greater than the second.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>a = 25
+b = 15
+
+result = a > b
+
+print(result)
+print(type(result))</pre>
+                </div>
+
+                <h3>Exercise 4: Explore None</h3>
+
+                <p>
+                    Create a variable with the value <code>None</code>.
+                    Display the value and its type.
+                </p>
+  </section>
+  
+            <section>
+                <h2>11. Quick Knowledge Check</h2>
+
+                <p>
+                    Answer these questions to test your understanding of
+                    Python data types.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>Question 1: Which data type represents whole numbers?</h3>
+                        <label><input type="radio" name="q1" value="a"> float</label>
+                        <label><input type="radio" name="q1" value="b"> int</label>
+                        <label><input type="radio" name="q1" value="c"> str</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>Question 2: What is the data type of "Python"?</h3>
+                        <label><input type="radio" name="q2" value="a"> int</label>
+                        <label><input type="radio" name="q2" value="b"> bool</label>
+                        <label><input type="radio" name="q2" value="c"> str</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>Question 3: Which are Python's boolean values?</h3>
+                        <label><input type="radio" name="q3" value="a"> True and False</label>
+                        <label><input type="radio" name="q3" value="b"> Yes and No</label>
+                        <label><input type="radio" name="q3" value="c"> 1 and 2</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>Question 4: Which function checks a value's type?</h3>
+                        <label><input type="radio" name="q4" value="a"> print()</label>
+                        <label><input type="radio" name="q4" value="b"> type()</label>
+                        <label><input type="radio" name="q4" value="c"> input()</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>Question 5: What is the type of None?</h3>
+                        <label><input type="radio" name="q5" value="a"> bool</label>
+                        <label><input type="radio" name="q5" value="b"> str</label>
+                        <label><input type="radio" name="q5" value="c"> NoneType</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                </div>
+
+                <button type="button" id="check-quiz" class="quiz-button">
+                    Check Answers
+                </button>
+
+                <p id="quiz-result" aria-live="polite"></p>
+            </section>
+
+            <section>
+                <h2>12. Lesson Summary</h2>
+
+                <p>In this lesson, you learned about:</p>
+
+                <ul>
+                    <li>Data types and why Python uses them.</li>
+                    <li>Integers using the <code>int</code> type.</li>
+                    <li>Decimal numbers using the <code>float</code> type.</li>
+                    <li>Text using the <code>str</code> type.</li>
+                    <li>Logical values using the <code>bool</code> type.</li>
+                    <li>Checking types with the <code>type()</code> function.</li>
+                    <li>The special value <code>None</code> and its type.</li>
+                    <li>The difference between mutable and immutable objects.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Coming next:</strong> In Lesson 4, you'll learn
+                        about numbers and mathematical operations in Python,
+                        including arithmetic operators and calculations.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="lesson-completion">
+            <div class="completion-content">
+                <h2>Finished this lesson?</h2>
+                <p>
+                    Mark this lesson as completed after understanding the
+                    concepts and trying the practical exercises.
+                </p>
+
+                <button type="button" id="complete-lesson" class="complete-button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <a href="lesson-2.html">← Previous Lesson</a>
+            <a href="lesson-4.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 3;
+
+        // Quiz functionality
+        const quizQuestions = document.querySelectorAll(".quiz-question");
+        const checkQuizButton = document.getElementById("check-quiz");
+        const quizResult = document.getElementById("quiz-result");
+
+        checkQuizButton.addEventListener("click", function () {
+            let score = 0;
+            let unanswered = 0;
+
+            quizQuestions.forEach(function (question) {
+                const correctAnswer = question.dataset.answer;
+                const selected = question.querySelector("input:checked");
+                const feedback = question.querySelector(".quiz-feedback");
+
+                if (!selected) {
+                    unanswered++;
+                    feedback.textContent = "Please select an answer.";
+                    feedback.style.color = "#d6a45e";
+                    return;
+                }
+
+                if (selected.value === correctAnswer) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "#86d9a2";
+                } else {
+                    feedback.textContent = "Not quite. Review this section and try again.";
+                    feedback.style.color = "#f19a9a";
+                }
+            });
+
+            if (unanswered > 0) {
+                quizResult.textContent =
+                    "You answered " + (5 - unanswered) +
+                    " out of 5 questions. Complete the unanswered questions too.";
+            } else {
+                quizResult.textContent = "Your score: " + score + " / 5";
+            }
+        });
+
+        // Manual lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionMessage = document.getElementById("completion-message");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completeButton.textContent = "Completed ✓";
+                completeButton.disabled = true;
+                completionMessage.textContent =
+                    "This lesson is marked as completed.";
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            if (!window.SwypyyCourse) {
+                completionMessage.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+                return;
+            }
+
+            window.SwypyyCourse.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            updateCompletionStatus();
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+</html>
