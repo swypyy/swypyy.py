@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08070d">
+    <meta name="description" content="Learn Python variables, assignment, naming rules, dynamic typing and practical examples.">
+    <title>Variables | Module 2 | Swypyy.py</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <style>
+        .lesson-page {
+            width: min(100% - 36px, 850px);
+            margin: 0 auto;
+            padding: 30px 0 80px;
+        }
+
+        .lesson-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .lesson-topbar a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .lesson-topbar a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-heading {
+            margin-bottom: 35px;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-heading h1 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            line-height: 1.15;
+            margin: 0 0 15px;
+            color: #ffffff;
+        }
+
+        .lesson-heading p {
+            color: #aaa4b8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .lesson-content section {
+            margin: 0 0 42px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 1.45rem;
+            margin: 0 0 16px;
+        }
+
+        .lesson-content h3 {
+            color: #ddd6fe;
+            font-size: 1.08rem;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c0bacb;
+            line-height: 1.85;
+            font-size: 0.97rem;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-content strong {
+            color: #eee9ff;
+        }
+
+        .lesson-content code,
+        .inline-code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302641;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.88rem;
+            line-height: 1.85;
+        }
+
+        .example-label {
+            color: #a78bfa;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .info-box {
+            background: #171225;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 20px 0;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        .warning-box {
+            background: #211a15;
+            border-left: 3px solid #d69b55;
+            border-radius: 8px;
+            padding: 15px 18px;
+            margin: 20px 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+        }
+</style>
+  </head>
+  
+<body>
+    <main class="lesson-page">
+
+        <div class="lesson-topbar">
+            <a href="index.html">← Back to Module 2</a>
+            <a href="../index.html">View All Modules</a>
+        </div>
+
+        <header class="lesson-heading">
+            <div class="lesson-label">Module 02 · Lesson 02</div>
+            <h1>Variables</h1>
+            <p>
+                Learn how Python stores and works with information using variables.
+                You'll create variables, update their values and understand how Python
+                handles different data types.
+            </p>
+        </header>
+
+        <div class="lesson-content">
+
+            <section>
+                <h2>1. What Are Variables?</h2>
+
+                <p>
+                    A <strong>variable</strong> is a name that refers to a value in a
+                    Python program. Variables allow us to store information and use it
+                    whenever we need it.
+                </p>
+
+                <p>
+                    Imagine you are building a student record program. You may need to
+                    work with a student's name, age and marks. Instead of repeatedly
+                    writing each value, you can store them using variables.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>student_name = "Anu"
+age = 16
+marks = 92
+
+print(student_name)
+print(age)
+print(marks)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Anu
+16
+92</pre>
+                </div>
+
+                <p>
+                    Here, <code>student_name</code>, <code>age</code> and
+                    <code>marks</code> are variable names. They refer to the values
+                    stored in the program.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> A variable is a name that refers to
+                        a value. You can use that name later to access or change the
+                        value.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Creating and Assigning Variables</h2>
+
+                <p>
+                    In Python, you create a variable by choosing a name and assigning
+                    a value to it with the equals sign (<code>=</code>).
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Syntax</div>
+                    <pre>variable_name = value</pre>
+                </div>
+
+                <p>For example:</p>
+
+                <div class="code-example">
+                    <pre>city = "Kannur"
+temperature = 30
+is_sunny = True</pre>
+                </div>
+
+                <p>
+                    The equals sign is called the <strong>assignment operator</strong>.
+                    It assigns the value on the right to the variable name on the left.
+                </p>
+
+                <h3>Different kinds of values</h3>
+
+                <div class="code-example">
+                    <pre>name = "Ravi"       # A string
+age = 17            # An integer
+height = 1.72       # A float
+is_student = True   # A boolean</pre>
+                </div>
+
+                <p>
+                    Python identifies the type of value automatically. You do not need
+                    to declare a variable's type before assigning a value.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. Rules for Naming Variables</h2>
+
+                <p>
+                    You can choose meaningful names for variables, but Python follows
+                    certain naming rules.
+                </p>
+
+                <h3>Important naming rules</h3>
+
+                <ul>
+                    <li>A variable name must begin with a letter or an underscore (<code>_</code>).</li>
+                    <li>It can contain letters, numbers and underscores.</li>
+                    <li>It cannot begin with a number.</li>
+                    <li>Spaces are not allowed in variable names.</li>
+                    <li>Python keywords cannot be used as variable names.</li>
+                    <li>Variable names are case-sensitive.</li>
+                </ul>
+
+                <h3>Valid variable names</h3>
+
+                <div class="code-example">
+                    <pre>name = "Meera"
+student_age = 16
+marks2 = 85
+_total = 100</pre>
+                </div>
+
+                <h3>Invalid variable names</h3>
+
+                <div class="code-example">
+                    <pre>2marks = 85       # Cannot begin with a number
+student age = 16  # Spaces are not allowed
+class = "A"       # 'class' is a Python keyword</pre>
+                </div>
+
+                <h3>Case sensitivity</h3>
+
+                <p>
+                    Python treats uppercase and lowercase letters as different
+                    characters. Therefore, <code>age</code>, <code>Age</code> and
+                    <code>AGE</code> are three different variable names.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = 16
+Age = 18
+
+print(age)
+print(Age)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>16
+18</pre>
+                </div>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Good practice:</strong> Use descriptive names such as
+                        <code>student_name</code> instead of unclear names such as
+                        <code>x</code>. Python programmers commonly use
+                        <strong>snake_case</strong>, where words are separated by
+                        underscores.
+                    </p>
+                </div>
+  </section>
+  
+            <section>
+                <h2>4. Updating Variable Values</h2>
+
+                <p>
+                    Variables are not limited to their original values. You can assign
+                    a new value to an existing variable whenever your program needs it.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>score = 50
+print(score)
+
+score = 80
+print(score)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>50
+80</pre>
+                </div>
+
+                <p>
+                    The first <code>print()</code> displays <code>50</code>. Later,
+                    the value of <code>score</code> is updated to <code>80</code>.
+                    The second <code>print()</code> displays the new value.
+                </p>
+
+                <h3>Using the current value</h3>
+
+                <p>
+                    You can also use a variable's existing value when assigning a new
+                    value to it.
+                </p>
+
+                <div class="code-example">
+                    <pre>count = 5
+count = count + 1
+
+print(count)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>6</pre>
+                </div>
+
+                <p>
+                    Python first evaluates <code>count + 1</code>, which is
+                    <code>6</code>, and then assigns that result back to
+                    <code>count</code>.
+                </p>
+
+                <p>
+                    A shorter version is the addition assignment operator:
+                </p>
+
+                <div class="code-example">
+                    <pre>count = 5
+count += 1
+
+print(count)</pre>
+                </div>
+
+                <p>
+                    This also produces <code>6</code>. The operators
+                    <code>-=</code>, <code>*=</code> and <code>/=</code> can be used
+                    in similar ways.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. Assigning Multiple Variables</h2>
+
+                <p>
+                    Python allows you to assign values to multiple variables in a
+                    single statement.
+                </p>
+
+                <h3>Assigning separate values</h3>
+
+                <div class="code-example">
+                    <pre>name, age, city = "Asha", 17, "Kochi"
+
+print(name)
+print(age)
+print(city)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>Asha
+17
+Kochi</pre>
+                </div>
+
+                <h3>Assigning the same value</h3>
+
+                <p>
+                    You can also assign the same value to multiple variables:
+                </p>
+
+                <div class="code-example">
+                    <pre>a = b = c = 10
+
+print(a)
+print(b)
+print(c)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>10
+10
+10</pre>
+                </div>
+
+                <div class="info-box">
+                    <p>
+                        Multiple assignment can make simple code shorter. However,
+                        use separate statements when they make your program easier
+                        to understand.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>6. Understanding Dynamic Typing</h2>
+
+                <p>
+                    Python is a <strong>dynamically typed language</strong>. This means
+                    you do not have to declare a variable's data type in advance.
+                    Python determines the type from the value assigned to it.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Example</div>
+                    <pre>value = 100
+print(value)
+
+value = "Hello Python"
+print(value)</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>100
+Hello Python</pre>
+                </div>
+
+                <p>
+                    First, <code>value</code> refers to an integer. Later, it refers
+                    to a string. Python allows this change.
+                </p>
+
+                <h3>Checking a variable's type</h3>
+
+                <p>
+                    You can use the built-in <code>type()</code> function to find
+                    the type of value a variable currently refers to.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = 16
+name = "Arun"
+height = 1.75
+
+print(type(age))
+print(type(name))
+print(type(height))</pre>
+                </div>
+
+                <p>Output:</p>
+
+                <div class="code-example">
+                    <pre>&lt;class 'int'&gt;
+&lt;class 'str'&gt;
+&lt;class 'float'&gt;</pre>
+                </div>
+
+                <div class="warning-box">
+                    <p>
+                        Dynamic typing does not mean every operation is allowed.
+                        For example, adding a number directly to a string can cause
+                        a <code>TypeError</code>. Understanding data types will help
+                        you avoid these problems.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Common Variable Mistakes</h2>
+
+                <p>
+                    Beginners often make a few predictable mistakes when working
+                    with variables. Learning to recognise them makes debugging easier.
+                </p>
+
+                <h3>Mistake 1: Using a variable before assigning a value</h3>
+
+                <div class="code-example">
+                    <pre>print(age)
+age = 16</pre>
+                </div>
+
+                <p>
+                    This causes a <code>NameError</code> because
+                    <code>age</code> has not been assigned a value before it is used.
+                </p>
+
+                <h3>Mistake 2: Incorrect spelling</h3>
+
+                <div class="code-example">
+                    <pre>student_name = "Maya"
+print(studentname)</pre>
+                </div>
+
+                <p>
+                    <code>student_name</code> and <code>studentname</code> are
+                    different names. The second name has not been defined.
+                </p>
+
+                <h3>Mistake 3: Confusing assignment and comparison</h3>
+
+                <div class="code-example">
+                    <pre>age = 16       # Assigns a value
+age == 16      # Checks whether values are equal</pre>
+                </div>
+
+                <p>
+                    A single equals sign (<code>=</code>) assigns a value.
+                    Two equals signs (<code>==</code>) compare values.
+                </p>
+
+                <h3>Mistake 4: Using spaces in variable names</h3>
+
+                <div class="code-example">
+                    <pre>student age = 16  # Invalid
+student_age = 16  # Valid</pre>
+                </div>
+            </section>
+
+            <section>
+                <h2>8. Practical Coding Exercises</h2>
+
+                <p>
+                    Try these exercises in your Python editor or browser-based
+                    Python environment. Write the code yourself before checking
+                    the sample solutions.
+                </p>
+
+                <h3>Exercise 1: Personal information</h3>
+
+                <p>
+                    Create variables for your name, age and favourite subject.
+                    Display all three values using <code>print()</code>.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>name = "Rahul"
+age = 16
+subject = "Physics"
+
+print(name)
+print(age)
+print(subject)</pre>
+                </div>
+
+                <h3>Exercise 2: Simple calculation</h3>
+
+                <p>
+                    Store two numbers in variables. Create a third variable that
+                    stores their sum, then display the result.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>number1 = 25
+number2 = 15
+
+total = number1 + number2
+
+print(total)</pre>
+                </div>
+
+                <h3>Exercise 3: Update a score</h3>
+
+                <p>
+                    Create a variable named <code>score</code> with the value
+                    <code>10</code>. Increase it by <code>5</code> and display
+                    the updated score.
+                </p>
+
+                <div class="code-example">
+                    <div class="example-label">Sample solution</div>
+                    <pre>score = 10
+score += 5
+
+print(score)</pre>
+                </div>
+
+                <h3>Exercise 4: Check data types</h3>
+
+                <p>
+                    Create one integer, one string and one floating-point variable.
+                    Use <code>type()</code> to display their types.
+                </p>
+            </section>
+
+            <section>
+                <h2>9. Quick Knowledge Check</h2>
+
+                <p>
+                    Test what you have learned. Select an answer for each question.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>Question 1: What is a variable in Python?</h3>
+                        <label><input type="radio" name="q1" value="a"> A special type of loop</label>
+                        <label><input type="radio" name="q1" value="b"> A name that refers to a value</label>
+                        <label><input type="radio" name="q1" value="c"> A command used to stop a program</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>Question 2: Which symbol is used for assignment?</h3>
+                        <label><input type="radio" name="q2" value="a"> =</label>
+                        <label><input type="radio" name="q2" value="b"> ==</label>
+                        <label><input type="radio" name="q2" value="c"> !=</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>Question 3: Which is a valid variable name?</h3>
+                        <label><input type="radio" name="q3" value="a"> 2student</label>
+                        <label><input type="radio" name="q3" value="b"> student age</label>
+                        <label><input type="radio" name="q3" value="c"> student_age</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>Question 4: Which function checks a value's type?</h3>
+                        <label><input type="radio" name="q4" value="a"> print()</label>
+                        <label><input type="radio" name="q4" value="b"> type()</label>
+                        <label><input type="radio" name="q4" value="c"> input()</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>Question 5: What does <code>score += 1</code> do?</h3>
+                        <label><input type="radio" name="q5" value="a"> Adds 1 to the current score</label>
+                        <label><input type="radio" name="q5" value="b"> Deletes the score variable</label>
+                        <label><input type="radio" name="q5" value="c"> Converts the score into a string</label>
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                </div>
+
+                <button type="button" id="check-quiz" class="quiz-button">
+                    Check Answers
+                </button>
+                <p id="quiz-result" aria-live="polite"></p>
+                  </section>
+  
+            <section>
+                <h2>10. Lesson Summary</h2>
+
+                <p>In this lesson, you learned that:</p>
+
+                <ul>
+                    <li>Variables are names that refer to values.</li>
+                    <li>The <code>=</code> operator assigns values to variables.</li>
+                    <li>Variable names must follow Python's naming rules.</li>
+                    <li>Python variable names are case-sensitive.</li>
+                    <li>You can update a variable's value after creating it.</li>
+                    <li>Python supports assigning values to multiple variables.</li>
+                    <li>Python uses dynamic typing.</li>
+                    <li>The <code>type()</code> function checks the type of a value.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Coming next:</strong> In Lesson 3, you'll learn about
+                        Python's built-in data types, including integers, floats,
+                        strings and booleans.
+                    </p>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="lesson-completion">
+            <div class="completion-content">
+                <h2>Finished this lesson?</h2>
+                <p>
+                    Mark this lesson as completed when you have understood the
+                    concepts and tried the exercises.
+                </p>
+                <button type="button" id="complete-lesson" class="complete-button">
+                    Mark as Completed
+                </button>
+                <p id="completion-message" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <a href="lesson-1.html">← Previous Lesson</a>
+            <a href="lesson-3.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 2;
+
+        // Quiz functionality
+        const quizQuestions = document.querySelectorAll(".quiz-question");
+        const checkQuizButton = document.getElementById("check-quiz");
+        const quizResult = document.getElementById("quiz-result");
+
+        checkQuizButton.addEventListener("click", function () {
+            let score = 0;
+            let unanswered = 0;
+
+            quizQuestions.forEach(function (question) {
+                const correctAnswer = question.dataset.answer;
+                const selected = question.querySelector("input:checked");
+                const feedback = question.querySelector(".quiz-feedback");
+
+                if (!selected) {
+                    unanswered++;
+                    feedback.textContent = "Please select an answer.";
+                    feedback.style.color = "#d6a45e";
+                    return;
+                }
+
+                if (selected.value === correctAnswer) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "#86d9a2";
+                } else {
+                    feedback.textContent = "Not quite. Try reviewing this lesson.";
+                    feedback.style.color = "#f19a9a";
+                }
+            });
+
+            if (unanswered > 0) {
+                quizResult.textContent =
+                    "You answered " + (5 - unanswered) +
+                    " out of 5 questions. Complete the unanswered questions too.";
+            } else {
+                quizResult.textContent =
+                    "Your score: " + score + " / 5";
+            }
+        });
+
+        // Manual lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionMessage = document.getElementById("completion-message");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completeButton.textContent = "Completed ✓";
+                completeButton.disabled = true;
+                completionMessage.textContent =
+                    "This lesson is marked as completed.";
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            if (!window.SwypyyCourse) {
+                completionMessage.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+                return;
+            }
+
+            window.SwypyyCourse.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            updateCompletionStatus();
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+  </html>
