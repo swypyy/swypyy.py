@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090711">
+    <meta name="description" content="Learn how to take user input in Python using input(), convert input values and build interactive programs.">
+    <title>Taking User Input | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .lesson-header {
+            margin-bottom: 35px;
+        }
+
+        .lesson-header a {
+            color: #a78bfa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .lesson-header a:hover {
+            color: #c4b5fd;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 35px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(28px, 5vw, 40px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .lesson-description {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .lesson-content {
+            color: #d4d4d8;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .lesson-content h2 {
+            color: #ffffff;
+            font-size: 23px;
+            margin: 42px 0 15px;
+        }
+
+        .lesson-content h3 {
+            color: #c4b5fd;
+            font-size: 18px;
+            margin: 25px 0 10px;
+        }
+
+        .lesson-content p {
+            margin-bottom: 16px;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 24px;
+            margin: 15px 0 22px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 9px;
+        }
+
+        .lesson-content strong {
+            color: #ffffff;
+        }
+
+        .lesson-content code {
+            background: #211a32;
+            color: #c4b5fd;
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            color: #ddd6fe;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.8;
+            white-space: pre;
+            margin: 0;
+        }
+
+        .output-box {
+            background: #171323;
+            border-left: 3px solid #8b5cf6;
+            padding: 15px 18px;
+            border-radius: 7px;
+            margin: 15px 0 25px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            color: #e4e4e7;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .info-box {
+            background: rgba(124, 58, 237, 0.10);
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 22px 0;
+        }
+
+        .info-box strong {
+            color: #c4b5fd;
+        }
+
+        .example-card {
+            background: #171323;
+            border: 1px solid #302344;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+
+        .example-card h3 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="lesson-wrapper">
+
+    <div class="lesson-header">
+        <a href="index.html">← Back to Module 2</a>
+        <span style="float: right;">
+            <a href="../index.html">View All Modules</a>
+        </span>
+
+        <div class="lesson-number">MODULE 02 · LESSON 07</div>
+
+        <h1 class="lesson-title">Taking User Input</h1>
+
+        <p class="lesson-description">
+            Learn how Python receives information from users using
+            input(), stores entered values and uses them in programs.
+        </p>
+    </div>
+
+    <main class="lesson-content">
+
+        <section>
+            <h2>1. What Is User Input?</h2>
+
+            <p>
+                Until now, most of our Python programs have used values
+                that were already written in the code.
+            </p>
+
+            <p>
+                But real programs often need information from the person
+                using them. For example, a program might ask for a name,
+                age, favourite subject or a number.
+            </p>
+
+            <p>
+                <strong>User input</strong> is information provided
+                by someone while a program is running.
+            </p>
+
+            <div class="example-card">
+                <h3>Example: A Greeting Program</h3>
+
+                <div class="code-example">
+                    <pre>name = input("Enter your name: ")
+
+print("Hello,", name)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">SAMPLE INTERACTION</div>
+                    <pre>Enter your name: Anu
+Hello, Anu</pre>
+                </div>
+
+                <p>
+                    The program asks the user for a name, stores the
+                    entered text in the variable <code>name</code>,
+                    and then displays a greeting.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                User input makes programs interactive. Instead of
+                using only fixed values, a program can respond to
+                information entered while it runs.
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Understanding the input() Function</h2>
+
+            <p>
+                Python provides a built-in function called
+                <code>input()</code> to receive information from users.
+            </p>
+
+            <p>
+                The basic syntax is:
+            </p>
+
+            <div class="code-example">
+                <pre>variable = input("Message shown to the user: ")</pre>
+            </div>
+
+            <p>Let's understand each part:</p>
+
+            <ul>
+                <li><strong>input()</strong> is the function that waits for user input.</li>
+                <li><strong>The message</strong> inside the quotation marks is called the prompt.</li>
+                <li><strong>The variable</strong> stores the value entered by the user.</li>
+            </ul>
+
+            <h3>A Simple Example</h3>
+
+            <div class="code-example">
+                <pre>city = input("Which city are you from? ")
+
+print("You are from", city)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Which city are you from? Kannur
+You are from Kannur</pre>
+            </div>
+
+            <p>
+                The program pauses at <code>input()</code> until the
+                user enters something and presses Enter.
+            </p>
+
+            <p>
+                The entered value is then returned by the function
+                and assigned to the variable <code>city</code>.
+            </p>
+        </section>
+
+        <section>
+            <h2>3. Storing User Input in Variables</h2>
+
+            <p>
+                You can store input in variables just like you store
+                ordinary values.
+            </p>
+
+            <h3>Example: Asking for a Favourite Subject</h3>
+
+            <div class="code-example">
+                <pre>subject = input("Enter your favourite subject: ")
+
+print("Your favourite subject is", subject)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your favourite subject: Physics
+Your favourite subject is Physics</pre>
+            </div>
+
+            <p>
+                The variable <code>subject</code> stores whatever
+                text the user enters.
+            </p>
+
+            <h3>Using Multiple Inputs</h3>
+
+            <p>
+                A program can ask several questions and store each
+                answer in a different variable.
+            </p>
+
+            <div class="code-example">
+                <pre>name = input("Enter your name: ")
+city = input("Enter your city: ")
+hobby = input("Enter your hobby: ")
+
+print("Name:", name)
+print("City:", city)
+print("Hobby:", hobby)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your name: Rahul
+Enter your city: Kozhikode
+Enter your hobby: Reading
+
+Name: Rahul
+City: Kozhikode
+Hobby: Reading</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Tip:</strong>
+                Give each input its own meaningful variable name.
+                This makes your code easier to understand and maintain.
+            </div>
+  </section>
+  
+        <section>
+            <h2>4. Important: input() Always Returns a String</h2>
+
+            <p>
+                One of the most important rules about
+                <code>input()</code> is that it returns the entered
+                value as a string.
+            </p>
+
+            <p>
+                This is true even when the user enters digits.
+                Python does not automatically treat the input as
+                an integer or a float.
+            </p>
+
+            <div class="code-example">
+                <pre>age = input("Enter your age: ")
+
+print(type(age))</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your age: 17
+&lt;class 'str'&gt;</pre>
+            </div>
+
+            <p>
+                Although the user entered <code>17</code>, Python
+                stored it as the string <code>"17"</code>.
+            </p>
+
+            <h3>Why Does This Matter?</h3>
+
+            <p>
+                Consider this program:
+            </p>
+
+            <div class="code-example">
+                <pre>first = input("Enter first number: ")
+second = input("Enter second number: ")
+
+print(first + second)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter first number: 10
+Enter second number: 20
+1020</pre>
+            </div>
+
+            <p>
+                The result is <code>1020</code>, not
+                <code>30</code>, because both values are strings.
+                The <code>+</code> operator joins the text together.
+            </p>
+
+            <div class="info-box">
+                <strong>Key rule:</strong>
+                If you want to perform mathematical calculations
+                with numeric input, convert the entered value
+                into an appropriate numeric type first.
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Taking Integer Input</h2>
+
+            <p>
+                Use <code>int()</code> when you want to convert
+                user input into an integer.
+            </p>
+
+            <div class="code-example">
+                <pre>age = int(input("Enter your age: "))
+
+print("Next year, your age will be", age + 1)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your age: 17
+Next year, your age will be 18</pre>
+            </div>
+
+            <p>
+                Notice the order of operations:
+            </p>
+
+            <ol>
+                <li><code>input()</code> receives the entered text.</li>
+                <li><code>int()</code> converts that text into an integer.</li>
+                <li>The converted integer is stored in <code>age</code>.</li>
+                <li>Python adds 1 to the value.</li>
+            </ol>
+
+            <h3>Another Example: Adding Two Integers</h3>
+
+            <div class="code-example">
+                <pre>number1 = int(input("Enter first number: "))
+number2 = int(input("Enter second number: "))
+
+total = number1 + number2
+
+print("Total:", total)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter first number: 25
+Enter second number: 15
+Total: 40</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Taking Decimal Input</h2>
+
+            <p>
+                When users need to enter decimal numbers, use
+                <code>float()</code> instead of <code>int()</code>.
+            </p>
+
+            <div class="code-example">
+                <pre>price = float(input("Enter the price: "))
+
+print("Price:", price)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter the price: 49.50
+Price: 49.5</pre>
+            </div>
+
+            <h3>Example: Calculating an Average</h3>
+
+            <div class="code-example">
+                <pre>mark1 = float(input("Enter first mark: "))
+mark2 = float(input("Enter second mark: "))
+
+average = (mark1 + mark2) / 2
+
+print("Average:", average)</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter first mark: 85
+Enter second mark: 90
+Average: 87.5</pre>
+            </div>
+
+            <p>
+                Using <code>float()</code> allows the program to
+                accept both whole numbers and decimal values.
+            </p>
+
+            <div class="info-box">
+                <strong>Remember:</strong>
+                <code>int()</code> is for integer conversion.
+                <code>float()</code> is for decimal-capable numeric
+                conversion.
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Taking Different Types of Input</h2>
+
+            <p>
+                You can combine different input types in the same
+                program.
+            </p>
+
+            <div class="example-card">
+                <h3>Example: A Simple Student Profile</h3>
+
+                <div class="code-example">
+                    <pre>name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+height = float(input("Enter your height in metres: "))
+
+print("Student Profile")
+print("Name:", name)
+print("Age:", age)
+print("Height:", height)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">SAMPLE INTERACTION</div>
+                    <pre>Enter your name: Anjali
+Enter your age: 17
+Enter your height in metres: 1.65
+
+Student Profile
+Name: Anjali
+Age: 17
+Height: 1.65</pre>
+                </div>
+
+                <p>
+                    This program uses a string for the name, an
+                    integer for the age and a float for the height.
+                </p>
+            </div>
+  </section>
+  
+        <section>
+            <h2>8. Using Input with Conditions</h2>
+
+            <p>
+                User input becomes more useful when combined with
+                conditional statements.
+            </p>
+
+            <p>
+                A program can receive a value and make a decision
+                based on that value.
+            </p>
+
+            <h3>Example: Checking a Number</h3>
+
+            <div class="code-example">
+                <pre>number = int(input("Enter a number: "))
+
+if number > 0:
+    print("The number is positive")
+elif number < 0:
+    print("The number is negative")
+else:
+    print("The number is zero")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter a number: 8
+The number is positive</pre>
+            </div>
+
+            <p>
+                The program checks the entered number and displays
+                a message based on its value.
+            </p>
+
+            <h3>Example: Simple Pass or Review Message</h3>
+
+            <div class="code-example">
+                <pre>mark = float(input("Enter your mark: "))
+
+if mark >= 50:
+    print("You passed")
+else:
+    print("Keep practising")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your mark: 75
+You passed</pre>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Common Input Errors</h2>
+
+            <h3>Entering Text Where an Integer Is Expected</h3>
+
+            <p>
+                Consider this program:
+            </p>
+
+            <div class="code-example">
+                <pre>age = int(input("Enter your age: "))</pre>
+            </div>
+
+            <p>
+                If the user enters a word instead of a valid integer,
+                Python raises a <code>ValueError</code>.
+            </p>
+
+            <div class="code-example">
+                <pre>Enter your age: seventeen
+
+ValueError: invalid literal for int()</pre>
+            </div>
+
+            <p>
+                This happens because Python cannot convert the word
+                <code>"seventeen"</code> into an integer using
+                <code>int()</code>.
+            </p>
+
+            <h3>Using the Wrong Conversion Function</h3>
+
+            <p>
+                If a program expects decimal input, using
+                <code>int()</code> may reject values such as
+                <code>12.5</code>.
+            </p>
+
+            <div class="code-example">
+                <pre>price = int(input("Enter price: "))</pre>
+            </div>
+
+            <p>
+                For decimal values, use <code>float()</code>:
+            </p>
+
+            <div class="code-example">
+                <pre>price = float(input("Enter price: "))</pre>
+            </div>
+
+            <h3>Handling Invalid Input</h3>
+
+            <p>
+                You can use <code>try</code> and <code>except</code>
+                to handle invalid numeric input without immediately
+                stopping the program.
+            </p>
+
+            <div class="code-example">
+                <pre>try:
+    age = int(input("Enter your age: "))
+    print("Your age is", age)
+
+except ValueError:
+    print("Please enter a valid whole number.")</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">SAMPLE INTERACTION</div>
+                <pre>Enter your age: hello
+Please enter a valid whole number.</pre>
+            </div>
+
+            <div class="info-box">
+                <strong>Good practice:</strong>
+                When converting user input, consider what happens
+                if the user enters something unexpected.
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Practical Coding Exercises</h2>
+
+            <p>
+                Try these exercises using the concepts from this lesson.
+                Write the programs yourself before checking the examples.
+            </p>
+
+            <div class="example-card">
+                <h3>Exercise 1: Personal Greeting</h3>
+
+                <p>
+                    Ask the user for their name and display a
+                    personalised greeting.
+                </p>
+
+                <p><strong>Expected behaviour:</strong></p>
+
+                <div class="output-box">
+                    <pre>Enter your name: Rahul
+Welcome to Python, Rahul!</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 2: Add Two Numbers</h3>
+
+                <p>
+                    Ask the user to enter two integers and display
+                    their sum.
+                </p>
+
+                <p><strong>Expected behaviour:</strong></p>
+
+                <div class="output-box">
+                    <pre>Enter first number: 12
+Enter second number: 8
+Sum: 20</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 3: Rectangle Area</h3>
+
+                <p>
+                    Ask the user for the length and width of a
+                    rectangle. Calculate and display its area.
+                </p>
+
+                <p><strong>Formula:</strong></p>
+
+                <div class="code-example">
+                    <pre>Area = length * width</pre>
+                </div>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 4: Even or Odd</h3>
+
+                <p>
+                    Ask the user for an integer and determine
+                    whether it is even or odd.
+                </p>
+
+                <p><strong>Hint:</strong> Use the modulus operator <code>%</code>.</p>
+            </div>
+
+            <div class="example-card">
+                <h3>Exercise 5: Simple Calculator</h3>
+
+                <p>
+                    Ask the user for two numbers and display
+                    their sum, difference and product.
+                </p>
+
+                <p>
+                    Use <code>float()</code> so decimal numbers
+                    can also be accepted.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Quick Knowledge Check</h2>
+
+            <p>
+                Test your understanding of user input.
+                Select one answer for each question and check your score.
+            </p>
+
+            <div id="quiz-container">
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>1. Which function is used to receive input from a user?</h3>
+
+                    <label><input type="radio" name="q1" value="a"> print()</label>
+                    <label><input type="radio" name="q1" value="b"> input()</label>
+                    <label><input type="radio" name="q1" value="c"> type()</label>
+                    <label><input type="radio" name="q1" value="d"> int()</label>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="c">
+                    <h3>2. What data type does input() return by default?</h3>
+
+                    <label><input type="radio" name="q2" value="a"> Integer</label>
+                    <label><input type="radio" name="q2" value="b"> Float</label>
+                    <label><input type="radio" name="q2" value="c"> String</label>
+                    <label><input type="radio" name="q2" value="d"> Boolean</label>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="a">
+                    <h3>3. Which function converts valid numeric text into an integer?</h3>
+
+                    <label><input type="radio" name="q3" value="a"> int()</label>
+                    <label><input type="radio" name="q3" value="b"> str()</label>
+                    <label><input type="radio" name="q3" value="c"> list()</label>
+                    <label><input type="radio" name="q3" value="d"> type()</label>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="d">
+                    <h3>4. Which function should be used to accept decimal input?</h3>
+
+                    <label><input type="radio" name="q4" value="a"> int()</label>
+                    <label><input type="radio" name="q4" value="b"> str()</label>
+                    <label><input type="radio" name="q4" value="c"> bool()</label>
+                    <label><input type="radio" name="q4" value="d"> float()</label>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+
+                <div class="quiz-question" data-answer="b">
+                    <h3>5. What error can occur when int("hello") is executed?</h3>
+
+                    <label><input type="radio" name="q5" value="a"> NameError</label>
+                    <label><input type="radio" name="q5" value="b"> ValueError</label>
+                    <label><input type="radio" name="q5" value="c"> IndexError</label>
+                    <label><input type="radio" name="q5" value="d"> ZeroDivisionError</label>
+
+                    <p class="quiz-feedback" aria-live="polite"></p>
+                </div>
+
+            </div>
+
+            <button id="check-quiz" class="quiz-button" type="button">
+                Check Answers
+            </button>
+
+            <p id="quiz-result" aria-live="polite"></p>
+        </section>
+
+        <section>
+            <h2>12. Lesson Summary</h2>
+
+            <p>
+                In this lesson, you learned how Python receives
+                information from users.
+            </p>
+
+            <ul>
+                <li><code>input()</code> receives information while a program runs.</li>
+                <li>The message inside input() is called a prompt.</li>
+                <li>The entered value is stored in a variable.</li>
+                <li><code>input()</code> always returns a string.</li>
+                <li><code>int()</code> converts suitable input into an integer.</li>
+                <li><code>float()</code> converts suitable input into a float.</li>
+                <li>Input can be combined with conditions and calculations.</li>
+                <li><code>try</code> and <code>except</code> can handle invalid input.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>What comes next?</strong>
+                In Lesson 8, you will learn how to display information
+                clearly using Python's output functions.
+            </div>
+        </section>
+
+        <div class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+
+                <p>
+                    Finished learning and practising? Mark this lesson
+                    as completed to update your course progress.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message" aria-live="polite"></p>
+            </div>
+        </div>
+
+        <nav class="lesson-navigation" aria-label="Lesson navigation">
+            <a href="lesson-6.html">← Previous Lesson</a>
+            <a href="lesson-8.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+  </div>
+  
+<script src="../js/course.js"></script>
+
+<script>
+    const MODULE_NUMBER = 2;
+    const LESSON_NUMBER = 7;
+
+    // Quiz functionality
+    const checkQuizButton = document.getElementById("check-quiz");
+    const quizResult = document.getElementById("quiz-result");
+
+    checkQuizButton.addEventListener("click", function () {
+        const questions = document.querySelectorAll(".quiz-question");
+        let score = 0;
+        let unanswered = 0;
+
+        questions.forEach(function (question) {
+            const correctAnswer = question.dataset.answer;
+            const selected = question.querySelector("input:checked");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            if (!selected) {
+                unanswered++;
+                feedback.textContent = "Please select an answer.";
+                feedback.style.color = "#fbbf24";
+                return;
+            }
+
+            if (selected.value === correctAnswer) {
+                score++;
+                feedback.textContent = "Correct!";
+                feedback.style.color = "#4ade80";
+            } else {
+                feedback.textContent =
+                    "Incorrect. The correct answer is " +
+                    correctAnswer.toUpperCase() + ".";
+                feedback.style.color = "#f87171";
+            }
+        });
+
+        quizResult.textContent =
+            "Your score: " + score + " / " + questions.length;
+
+        if (unanswered > 0) {
+            quizResult.textContent +=
+                " (" + unanswered + " question(s) unanswered)";
+        }
+    });
+
+    // Manual lesson completion
+    const completeButton = document.getElementById("complete-lesson");
+    const completionMessage = document.getElementById("completion-message");
+
+    function updateCompletionStatus() {
+        if (
+            window.SwypyyCourse &&
+            window.SwypyyCourse.isLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            )
+        ) {
+            completeButton.textContent = "✓ Completed";
+            completeButton.disabled = true;
+
+            completionMessage.textContent =
+                "This lesson is already marked as completed.";
+        }
+    }
+
+    completeButton.addEventListener("click", function () {
+        if (!window.SwypyyCourse) {
+            completionMessage.textContent =
+                "Progress system could not be loaded. Please refresh the page.";
+            return;
+        }
+
+        window.SwypyyCourse.markLessonCompleted(
+            MODULE_NUMBER,
+            LESSON_NUMBER
+        );
+
+        completeButton.textContent = "✓ Completed";
+        completeButton.disabled = true;
+
+        completionMessage.textContent =
+            "Lesson completed! Your course progress has been updated.";
+    });
+
+    updateCompletionStatus();
+</script>
+
+</body>
+  </html>
