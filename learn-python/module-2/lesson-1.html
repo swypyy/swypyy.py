@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Python Syntax and Indentation | Swypyy.py</title>
+    <meta name="description" content="Learn Python syntax, statements, indentation, code blocks, and common syntax errors with practical examples.">
+
+    <link rel="icon" href="../../assets/s-logo.png">
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-page {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 35px 22px 70px;
+        }
+
+        .lesson-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .lesson-top a,
+        .lesson-navigation a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top a:hover,
+        .lesson-navigation a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-label {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            font-size: clamp(30px, 6vw, 43px);
+            line-height: 1.2;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .lesson-description {
+            color: #b8b2c9;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .lesson-content section {
+            margin-bottom: 35px;
+        }
+
+        .lesson-content h2 {
+            font-size: 23px;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .lesson-content h3 {
+            font-size: 17px;
+            margin: 20px 0 9px;
+            color: #ddd6fe;
+        }
+
+        .lesson-content p,
+        .lesson-content li {
+            color: #c4bfd0;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 23px;
+            margin: 12px 0;
+        }
+
+        .lesson-content li {
+            margin-bottom: 7px;
+        }
+
+        .lesson-content code {
+            font-family: "JetBrains Mono", monospace;
+            color: #d8b4fe;
+            background: #211a32;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            white-space: pre-wrap;
+            color: #e9ddff;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 14px 0 7px;
+            text-transform: uppercase;
+        }
+
+        .lesson-note {
+            background: #1c172e;
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 18px 0;
+        }
+
+        .lesson-note p {
+            margin: 0;
+        }
+  
+        .flow-diagram {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            text-align: center;
+        }
+
+        .flow-step {
+            background: #211a32;
+            border: 1px solid #594276;
+            border-radius: 9px;
+            padding: 13px;
+            margin: 8px auto;
+            max-width: 360px;
+            color: #e9ddff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .flow-arrow {
+            color: #a78bfa;
+            font-size: 21px;
+            line-height: 1.3;
+        }
+
+        .quiz-box,
+        .completion-box {
+            background: #171222;
+            border: 1px solid #352b46;
+            border-radius: 14px;
+            padding: 22px;
+            margin-top: 22px;
+        }
+
+        .quiz-question {
+            margin-bottom: 22px;
+        }
+
+        .quiz-question:last-child {
+            margin-bottom: 0;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #211a32;
+            color: #e5e0ed;
+            border: 1px solid #403451;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 9px 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .quiz-option:hover {
+            border-color: #a78bfa;
+        }
+
+        .quiz-option.correct {
+            border-color: #22c55e;
+            background: #123020;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #ef4444;
+            background: #351919;
+        }
+
+        .quiz-option:disabled {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .quiz-feedback {
+            min-height: 24px;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #c4bfd0;
+        }
+
+        .completion-box {
+            text-align: center;
+        }
+
+        .completion-box p {
+            color: #c4bfd0;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        .complete-button {
+            border: 0;
+            border-radius: 9px;
+            background: #7c3aed;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .complete-button:hover {
+            background: #6d28d9;
+        }
+
+        .complete-button:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .completion-status {
+            color: #a78bfa !important;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .lesson-navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            border-top: 1px solid #302541;
+            padding-top: 25px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-page {
+                padding: 25px 16px 50px;
+            }
+
+            .lesson-content h2 {
+                font-size: 21px;
+            }
+
+            .quiz-box,
+            .completion-box {
+                padding: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="lesson-page">
+
+        <nav class="lesson-top">
+            <a href="index.html">← Back to Module 2</a>
+            <a href="../index.html">View All Modules</a>
+        </nav>
+
+        <header>
+            <div class="lesson-label">Module 2 · Lesson 1</div>
+
+            <h1 class="lesson-title">Python Syntax and Indentation</h1>
+
+            <p class="lesson-description">
+                Learn the basic rules of writing Python code.
+                Understand statements, indentation, code blocks,
+                and how to recognise common syntax mistakes.
+            </p>
+        </header>
+
+        <article class="lesson-content">
+
+            <section>
+                <h2>1. Introduction to Python Syntax</h2>
+
+                <p>
+                    Every programming language has rules that explain
+                    how its instructions must be written. These rules
+                    are called syntax.
+                </p>
+
+                <p>
+                    Python syntax describes how to write instructions
+                    that Python can understand and execute.
+                </p>
+
+                <p>
+                    For example, look at this simple Python instruction:
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello, Python!")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-example">
+                    <pre>Hello, Python!</pre>
+                </div>
+
+                <p>
+                    This instruction tells Python to display the
+                    message <code>Hello, Python!</code>.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> Syntax is the set
+                        of rules we follow when writing code.
+                        Just like a natural language has grammar,
+                        a programming language has syntax.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. Understanding Python Statements</h2>
+
+                <p>
+                    A statement is an instruction that Python can
+                    execute. A Python program is usually made up
+                    of several statements.
+                </p>
+
+                <p>Consider this example:</p>
+
+                <div class="code-example">
+                    <pre>print("Welcome")
+print("I am learning Python")
+print("This is my first module")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-example">
+                    <pre>Welcome
+I am learning Python
+This is my first module</pre>
+                </div>
+
+                <p>
+                    Each <code>print()</code> instruction is a
+                    separate statement. Python executes these
+                    statements in order, from top to bottom.
+                </p>
+
+                <h3>Do Python statements need semicolons?</h3>
+
+                <p>
+                    In Python, you normally write one statement
+                    on each line. A semicolon is not required
+                    at the end of a statement.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Sam"
+age = 16
+
+print(name)
+print(age)</pre>
+                </div>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Beginner tip:</strong> Write one
+                        statement per line. It makes your code
+                        easier to read and understand.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>3. Basic Rules of Python Syntax</h2>
+
+                <p>
+                    Python has several basic rules that you should
+                    remember while writing programs.
+                </p>
+
+                <h3>Rule 1: Python is case-sensitive</h3>
+
+                <p>
+                    Python treats uppercase and lowercase letters
+                    as different characters.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Alex"
+Name = "Riya"
+
+print(name)
+print(Name)</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-example">
+                    <pre>Alex
+Riya</pre>
+                </div>
+
+                <p>
+                    Here, <code>name</code> and <code>Name</code>
+                    are two different variable names.
+                </p>
+
+                <h3>Rule 2: Brackets must be matched</h3>
+
+                <p>
+                    When you open parentheses, square brackets,
+                    or curly brackets, you must close them properly.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello")</pre>
+                </div>
+
+                <p>
+                    The opening and closing parentheses match.
+                    Forgetting a closing bracket can cause a
+                    syntax error.
+                </p>
+
+                <h3>Rule 3: Text needs quotation marks</h3>
+
+                <p>
+                    Text values are written inside single or
+                    double quotation marks.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Good morning")
+print('Welcome to Python')</pre>
+                </div>
+
+                <p>
+                    Both examples are valid. The opening and
+                    closing quotation marks should match.
+                </p>
+
+                <h3>Rule 4: Use clear and consistent names</h3>
+
+                <p>
+                    When creating names for variables and functions,
+                    choose names that describe their purpose.
+                    You will learn more about variables in the
+                    next lesson.
+                </p>
+            </section>
+  
+            <section>
+                <h2>4. What Is Indentation?</h2>
+
+                <p>
+                    Indentation means adding spaces at the beginning
+                    of a line of code.
+                </p>
+
+                <p>
+                    Python uses indentation to identify which
+                    statements belong together inside a code block.
+                    This is an important part of Python syntax.
+                </p>
+
+                <p>Look at this example:</p>
+
+                <div class="code-example">
+                    <pre>if 10 > 5:
+    print("10 is greater than 5")</pre>
+                </div>
+
+                <p>
+                    Notice the spaces before <code>print()</code>.
+                    The indented statement belongs to the
+                    <code>if</code> block.
+                </p>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-example">
+                    <pre>10 is greater than 5</pre>
+                </div>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Important:</strong> Python commonly
+                        uses four spaces for each indentation level.
+                        Using four spaces is the recommended style.
+                    </p>
+                </div>
+
+                <h3>Correct indentation</h3>
+
+                <div class="code-example">
+                    <pre>if 5 > 2:
+    print("The condition is true")
+    print("This line is also inside the if block")
+
+print("This line is outside the if block")</pre>
+                </div>
+
+                <h3>Incorrect indentation</h3>
+
+                <div class="code-example">
+                    <pre>if 5 > 2:
+print("The condition is true")</pre>
+                </div>
+
+                <p>
+                    The second example is incorrect because the
+                    statement after the <code>if</code> line
+                    is not indented.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. Understanding Code Blocks</h2>
+
+                <p>
+                    A code block is a group of statements that
+                    belong together. In Python, indentation
+                    identifies the statements inside a block.
+                </p>
+
+                <p>
+                    A colon (<code>:</code>) is commonly used
+                    to begin a block after statements such as
+                    <code>if</code>, <code>for</code>,
+                    <code>while</code>, and function definitions.
+                </p>
+
+                <p>Here is a simple example:</p>
+
+                <div class="code-example">
+                    <pre>if 8 > 3:
+    print("First statement")
+    print("Second statement")
+
+print("Outside the block")</pre>
+                </div>
+
+                <div class="output-label">Output</div>
+
+                <div class="code-example">
+                    <pre>First statement
+Second statement
+Outside the block</pre>
+                </div>
+
+                <p>
+                    The first two print statements are indented
+                    at the same level. They belong to the
+                    <code>if</code> block.
+                </p>
+
+                <p>
+                    The last statement has no indentation,
+                    so it is outside that block.
+                </p>
+
+                <div class="flow-diagram">
+                    <div class="flow-step">if 8 > 3:</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">Indented statement 1</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">Indented statement 2</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-step">Statement outside the block</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>6. Common Syntax and Indentation Errors</h2>
+
+                <p>
+                    Beginners often make small mistakes while
+                    writing code. Python reports these problems
+                    so that you can correct them.
+                </p>
+
+                <h3>Error 1: Missing closing parenthesis</h3>
+
+                <div class="code-example">
+                    <pre>print("Hello"</pre>
+                </div>
+
+                <p>
+                    The closing parenthesis is missing.
+                    Python cannot correctly understand the
+                    incomplete instruction.
+                </p>
+
+                <h3>Error 2: Missing quotation mark</h3>
+
+                <div class="code-example">
+                    <pre>print("Welcome to Python)</pre>
+                </div>
+
+                <p>
+                    The text starts with a double quotation mark,
+                    but there is no matching closing quotation mark.
+                </p>
+
+                <h3>Error 3: Missing colon</h3>
+
+                <div class="code-example">
+                    <pre>if 10 > 5
+    print("True")</pre>
+                </div>
+
+                <p>
+                    The colon is missing after the condition.
+                    A colon is required here to introduce the
+                    <code>if</code> block.
+                </p>
+
+                <h3>Error 4: Incorrect indentation</h3>
+
+                <div class="code-example">
+                    <pre>if 10 > 5:
+print("True")</pre>
+                </div>
+
+                <p>
+                    The statement inside the <code>if</code>
+                    block must be indented.
+                </p>
+
+                <h3>Error 5: Inconsistent indentation</h3>
+
+                <p>
+                    Mixing tabs and spaces carelessly can cause
+                    indentation problems. Use four spaces for
+                    each indentation level and keep the style
+                    consistent.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Remember:</strong> A
+                        <code>SyntaxError</code> means Python
+                        found code that does not follow its
+                        grammar rules. An
+                        <code>IndentationError</code> is a
+                        specific kind of syntax error related
+                        to indentation.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>7. Practical Coding Exercises</h2>
+
+                <p>
+                    Now it is time to practise. Try these exercises
+                    in your Python editor or an online Python
+                    environment.
+                </p>
+
+                <h3>Exercise 1: Display three messages</h3>
+
+                <p>
+                    Write a program that displays your name,
+                    your school subject, and a message saying
+                    that you are learning Python.
+                </p>
+
+                <p><strong>Example solution:</strong></p>
+
+                <div class="code-example">
+                    <pre>print("My name is Alex")
+print("I study Science")
+print("I am learning Python")</pre>
+                </div>
+
+                <h3>Exercise 2: Identify the indentation</h3>
+
+                <p>
+                    Study this program and identify which
+                    statements belong to the <code>if</code> block.
+                </p>
+
+                <div class="code-example">
+                    <pre>if 7 > 4:
+    print("Line A")
+    print("Line B")
+
+print("Line C")</pre>
+                </div>
+
+                <p>
+                    Answer: Line A and Line B belong to the
+                    <code>if</code> block. Line C is outside it.
+                </p>
+
+                <h3>Exercise 3: Fix the code</h3>
+
+                <p>
+                    The following code contains an indentation
+                    mistake. Correct it and run the program.
+                </p>
+
+                <div class="code-example">
+                    <pre>if 20 > 10:
+print("20 is greater than 10")</pre>
+                </div>
+
+                <p><strong>Correct version:</strong></p>
+
+                <div class="code-example">
+                    <pre>if 20 > 10:
+    print("20 is greater than 10")</pre>
+                </div>
+
+                <h3>Exercise 4: Predict the output</h3>
+
+                <p>
+                    Before running this program, try to predict
+                    what it will display.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Start")
+print("Learning Python")
+print("End")</pre>
+                </div>
+
+                <p>
+                    Check your prediction by running the code.
+                    Python executes these statements in order.
+                </p>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>Practice habit:</strong> Write
+                        the code, predict the output, run it,
+                        and compare your prediction with the
+                        actual result.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>8. Quick Knowledge Check</h2>
+
+                <p>
+                    Test your understanding of Python syntax
+                    and indentation.
+  </p>
+  
+                <div class="quiz-box">
+
+                    <div class="quiz-question">
+                        <h3>Question 1: What does syntax mean in Python?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. The colour of the code
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. The rules for writing code
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. The speed of a computer
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. The name of a programming editor
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 2: Which indentation style is recommended in Python?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. One space
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. Four spaces
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. Ten spaces
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. No spaces
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 3: What symbol usually introduces an if code block?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. ;
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            B. ,
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            C. :
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. #
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 4: What does Python use indentation for?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. To change the colour of text
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. To identify code blocks
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. To install Python
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. To rename a program
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h3>Question 5: Which of these is valid Python code?</h3>
+
+                        <button class="quiz-option" data-correct="false">
+                            A. print("Hello"
+                        </button>
+
+                        <button class="quiz-option" data-correct="true">
+                            B. print("Hello")
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            C. Print("Hello"
+                        </button>
+
+                        <button class="quiz-option" data-correct="false">
+                            D. print Hello)
+                        </button>
+
+                        <p class="quiz-feedback" aria-live="polite"></p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2>9. Lesson Summary</h2>
+
+                <p>
+                    In this lesson, you learned the basic rules
+                    of Python syntax and why indentation is
+                    important when writing programs.
+                </p>
+
+                <p>You should now understand:</p>
+
+                <ul>
+                    <li>What Python syntax means.</li>
+                    <li>What a Python statement is.</li>
+                    <li>That Python is case-sensitive.</li>
+                    <li>Why brackets and quotation marks must match.</li>
+                    <li>What indentation means.</li>
+                    <li>How Python uses indentation to identify code blocks.</li>
+                    <li>How to recognise common syntax and indentation errors.</li>
+                </ul>
+
+                <div class="lesson-note">
+                    <p>
+                        <strong>What's next?</strong> In Lesson 2,
+                        you will learn about Python variables,
+                        how to store information, and how to use
+                        variable names in your programs.
+                    </p>
+                </div>
+            </section>
+
+        </article>
+
+        <section class="completion-box">
+            <h2>Lesson Completion</h2>
+
+            <p>
+                Finished reading and practising?
+                Mark this lesson as completed to update
+                your Module 2 progress.
+            </p>
+
+            <button class="complete-button" id="complete-lesson">
+                Mark as Completed
+            </button>
+
+            <p class="completion-status" id="completion-status" aria-live="polite"></p>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="index.html">← Back to Module 2</a>
+            <a href="lesson-2.html">Next Lesson →</a>
+        </nav>
+
+    </main>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 1;
+
+        // Quiz interaction
+        document.querySelectorAll(".quiz-question").forEach(question => {
+            const options = question.querySelectorAll(".quiz-option");
+            const feedback = question.querySelector(".quiz-feedback");
+
+            options.forEach(option => {
+                option.addEventListener("click", () => {
+                    if (question.dataset.answered === "true") return;
+
+                    question.dataset.answered = "true";
+
+                    if (option.dataset.correct === "true") {
+                        option.classList.add("correct");
+                        feedback.textContent = "Correct! Well done.";
+                    } else {
+                        option.classList.add("incorrect");
+                        feedback.textContent =
+                            "Not quite. The correct answer is highlighted.";
+
+                        question.querySelector('[data-correct="true"]')
+                            .classList.add("correct");
+                    }
+
+                    options.forEach(button => {
+                        button.disabled = true;
+                    });
+                });
+            });
+        });
+
+        // Lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionStatus = document.getElementById("completion-status");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completionStatus.textContent = "✓ This lesson is completed.";
+                completeButton.textContent = "Completed";
+                completeButton.disabled = true;
+            }
+        }
+
+        completeButton.addEventListener("click", () => {
+            if (
+                window.SwypyyCourse &&
+                typeof window.SwypyyCourse.markLessonCompleted === "function"
+            ) {
+                window.SwypyyCourse.markLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                );
+
+                updateCompletionStatus();
+            } else {
+                completionStatus.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+            }
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+                          </html>
