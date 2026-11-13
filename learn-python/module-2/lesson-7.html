@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Output | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            width: min(100% - 40px, 900px);
+            margin: 0 auto;
+            padding: 35px 0 80px;
+            color: #e5e1ee;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lesson-header {
+            margin-bottom: 38px;
+        }
+
+        .lesson-top-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 42px;
+        }
+
+        .lesson-top-links a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top-links a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(30px, 5vw, 43px);
+            line-height: 1.2;
+            margin: 0 0 15px;
+            font-weight: 800;
+        }
+
+        .lesson-description {
+            color: #aaa3b8;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 720px;
+        }
+
+        .lesson-content {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .lesson-section h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 0 16px;
+            line-height: 1.4;
+        }
+
+        .lesson-section h3 {
+            color: #ddd6fe;
+            font-size: 18px;
+            margin: 22px 0 10px;
+        }
+
+        .lesson-section p,
+        .lesson-section li {
+            color: #c2bdce;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-section ul,
+        .lesson-section ol {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-section strong {
+            color: #ffffff;
+        }
+
+        .lesson-section code,
+        .inline-code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #d8b4fe;
+            background: #211a30;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: #e9ddff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .output-box {
+            background: #171323;
+            border: 1px solid #493568;
+            border-radius: 10px;
+            padding: 15px 18px;
+            margin: 12px 0 20px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            margin: 0;
+            color: #d6d0e2;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .info-box,
+        .example-card {
+            background: #191426;
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 17px 20px;
+            margin: 16px 0;
+        }
+
+        .info-box p,
+        .example-card p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lesson-wrapper">
+        <header class="lesson-header">
+            <nav class="lesson-top-links">
+                <a href="index.html">← Back to Module 2</a>
+                <a href="../index.html">View All Modules</a>
+            </nav>
+
+            <div class="lesson-number">MODULE 02 · LESSON 08</div>
+            <h1 class="lesson-title">Displaying Output</h1>
+            <p class="lesson-description">
+                Learn how to display messages, values, and formatted information
+                using Python's print() function.
+            </p>
+        </header>
+
+        <main class="lesson-content">
+
+            <section class="lesson-section">
+                <h2>1. Introduction to Displaying Output</h2>
+
+                <p>
+                    A Python program often needs to show information to the person
+                    using it. This information is called <strong>output</strong>.
+                    Output can be a simple message, a calculation result, or a
+                    collection of values.
+                </p>
+
+                <p>
+                    Python provides a built-in function called
+                    <code>print()</code> to display output in the console or terminal.
+                    You have already used it in your first Python program.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Welcome to Python!")
+print(25)
+print(10 + 5)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Welcome to Python!
+25
+15</pre>
+                </div>
+
+                <p>
+                    The first statement displays text, the second displays a number,
+                    and the third displays the result of a calculation.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>2. Understanding the print() Function</h2>
+
+                <p>
+                    The <code>print()</code> function sends the values you provide
+                    to the program's standard output, usually the terminal.
+                </p>
+
+                <p>
+                    The basic structure is:
+                </p>
+
+                <div class="code-example">
+                    <pre>print(value)</pre>
+                </div>
+
+                <p>
+                    The value inside the parentheses is what Python displays.
+                    It can be text, a number, a variable, or an expression.
+                </p>
+
+                <h3>Displaying different values</h3>
+
+                <div class="code-example">
+                    <pre>print("Hello")
+print(100)
+print(4.75)
+print(True)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Hello
+100
+4.75
+True</pre>
+                </div>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> Text must be placed inside
+                        quotation marks. Numbers and Boolean values can be written
+                        directly without quotation marks.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>3. Displaying Variables</h2>
+
+                <p>
+                    You can pass a variable directly to <code>print()</code>.
+                    Python displays the value stored in that variable.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Anu"
+age = 16
+score = 92.5
+
+print(name)
+print(age)
+print(score)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Anu
+16
+92.5</pre>
+                </div>
+
+                <p>
+                    You can also display multiple variables in a single
+                    <code>print()</code> statement. By default, Python separates
+                    the values with spaces.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Anu"
+age = 16
+
+print(name, age)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Anu 16</pre>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>4. Displaying Multiple Values</h2>
+
+                <p>
+                    The <code>print()</code> function accepts multiple values,
+                    separated by commas. Python displays them in order.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Name:", "Ravi")
+print("Age:", 17)
+print("Marks:", 85, 90, 95)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Name: Ravi
+Age: 17
+Marks: 85 90 95</pre>
+                </div>
+
+                <p>
+                    This is useful when you want to combine labels and values
+                    without manually converting every value into text.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>5. Using the sep Parameter</h2>
+
+                <p>
+                    By default, <code>print()</code> separates multiple values
+                    with a single space. You can change this using the
+                    <code>sep</code> parameter.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Python", "is", "fun", sep="-")
+print(10, 20, 30, sep=" | ")
+print("2026", "11", "13", sep="/")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Python-is-fun
+10 | 20 | 30
+2026/11/13</pre>
+                </div>
+
+                <p>
+                    The separator can be any string, including a comma,
+                    dash, symbol, or even an empty string.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Important:</strong> <code>sep</code> only controls
+                        the text placed between multiple values in one
+                        <code>print()</code> call.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>6. Understanding the end Parameter</h2>
+
+                <p>
+                    By default, every <code>print()</code> call ends with a
+                    newline. This means the next output starts on a new line.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("Hello")
+print("World")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Hello
+World</pre>
+                </div>
+
+                <p>
+                    You can change this behaviour using the
+                    <code>end</code> parameter.
+                </p>
+
+                <h3>Keeping output on the same line</h3>
+
+                <div class="code-example">
+                    <pre>print("Hello", end=" ")
+print("World")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Hello World</pre>
+                </div>
+
+                <h3>Using a custom ending</h3>
+
+                <div class="code-example">
+                    <pre>print("Loading", end="...")
+print("Complete")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Loading...Complete</pre>
+                </div>
+
+                <p>
+                    The <code>end</code> parameter controls what Python adds
+                    after the values have been printed.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>7. Using Escape Characters</h2>
+
+                <p>
+                    Escape characters let you include special formatting inside
+                    a string. They begin with a backslash
+                    (<code>\</code>).
+                </p>
+
+                <h3>Common escape characters</h3>
+
+                <ul>
+                    <li><code>\n</code> - starts a new line.</li>
+                    <li><code>\t</code> - inserts a horizontal tab.</li>
+                    <li><code>\\</code> - displays a backslash.</li>
+                    <li><code>\"</code> - displays a double quotation mark.</li>
+                    <li><code>\'</code> - displays a single quotation mark.</li>
+                </ul>
+
+                <h3>New line example</h3>
+
+                <div class="code-example">
+                    <pre>print("Python\nProgramming")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Python
+Programming</pre>
+                </div>
+
+                <h3>Tab example</h3>
+
+                <div class="code-example">
+                    <pre>print("Name\tAge")
+print("Anu\t16")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Name    Age
+Anu     16</pre>
+                </div>
+
+                <p>
+                    A tab usually creates a wider gap than a normal space.
+                    The exact alignment can depend on the terminal.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>8. Formatting Output with f-Strings</h2>
+
+                <p>
+                    Sometimes you need to display text together with variable
+                    values. Python's <strong>f-strings</strong> make this easy.
+                </p>
+
+                <p>
+                    Put the letter <code>f</code> before the opening quotation
+                    mark, then place variable names or expressions inside
+                    curly braces <code>{}</code>.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Meera"
+age = 16
+
+print(f"My name is {name}.")
+print(f"I am {age} years old.")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>My name is Meera.
+I am 16 years old.</pre>
+                </div>
+
+                <h3>Using expressions inside f-strings</h3>
+
+                <div class="code-example">
+                    <pre>a = 10
+b = 5
+
+print(f"Total: {a + b}")
+print(f"Product: {a * b}")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Total: 15
+Product: 50</pre>
+                </div>
+
+                <h3>Formatting decimal numbers</h3>
+
+                <p>
+                    You can control how many decimal places are displayed.
+                    For example, <code>{price:.2f}</code> displays a number
+                    with two digits after the decimal point.
+                </p>
+
+                <div class="code-example">
+                    <pre>price = 49.9876
+
+print(f"Price: {price:.2f}")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Price: 49.99</pre>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>9. Using the format() Method</h2>
+
+                <p>
+                    Another way to insert values into a string is the
+                    <code>format()</code> method. Place curly-brace placeholders
+                    in the string and provide the values using
+                    <code>.format()</code>.
+                </p>
+
+                <div class="code-example">
+                    <pre>name = "Arun"
+age = 17
+
+message = "My name is {} and I am {} years old.".format(name, age)
+
+print(message)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>My name is Arun and I am 17 years old.</pre>
+                </div>
+
+                <p>
+                    You can also use numbered placeholders to choose the
+                    order of values.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("{1} is learning {0}".format("Python", "Anu"))</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Anu is learning Python</pre>
+                </div>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Tip:</strong> f-strings are usually the clearest
+                        choice for modern Python code when you are inserting
+                        variables into text.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>10. Combining Strings and Values</h2>
+
+                <p>
+                    You can join strings using the <code>+</code> operator.
+                    This is called string concatenation.
+                </p>
+
+                <div class="code-example">
+                    <pre>first_name = "Anu"
+last_name = "Krishnan"
+
+full_name = first_name + " " + last_name
+
+print(full_name)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Anu Krishnan</pre>
+                </div>
+
+                <p>
+                    Be careful when combining strings and numbers with
+                    <code>+</code>. Python does not automatically join a
+                    string and an integer.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = 16
+
+# This causes a TypeError:
+# print("Age: " + age)
+
+# Convert the number to a string:
+print("Age: " + str(age))
+
+# Or use an f-string:
+print(f"Age: {age}")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Age: 16
+Age: 16</pre>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>11. Common Output Mistakes</h2>
+
+                <h3>Mistake 1: Forgetting quotation marks</h3>
+
+                <div class="code-example">
+                    <pre># Incorrect
+print(Hello)
+
+# Correct
+print("Hello")</pre>
+                </div>
+
+                <p>
+                    Without quotation marks, Python treats
+                    <code>Hello</code> as a variable name.
+                </p>
+
+                <h3>Mistake 2: Mixing strings and numbers</h3>
+
+                <div class="code-example">
+                    <pre># Incorrect
+age = 16
+# print("Age: " + age)
+
+# Correct
+print(f"Age: {age}")</pre>
+                </div>
+
+                <h3>Mistake 3: Incorrectly placing commas</h3>
+
+                <div class="code-example">
+                    <pre># Displays two values separated by a space
+print("Total:", 50)
+
+# Displays one combined string
+print("Total: " + str(50))</pre>
+                </div>
+
+                <h3>Mistake 4: Confusing sep and end</h3>
+
+                <ul>
+                    <li><code>sep</code> controls the space between values.</li>
+                    <li><code>end</code> controls what comes after the output.</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2>12. Practical Coding Exercises</h2>
+
+                <div class="example-card">
+                    <h3>Exercise 1: Personal Introduction</h3>
+                    <p>
+                        Create variables for your name, age, and favourite
+                        subject. Display all three in a readable sentence
+                        using an f-string.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 2: Simple Calculation</h3>
+                    <p>
+                        Store two numbers in variables. Display their sum,
+                        difference, and product with clear labels.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 3: Formatted Table</h3>
+                    <p>
+                        Display a small table containing a student's name,
+                        subject, and mark. Use <code>sep</code> to separate
+                        the values with a vertical bar.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 4: Receipt Generator</h3>
+                    <p>
+                        Store an item name, quantity, and price. Calculate
+                        the total cost and display a simple receipt using
+                        f-strings.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>13. Quick Knowledge Check</h2>
+                <p>
+                    Test what you have learned. Select one answer for each
+                    question and check your results.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>1. Which function displays output in Python?</h3>
+                        <label><input type="radio" name="q1" value="a"> input()</label>
+                        <label><input type="radio" name="q1" value="b"> print()</label>
+                        <label><input type="radio" name="q1" value="c"> show()</label>
+                        <label><input type="radio" name="q1" value="d"> output()</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>2. Which parameter changes the separator between values?</h3>
+                        <label><input type="radio" name="q2" value="a"> end</label>
+                        <label><input type="radio" name="q2" value="b"> format</label>
+                        <label><input type="radio" name="q2" value="c"> sep</label>
+                        <label><input type="radio" name="q2" value="d"> split</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>3. What does the end parameter control?</h3>
+                        <label><input type="radio" name="q3" value="a"> What is printed after the output</label>
+                        <label><input type="radio" name="q3" value="b"> The data type of a variable</label>
+                        <label><input type="radio" name="q3" value="c"> The number of values</label>
+                        <label><input type="radio" name="q3" value="d"> The length of a string</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="d">
+                        <h3>4. Which escape character starts a new line?</h3>
+                        <label><input type="radio" name="q4" value="a"> \t</label>
+                        <label><input type="radio" name="q4" value="b"> \\</label>
+                        <label><input type="radio" name="q4" value="c"> \'</label>
+                        <label><input type="radio" name="q4" value="d"> \n</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>5. Which syntax is an f-string?</h3>
+                        <label><input type="radio" name="q5" value="a"> "f: Hello {name}"</label>
+                        <label><input type="radio" name="q5" value="b"> f"Hello {name}"</label>
+                        <label><input type="radio" name="q5" value="c"> "Hello" + f</label>
+                        <label><input type="radio" name="q5" value="d"> format"Hello {name}"</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <button id="check-quiz" class="quiz-button" type="button">
+                        Check Answers
+                    </button>
+
+                    <p id="quiz-result"></p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>14. Lesson Summary</h2>
+
+                <p>In this lesson, you learned how to display information using Python.</p>
+
+                <ul>
+                    <li><code>print()</code> displays output.</li>
+                    <li>You can display text, numbers, variables, and expressions.</li>
+                    <li><code>sep</code> changes the separator between values.</li>
+                    <li><code>end</code> changes what appears after printed output.</li>
+                    <li><code>\n</code> creates a new line and <code>\t</code> inserts a tab.</li>
+                    <li>f-strings insert variables and expressions into text.</li>
+                    <li><code>format()</code> is another way to format strings.</li>
+                    <li><code>str()</code> converts values to strings when needed.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Key takeaway:</strong> Good output makes a program
+                        easier to understand and use. Practise using
+                        <code>print()</code> with variables, separators, and
+                        f-strings to display information clearly.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <section class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+                <p>
+                    Mark this lesson as completed after studying the content
+                    and trying the exercises. Your course progress will update.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-7.html">← Previous Lesson</a>
+            <a href="lesson-9.html">Next Lesson →</a>
+        </nav>
+    </div>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 8;
+
+        // Quiz functionality
+        const checkQuizButton = document.getElementById("check-quiz");
+        const quizResult = document.getElementById("quiz-result");
+
+        checkQuizButton.addEventListener("click", function () {
+            const questions = document.querySelectorAll(".quiz-question");
+            let score = 0;
+            let unanswered = 0;
+
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.answer;
+                const selected = question.querySelector(
+                    'input[type="radio"]:checked'
+                );
+                const feedback = question.querySelector(".quiz-feedback");
+
+                if (!selected) {
+                    unanswered++;
+                    feedback.textContent = "Please select an answer.";
+                    feedback.style.color = "#fbbf24";
+                    return;
+                }
+
+                if (selected.value === correctAnswer) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "#86efac";
+                } else {
+                    const correctLabel = question.querySelector(
+                        'input[value="' + correctAnswer + '"]'
+                    ).parentElement;
+
+                    feedback.textContent =
+                        "Incorrect. Correct answer: " +
+                        correctLabel.textContent.trim();
+
+                    feedback.style.color = "#fca5a5";
+                }
+            });
+
+            if (unanswered > 0) {
+                quizResult.textContent =
+                    "You answered " + (questions.length - unanswered) +
+                    " of " + questions.length + " questions. Complete the remaining questions.";
+            } else {
+                quizResult.textContent =
+                    "Your score: " + score + " out of " + questions.length + ".";
+            }
+        });
+
+        // Manual lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionMessage = document.getElementById("completion-message");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completeButton.textContent = "✓ Lesson Completed";
+                completeButton.disabled = true;
+                completionMessage.textContent =
+                    "This lesson is already marked as completed.";
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            if (!window.SwypyyCourse) {
+                completionMessage.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+                return;
+            }
+
+            window.SwypyyCourse.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            completeButton.textContent = "✓ Lesson Completed";
+            completeButton.disabled = true;
+
+            completionMessage.textContent =
+                "Your progress has been saved successfully!";
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+</html>
