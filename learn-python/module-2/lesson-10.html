@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Error Handling | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            width: min(100% - 40px, 900px);
+            margin: 0 auto;
+            padding: 35px 0 80px;
+            color: #e5e1ee;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lesson-header {
+            margin-bottom: 38px;
+        }
+
+        .lesson-top-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 42px;
+        }
+
+        .lesson-top-links a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top-links a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(30px, 5vw, 43px);
+            line-height: 1.2;
+            margin: 0 0 15px;
+            font-weight: 800;
+        }
+
+        .lesson-description {
+            color: #aaa3b8;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 720px;
+        }
+
+        .lesson-content {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .lesson-section h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 0 16px;
+            line-height: 1.4;
+        }
+
+        .lesson-section h3 {
+            color: #ddd6fe;
+            font-size: 18px;
+            margin: 22px 0 10px;
+        }
+
+        .lesson-section p,
+        .lesson-section li {
+            color: #c2bdce;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-section ul,
+        .lesson-section ol {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-section strong {
+            color: #ffffff;
+        }
+
+        .lesson-section code,
+        .inline-code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #d8b4fe;
+            background: #211a30;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: #e9ddff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .output-box {
+            background: #171323;
+            border: 1px solid #493568;
+            border-radius: 10px;
+            padding: 15px 18px;
+            margin: 12px 0 20px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            margin: 0;
+            color: #d6d0e2;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .info-box,
+        .example-card {
+            background: #191426;
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 17px 20px;
+            margin: 16px 0;
+        }
+
+        .info-box p,
+        .example-card p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lesson-wrapper">
+        <header class="lesson-header">
+            <nav class="lesson-top-links">
+                <a href="index.html">← Back to Module 2</a>
+                <a href="../index.html">View All Modules</a>
+            </nav>
+
+            <div class="lesson-number">MODULE 02 · LESSON 10</div>
+            <h1 class="lesson-title">Basic Error Handling</h1>
+            <p class="lesson-description">
+                Learn why Python errors happen and how to handle common
+                exceptions using try, except, else, and finally.
+            </p>
+        </header>
+
+        <main class="lesson-content">
+
+            <section class="lesson-section">
+                <h2>1. What Are Errors in Python?</h2>
+
+                <p>
+                    An error is a problem that prevents a program from
+                    working as expected. Errors can happen because of
+                    incorrect syntax, invalid operations, or unexpected data.
+                </p>
+
+                <p>
+                    For example, trying to divide a number by zero causes
+                    an error in Python.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = 10
+result = number / 0
+
+print(result)</pre>
+                </div>
+
+                <p>
+                    Python raises a <code>ZeroDivisionError</code> because
+                    division by zero is not allowed.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Why learn error handling?</strong>
+                        It helps programs respond to problems in a controlled
+                        way instead of stopping unexpectedly.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>2. Types of Errors in Python</h2>
+
+                <p>
+                    Python errors can be grouped into several categories.
+                    Understanding the differences helps you find and fix
+                    problems more easily.
+                </p>
+
+                <h3>Syntax Errors</h3>
+
+                <p>
+                    A syntax error occurs when Python code does not follow
+                    the language's grammar rules.
+                </p>
+
+                <div class="code-example">
+                    <pre># Missing closing parenthesis
+print("Hello"</pre>
+                </div>
+
+                <p>
+                    Python detects this problem before the program can
+                    execute normally.
+                </p>
+
+                <h3>Runtime Errors (Exceptions)</h3>
+
+                <p>
+                    Runtime errors happen while a program is running.
+                    Python calls these problems <strong>exceptions</strong>.
+                </p>
+
+                <div class="code-example">
+                    <pre>number = int("hello")</pre>
+                </div>
+
+                <p>
+                    This raises a <code>ValueError</code> because
+                    <code>"hello"</code> cannot be converted into an integer.
+                </p>
+
+                <h3>Logical Errors</h3>
+
+                <p>
+                    A logical error happens when the program runs but
+                    produces an incorrect result because the logic is wrong.
+                </p>
+
+                <div class="code-example">
+                    <pre># Intended to calculate an average
+total = 90
+number_of_subjects = 3
+
+average = total * number_of_subjects
+
+print(average)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>270</pre>
+                </div>
+
+                <p>
+                    The program runs without an exception, but the
+                    calculation is incorrect. It should divide the total
+                    by the number of subjects.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>3. Common Python Exceptions</h2>
+
+                <p>
+                    Python provides many built-in exception types.
+                    Here are some common ones you should recognize.
+                </p>
+
+                <ul>
+                    <li><strong>ZeroDivisionError:</strong> Dividing a number by zero.</li>
+                    <li><strong>ValueError:</strong> A value has an unsuitable format.</li>
+                    <li><strong>TypeError:</strong> An operation is used with an unsuitable type.</li>
+                    <li><strong>NameError:</strong> Using a name that has not been defined.</li>
+                    <li><strong>IndexError:</strong> Accessing a list or sequence position that does not exist.</li>
+                    <li><strong>KeyError:</strong> Looking up a missing dictionary key.</li>
+                    <li><strong>FileNotFoundError:</strong> Trying to open a file that cannot be found.</li>
+                </ul>
+
+                <div class="code-example">
+                    <pre># ValueError
+int("hello")
+
+# TypeError
+"Age: " + 16
+
+# NameError
+print(student_name)</pre>
+                </div>
+
+                <p>
+                    These examples demonstrate different exceptions.
+                    Run them separately to observe the messages Python displays.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>4. What Is Exception Handling?</h2>
+
+                <p>
+                    Exception handling allows you to detect and respond
+                    to runtime problems. Python provides the
+                    <code>try</code> and <code>except</code> statements
+                    for this purpose.
+                </p>
+
+                <p>
+                    The basic structure looks like this:
+                </p>
+
+                <div class="code-example">
+                    <pre>try:
+    # Code that might cause an exception
+    risky_operation()
+
+except SomeException:
+    # Code that handles the exception
+    print("Something went wrong.")</pre>
+                </div>
+
+                <p>
+                    Python first runs the code inside <code>try</code>.
+                    If a matching exception occurs, it runs the
+                    corresponding <code>except</code> block.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Important:</strong> Exception handling does
+                        not automatically fix the underlying problem.
+                        It lets your program respond appropriately.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>5. Using try and except</h2>
+
+                <p>
+                    Consider a program that divides two numbers.
+                    The user might enter zero as the second number.
+                </p>
+
+                <h3>Without exception handling</h3>
+
+                <div class="code-example">
+                    <pre>number = 10
+divisor = 0
+
+result = number / divisor
+print(result)</pre>
+                </div>
+
+                <p>
+                    The program raises a <code>ZeroDivisionError</code>
+                    and does not reach the print statement.
+                </p>
+
+                <h3>With exception handling</h3>
+
+                <div class="code-example">
+                    <pre>try:
+    number = 10
+    divisor = 0
+
+    result = number / divisor
+    print(result)
+
+except ZeroDivisionError:
+    print("You cannot divide by zero.")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>You cannot divide by zero.</pre>
+                </div>
+
+                <p>
+                    The exception is handled, so the program can continue
+                    after the <code>try-except</code> structure.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>6. Handling Different Exceptions</h2>
+
+                <p>
+                    You can use multiple <code>except</code> blocks to
+                    respond to different types of exceptions.
+                </p>
+
+                <div class="code-example">
+                    <pre>try:
+    number = int(input("Enter a number: "))
+    result = 100 / number
+    print("Result:", result)
+
+except ValueError:
+    print("Please enter a valid whole number.")
+
+except ZeroDivisionError:
+    print("The number cannot be zero.")</pre>
+                </div>
+
+                <p>
+                    This program handles two possible problems:
+                </p>
+
+                <ul>
+                    <li>If the input cannot be converted to an integer, it handles <code>ValueError</code>.</li>
+                    <li>If the user enters zero, it handles <code>ZeroDivisionError</code>.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Good practice:</strong> Handle specific
+                        exceptions whenever possible. This makes it
+                        clearer which problems your program expects.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>7. Using the else Block</h2>
+
+                <p>
+                    The optional <code>else</code> block runs only when
+                    the code inside <code>try</code> completes without
+                    raising an exception.
+                </p>
+
+                <div class="code-example">
+                    <pre>try:
+    number = int(input("Enter a number: "))
+
+except ValueError:
+    print("Invalid input.")
+
+else:
+    print("You entered:", number)</pre>
+                </div>
+
+                <p>
+                    If the user enters a valid integer, the
+                    <code>else</code> block runs. If conversion fails,
+                    the <code>except</code> block runs instead.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>8. Using the finally Block</h2>
+
+                <p>
+                    The optional <code>finally</code> block runs whether
+                    an exception occurs or not. It is commonly used for
+                    cleanup tasks.
+                </p>
+
+                <div class="code-example">
+                    <pre>try:
+    print("Starting program")
+    number = 10 / 2
+
+except ZeroDivisionError:
+    print("Cannot divide by zero.")
+
+finally:
+    print("Program finished.")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Starting program
+Program finished.</pre>
+                </div>
+
+                <p>
+                    Even if an exception occurs, the
+                    <code>finally</code> block normally runs as Python
+                    leaves the structure.
+                </p>
+
+                <h3>Understanding all four blocks</h3>
+
+                <ul>
+                    <li><code>try</code> contains code that may raise an exception.</li>
+                    <li><code>except</code> handles a matching exception.</li>
+                    <li><code>else</code> runs if no exception occurs in <code>try</code>.</li>
+                    <li><code>finally</code> runs when the structure is exited, whether an exception occurred or not.</li>
+                </ul>
+
+                <div class="code-example">
+                    <pre>try:
+    print("Try block")
+
+except ValueError:
+    print("Except block")
+
+else:
+    print("Else block")
+
+finally:
+    print("Finally block")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Try block
+Else block
+Finally block</pre>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>9. Getting the Exception Message</h2>
+
+                <p>
+                    You can store an exception in a variable using
+                    <code>as</code>. This allows you to display or
+                    inspect the exception message.
+                </p>
+
+                <div class="code-example">
+                    <pre>try:
+    number = int("hello")
+
+except ValueError as error:
+    print("Error:", error)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">POSSIBLE OUTPUT</div>
+                    <pre>Error: invalid literal for int() with base 10: 'hello'</pre>
+                </div>
+
+                <p>
+                    The exact wording of exception messages can vary
+                    between Python versions.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>10. Raising Exceptions with raise</h2>
+
+                <p>
+                    Python allows you to raise an exception yourself
+                    using the <code>raise</code> keyword.
+                </p>
+
+                <p>
+                    This is useful when your program detects an invalid
+                    situation that should not be allowed.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = -5
+
+if age < 0:
+    raise ValueError("Age cannot be negative.")</pre>
+                </div>
+
+                <p>
+                    This code raises a <code>ValueError</code> because
+                    a negative age is not valid for this example.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> <code>raise</code> creates
+                        an exception. It does not handle one. You can use
+                        <code>try-except</code> elsewhere to catch an
+                        exception when appropriate.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>11. Common Error Handling Mistakes</h2>
+
+                <h3>Mistake 1: Using an empty except block</h3>
+
+                <div class="code-example">
+                    <pre># Avoid this
+try:
+    result = 10 / 0
+except:
+    pass</pre>
+                </div>
+
+                <p>
+                    This hides the problem without explaining what happened.
+                    It can make debugging difficult.
+                </p>
+
+                <h3>Mistake 2: Catching every exception unnecessarily</h3>
+
+                <p>
+                    A broad <code>except Exception</code> can be useful
+                    in carefully designed situations, but catching every
+                    possible problem may hide unexpected bugs.
+                </p>
+
+                <h3>Mistake 3: Putting unrelated code inside try</h3>
+
+                <p>
+                    Keep the <code>try</code> block focused on the
+                    operations that may raise the exceptions you intend
+                    to handle.
+                </p>
+
+                <h3>Mistake 4: Forgetting to handle invalid input</h3>
+
+                <p>
+                    When using <code>input()</code> with conversions
+                    such as <code>int()</code>, remember that invalid
+                    text can raise a <code>ValueError</code>.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>12. Practical Coding Exercises</h2>
+
+                <div class="example-card">
+                    <h3>Exercise 1: Safe Division</h3>
+                    <p>
+                        Ask the user for two numbers. Divide the first
+                        by the second and handle a
+                        <code>ZeroDivisionError</code>.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 2: Age Converter</h3>
+                    <p>
+                        Ask the user to enter their age. Convert it
+                        to an integer and handle invalid input using
+                        <code>ValueError</code>.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 3: Complete try Structure</h3>
+                    <p>
+                        Write a program using <code>try</code>,
+                        <code>except</code>, <code>else</code>, and
+                        <code>finally</code>. Observe which blocks
+                        run when the input is valid and invalid.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 4: Positive Number Validator</h3>
+                    <p>
+                        Ask the user for a number. Raise a
+                        <code>ValueError</code> if the number is
+                        negative, and handle that exception with
+                        an appropriate message.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>13. Quick Knowledge Check</h2>
+
+                <p>
+                    Test your understanding of Python errors and
+                    exception handling.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>1. Which block contains code that might cause an exception?</h3>
+                        <label><input type="radio" name="q1" value="a"> else</label>
+                        <label><input type="radio" name="q1" value="b"> try</label>
+                        <label><input type="radio" name="q1" value="c"> finally</label>
+                        <label><input type="radio" name="q1" value="d"> raise</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>2. Which exception occurs when dividing by zero?</h3>
+                        <label><input type="radio" name="q2" value="a"> ValueError</label>
+                        <label><input type="radio" name="q2" value="b"> TypeError</label>
+                        <label><input type="radio" name="q2" value="c"> ZeroDivisionError</label>
+                        <label><input type="radio" name="q2" value="d"> NameError</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>3. When does the else block run?</h3>
+                        <label><input type="radio" name="q3" value="a"> When no exception occurs in the try block</label>
+                        <label><input type="radio" name="q3" value="b"> Whenever an exception occurs</label>
+                        <label><input type="radio" name="q3" value="c"> Only when the program starts</label>
+                        <label><input type="radio" name="q3" value="d"> Only after finally</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="d">
+                        <h3>4. Which block is commonly used for cleanup tasks?</h3>
+                        <label><input type="radio" name="q4" value="a"> try</label>
+                        <label><input type="radio" name="q4" value="b"> else</label>
+                        <label><input type="radio" name="q4" value="c"> except</label>
+                        <label><input type="radio" name="q4" value="d"> finally</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>5. Which keyword is used to raise an exception manually?</h3>
+                        <label><input type="radio" name="q5" value="a"> except</label>
+                        <label><input type="radio" name="q5" value="b"> raise</label>
+                        <label><input type="radio" name="q5" value="c"> error</label>
+                        <label><input type="radio" name="q5" value="d"> throw</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <button id="check-quiz" class="quiz-button" type="button">
+                        Check Answers
+                    </button>
+
+                    <p id="quiz-result"></p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>14. Module 2 Complete!</h2>
+
+                <p>
+                    You have reached the end of Python Fundamentals.
+                    You now understand several important building blocks
+                    used in everyday Python programs.
+                </p>
+
+                <ul>
+                    <li>Python syntax and indentation</li>
+                    <li>Variables and naming rules</li>
+                    <li>Common data types</li>
+                    <li>Numbers and mathematical operations</li>
+                    <li>Strings and string operations</li>
+                    <li>Type conversion</li>
+                    <li>Taking user input</li>
+                    <li>Displaying output</li>
+                    <li>Comments and docstrings</li>
+                    <li>Basic error handling</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Before moving forward:</strong> Practise
+                        writing small programs that combine variables,
+                        input, calculations, output, and error handling.
+                        These skills will help you understand the next module.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <section class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+                <p>
+                    Mark this lesson as completed after studying the content
+                    and trying the exercises. Your course progress will update.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-9.html">← Previous Lesson</a>
+            <a href="../module-3/index.html">Continue to Module 3 →</a>
+        </nav>
+    </div>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 10;
+
+        // Quiz functionality
+        const checkQuizButton = document.getElementById("check-quiz");
+        const quizResult = document.getElementById("quiz-result");
+
+        checkQuizButton.addEventListener("click", function () {
+            const questions = document.querySelectorAll(".quiz-question");
+            let score = 0;
+            let unanswered = 0;
+
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.answer;
+                const selected = question.querySelector(
+                    'input[type="radio"]:checked'
+                );
+                const feedback = question.querySelector(".quiz-feedback");
+
+                if (!selected) {
+                    unanswered++;
+                    feedback.textContent = "Please select an answer.";
+                    feedback.style.color = "#fbbf24";
+                    return;
+                }
+
+                if (selected.value === correctAnswer) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "#86efac";
+                } else {
+                    const correctLabel = question.querySelector(
+                        'input[value="' + correctAnswer + '"]'
+                    ).parentElement;
+
+                    feedback.textContent =
+                        "Incorrect. Correct answer: " +
+                        correctLabel.textContent.trim();
+
+                    feedback.style.color = "#fca5a5";
+                }
+            });
+
+            if (unanswered > 0) {
+                quizResult.textContent =
+                    "You answered " + (questions.length - unanswered) +
+                    " of " + questions.length +
+                    " questions. Complete the remaining questions.";
+            } else {
+                quizResult.textContent =
+                    "Your score: " + score + " out of " + questions.length + ".";
+            }
+        });
+
+        // Manual lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionMessage = document.getElementById("completion-message");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completeButton.textContent = "✓ Lesson Completed";
+                completeButton.disabled = true;
+                completionMessage.textContent =
+                    "This lesson is already marked as completed.";
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            if (!window.SwypyyCourse) {
+                completionMessage.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+                return;
+            }
+
+            window.SwypyyCourse.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            completeButton.textContent = "✓ Lesson Completed";
+            completeButton.disabled = true;
+
+            completionMessage.textContent =
+                "Your progress has been saved successfully!";
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+</html>
