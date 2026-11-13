@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments in Python | Swypyy.py</title>
+
+    <link rel="stylesheet" href="../css/course.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .lesson-wrapper {
+            width: min(100% - 40px, 900px);
+            margin: 0 auto;
+            padding: 35px 0 80px;
+            color: #e5e1ee;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lesson-header {
+            margin-bottom: 38px;
+        }
+
+        .lesson-top-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 42px;
+        }
+
+        .lesson-top-links a {
+            color: #c4b5fd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .lesson-top-links a:hover {
+            color: #ffffff;
+        }
+
+        .lesson-number {
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-title {
+            color: #ffffff;
+            font-size: clamp(30px, 5vw, 43px);
+            line-height: 1.2;
+            margin: 0 0 15px;
+            font-weight: 800;
+        }
+
+        .lesson-description {
+            color: #aaa3b8;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 720px;
+        }
+
+        .lesson-content {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .lesson-section h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0 0 16px;
+            line-height: 1.4;
+        }
+
+        .lesson-section h3 {
+            color: #ddd6fe;
+            font-size: 18px;
+            margin: 22px 0 10px;
+        }
+
+        .lesson-section p,
+        .lesson-section li {
+            color: #c2bdce;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .lesson-section ul,
+        .lesson-section ol {
+            padding-left: 24px;
+            margin: 12px 0;
+        }
+
+        .lesson-section li {
+            margin-bottom: 8px;
+        }
+
+        .lesson-section strong {
+            color: #ffffff;
+        }
+
+        .lesson-section code,
+        .inline-code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #d8b4fe;
+            background: #211a30;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .code-example {
+            background: #100d18;
+            border: 1px solid #302541;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+            color: #e9ddff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+
+        .output-box {
+            background: #171323;
+            border: 1px solid #493568;
+            border-radius: 10px;
+            padding: 15px 18px;
+            margin: 12px 0 20px;
+        }
+
+        .output-label {
+            color: #a78bfa;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+
+        .output-box pre {
+            margin: 0;
+            color: #d6d0e2;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .info-box,
+        .example-card {
+            background: #191426;
+            border: 1px solid rgba(167, 139, 250, 0.25);
+            border-left: 4px solid #8b5cf6;
+            border-radius: 10px;
+            padding: 17px 20px;
+            margin: 16px 0;
+        }
+
+        .info-box p,
+        .example-card p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lesson-wrapper">
+        <header class="lesson-header">
+            <nav class="lesson-top-links">
+                <a href="index.html">← Back to Module 2</a>
+                <a href="../index.html">View All Modules</a>
+            </nav>
+
+            <div class="lesson-number">MODULE 02 · LESSON 09</div>
+            <h1 class="lesson-title">Comments in Python</h1>
+            <p class="lesson-description">
+                Learn how to write comments, explain your code, temporarily
+                disable statements, and document Python functions clearly.
+            </p>
+        </header>
+
+        <main class="lesson-content">
+
+            <section class="lesson-section">
+                <h2>1. What Are Comments?</h2>
+
+                <p>
+                    Comments are notes written inside a program to explain
+                    what the code does. They are meant for people reading
+                    the code, not for Python to execute.
+                </p>
+
+                <p>
+                    Python ignores comments when running a program.
+                    Comments can help you remember why you wrote something
+                    and help other developers understand your work.
+                </p>
+
+                <div class="code-example">
+                    <pre># This program displays a welcome message
+print("Welcome to Python!")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Welcome to Python!</pre>
+                </div>
+
+                <p>
+                    The line beginning with <code>#</code> is a comment.
+                    Only the <code>print()</code> statement produces output.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> Comments do not change
+                        what a program does. They explain the program to
+                        the people reading it.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>2. Writing Single-Line Comments</h2>
+
+                <p>
+                    In Python, a single-line comment begins with the
+                    hash symbol <code>#</code>. Everything after that
+                    symbol on the same line is treated as a comment,
+                    unless it is inside a string.
+                </p>
+
+                <div class="code-example">
+                    <pre># Store a student's name
+name = "Anu"
+
+# Store the student's age
+age = 16
+
+# Display the information
+print(name, age)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Anu 16</pre>
+                </div>
+
+                <h3>Commenting out a statement</h3>
+
+                <p>
+                    You can temporarily prevent a line of code from
+                    running by placing <code>#</code> at its beginning.
+                    This is called commenting out code.
+                </p>
+
+                <div class="code-example">
+                    <pre>print("This line runs")
+
+# print("This line does not run")
+
+print("This line also runs")</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>This line runs
+This line also runs</pre>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>3. Writing Inline Comments</h2>
+
+                <p>
+                    An inline comment appears on the same line as a
+                    statement. It begins after the code.
+                </p>
+
+                <div class="code-example">
+                    <pre>age = 16  # Student's age
+total = 100 + 50  # Calculate the total
+
+print(age)
+print(total)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>16
+150</pre>
+                </div>
+
+                <p>
+                    Inline comments are useful when a short explanation
+                    is needed for a particular statement.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Good practice:</strong> Keep inline comments
+                        short and leave enough space between the code and
+                        the comment so the line stays readable.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>4. Can Python Have Multi-Line Comments?</h2>
+
+                <p>
+                    Python does not have a separate special symbol for
+                    a block comment. A common approach is to write
+                    several single-line comments, each beginning with
+                    <code>#</code>.
+                </p>
+
+                <div class="code-example">
+                    <pre># This program calculates the area
+# of a rectangle using its length
+# and width.
+
+length = 10
+width = 5
+
+area = length * width
+
+print(area)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>50</pre>
+                </div>
+
+                <p>
+                    This is the recommended way to write ordinary
+                    multi-line comments in Python.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>5. Triple Quotes and Their Purpose</h2>
+
+                <p>
+                    Python supports triple-quoted strings using either
+                    three single quotes or three double quotes.
+                </p>
+
+                <div class="code-example">
+                    <pre>message = """Python is easy to read.
+It is used in many fields.
+It is useful for beginners."""
+
+print(message)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Python is easy to read.
+It is used in many fields.
+It is useful for beginners.</pre>
+                </div>
+
+                <p>
+                    Triple quotes create a string that can span multiple
+                    lines. They are not technically comments.
+                </p>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Important distinction:</strong> Triple-quoted
+                        text is still a string. If it is not assigned to
+                        a variable or used as a docstring, it may simply
+                        be an unused string expression. Use
+                        <code>#</code> for normal comments.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>6. Understanding Docstrings</h2>
+
+                <p>
+                    A <strong>docstring</strong> is a string used to
+                    document a module, function, or class. It is usually
+                    written immediately after the definition.
+                </p>
+
+                <p>
+                    Docstrings help explain what a function or class
+                    is designed to do. Python makes them available
+                    through the object's <code>__doc__</code> attribute.
+                </p>
+
+                <h3>Function docstring example</h3>
+
+                <div class="code-example">
+                    <pre>def greet():
+    """Display a welcome message."""
+    print("Welcome!")
+
+greet()</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Welcome!</pre>
+                </div>
+
+                <h3>Reading a docstring</h3>
+
+                <div class="code-example">
+                    <pre>def add(a, b):
+    """Return the sum of two numbers."""
+    return a + b
+
+print(add.__doc__)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Return the sum of two numbers.</pre>
+                </div>
+
+                <p>
+                    You will learn more about functions and documentation
+                    in the Functions and Modules module.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>7. Comments Inside a Program</h2>
+
+                <p>
+                    Comments can explain different parts of a program.
+                    Here is a complete example of a simple marks calculator.
+                </p>
+
+                <div class="code-example">
+                    <pre># Store marks for three subjects
+maths = 85
+science = 90
+english = 80
+
+# Calculate total marks
+total = maths + science + english
+
+# Calculate average marks
+average = total / 3
+
+# Display the results
+print("Total:", total)
+print("Average:", average)</pre>
+                </div>
+
+                <div class="output-box">
+                    <div class="output-label">OUTPUT</div>
+                    <pre>Total: 255
+Average: 85.0</pre>
+                </div>
+
+                <p>
+                    The comments divide the program into clear steps:
+                    storing values, calculating results, and displaying
+                    information.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>8. Good Commenting Practices</h2>
+
+                <p>
+                    Comments should make code easier to understand.
+                    Writing too many unnecessary comments can make
+                    a program harder to read.
+                </p>
+
+                <h3>Explain why, not just what</h3>
+
+                <p>
+                    A useful comment often explains the reason behind
+                    a decision rather than repeating the code.
+                </p>
+
+                <div class="code-example">
+                    <pre># Less useful: repeats what the code says
+# Add 10 to score
+score = score + 10
+
+# More useful: explains why the value changes
+# Award bonus points for completing the challenge
+score = score + 10</pre>
+                </div>
+
+                <h3>Keep comments accurate</h3>
+
+                <p>
+                    If you change your code, update any comments that
+                    no longer describe it correctly.
+                </p>
+
+                <h3>Use clear language</h3>
+
+                <ul>
+                    <li>Write comments that are easy to understand.</li>
+                    <li>Keep explanations short and relevant.</li>
+                    <li>Avoid comments that repeat obvious code.</li>
+                    <li>Do not leave outdated explanations.</li>
+                    <li>Use docstrings to document functions and classes.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Remember:</strong> Good code should be
+                        understandable. Comments should add useful
+                        information instead of creating unnecessary noise.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>9. Common Commenting Mistakes</h2>
+
+                <h3>Mistake 1: Forgetting the # symbol</h3>
+
+                <div class="code-example">
+                    <pre># Incorrect
+This is a comment
+
+# Correct
+# This is a comment</pre>
+                </div>
+
+                <p>
+                    Without the hash symbol, Python tries to interpret
+                    ordinary text as code and may raise a syntax error.
+                </p>
+
+                <h3>Mistake 2: Using comments to hide important code</h3>
+
+                <p>
+                    Commenting out code temporarily is useful while
+                    testing, but old unused code should not be left
+                    scattered throughout a finished program.
+                </p>
+
+                <h3>Mistake 3: Writing comments that repeat everything</h3>
+
+                <div class="code-example">
+                    <pre># Bad: the comment repeats the statement
+age = 16  # Set age to 16
+
+# Better: explain something useful
+age = 16  # Age used for the eligibility check</pre>
+                </div>
+
+                <h3>Mistake 4: Treating every triple-quoted string as a comment</h3>
+
+                <p>
+                    Triple-quoted strings are strings, not ordinary
+                    comments. Use them for docstrings or actual
+                    multi-line string data.
+                </p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>10. Practical Coding Exercises</h2>
+
+                <div class="example-card">
+                    <h3>Exercise 1: Personal Introduction</h3>
+                    <p>
+                        Write a program that stores your name and age.
+                        Add comments explaining each variable and
+                        display the information.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 2: Simple Calculator</h3>
+                    <p>
+                        Create a program that adds two numbers.
+                        Use comments to explain the input values,
+                        calculation, and output.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 3: Comment Out Code</h3>
+                    <p>
+                        Write three print statements. Comment out
+                        the middle statement and observe which
+                        messages appear.
+                    </p>
+                </div>
+
+                <div class="example-card">
+                    <h3>Exercise 4: Write a Docstring</h3>
+                    <p>
+                        Create a function named <code>square()</code>
+                        that returns the square of a number. Add a
+                        docstring explaining what the function does.
+                    </p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>11. Quick Knowledge Check</h2>
+
+                <p>
+                    Answer these questions to check your understanding
+                    of Python comments and docstrings.
+                </p>
+
+                <div id="quiz-container">
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>1. Which symbol starts a single-line comment?</h3>
+                        <label><input type="radio" name="q1" value="a"> #</label>
+                        <label><input type="radio" name="q1" value="b"> //</label>
+                        <label><input type="radio" name="q1" value="c"> --</label>
+                        <label><input type="radio" name="q1" value="d"> **</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="c">
+                        <h3>2. What happens to a normal comment when Python runs a program?</h3>
+                        <label><input type="radio" name="q2" value="a"> It is displayed in the terminal</label>
+                        <label><input type="radio" name="q2" value="b"> It changes variable values</label>
+                        <label><input type="radio" name="q2" value="c"> Python ignores it</label>
+                        <label><input type="radio" name="q2" value="d"> It stops the program</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="b">
+                        <h3>3. What is a docstring used for?</h3>
+                        <label><input type="radio" name="q3" value="a"> Performing calculations</label>
+                        <label><input type="radio" name="q3" value="b"> Documenting modules, functions, and classes</label>
+                        <label><input type="radio" name="q3" value="c"> Creating variables</label>
+                        <label><input type="radio" name="q3" value="d"> Repeating a loop</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="d">
+                        <h3>4. Which is the recommended way to write an ordinary multi-line comment?</h3>
+                        <label><input type="radio" name="q4" value="a"> Use two slashes</label>
+                        <label><input type="radio" name="q4" value="b"> Use angle brackets</label>
+                        <label><input type="radio" name="q4" value="c"> Use quotation marks around every line</label>
+                        <label><input type="radio" name="q4" value="d"> Start each line with #</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <div class="quiz-question" data-answer="a">
+                        <h3>5. Where is a function's docstring usually written?</h3>
+                        <label><input type="radio" name="q5" value="a"> Immediately after the function definition</label>
+                        <label><input type="radio" name="q5" value="b"> At the end of the file only</label>
+                        <label><input type="radio" name="q5" value="c"> Before every variable</label>
+                        <label><input type="radio" name="q5" value="d"> Inside print()</label>
+                        <p class="quiz-feedback"></p>
+                    </div>
+
+                    <button id="check-quiz" class="quiz-button" type="button">
+                        Check Answers
+                    </button>
+
+                    <p id="quiz-result"></p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>12. Lesson Summary</h2>
+
+                <p>
+                    In this lesson, you learned how to document Python
+                    programs using comments and docstrings.
+                </p>
+
+                <ul>
+                    <li><code>#</code> starts a single-line comment.</li>
+                    <li>Comments are ignored when Python executes code.</li>
+                    <li>Inline comments appear beside statements.</li>
+                    <li>Use multiple <code>#</code> lines for ordinary multi-line comments.</li>
+                    <li>Triple-quoted strings can create multi-line strings.</li>
+                    <li>Docstrings document modules, functions, and classes.</li>
+                    <li>Good comments explain useful details without repeating obvious code.</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>
+                        <strong>Key takeaway:</strong> Comments make programs
+                        easier for people to understand and maintain.
+                        Write them clearly, keep them accurate, and use
+                        docstrings when documenting functions and classes.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <section class="lesson-completion">
+            <div class="completion-content">
+                <h2>Lesson Completed?</h2>
+                <p>
+                    Mark this lesson as completed after studying the content
+                    and trying the exercises. Your course progress will update.
+                </p>
+
+                <button id="complete-lesson" class="complete-button" type="button">
+                    Mark as Completed
+                </button>
+
+                <p id="completion-message"></p>
+            </div>
+        </section>
+
+        <nav class="lesson-navigation">
+            <a href="lesson-8.html">← Previous Lesson</a>
+            <a href="lesson-10.html">Next Lesson →</a>
+        </nav>
+    </div>
+
+    <script src="../js/course.js"></script>
+
+    <script>
+        const MODULE_NUMBER = 2;
+        const LESSON_NUMBER = 9;
+
+        // Quiz functionality
+        const checkQuizButton = document.getElementById("check-quiz");
+        const quizResult = document.getElementById("quiz-result");
+
+        checkQuizButton.addEventListener("click", function () {
+            const questions = document.querySelectorAll(".quiz-question");
+            let score = 0;
+            let unanswered = 0;
+
+            questions.forEach(function (question) {
+                const correctAnswer = question.dataset.answer;
+                const selected = question.querySelector(
+                    'input[type="radio"]:checked'
+                );
+                const feedback = question.querySelector(".quiz-feedback");
+
+                if (!selected) {
+                    unanswered++;
+                    feedback.textContent = "Please select an answer.";
+                    feedback.style.color = "#fbbf24";
+                    return;
+                }
+
+                if (selected.value === correctAnswer) {
+                    score++;
+                    feedback.textContent = "Correct!";
+                    feedback.style.color = "#86efac";
+                } else {
+                    const correctLabel = question.querySelector(
+                        'input[value="' + correctAnswer + '"]'
+                    ).parentElement;
+
+                    feedback.textContent =
+                        "Incorrect. Correct answer: " +
+                        correctLabel.textContent.trim();
+
+                    feedback.style.color = "#fca5a5";
+                }
+            });
+
+            if (unanswered > 0) {
+                quizResult.textContent =
+                    "You answered " + (questions.length - unanswered) +
+                    " of " + questions.length +
+                    " questions. Complete the remaining questions.";
+            } else {
+                quizResult.textContent =
+                    "Your score: " + score + " out of " + questions.length + ".";
+            }
+        });
+
+        // Manual lesson completion
+        const completeButton = document.getElementById("complete-lesson");
+        const completionMessage = document.getElementById("completion-message");
+
+        function updateCompletionStatus() {
+            if (
+                window.SwypyyCourse &&
+                window.SwypyyCourse.isLessonCompleted(
+                    MODULE_NUMBER,
+                    LESSON_NUMBER
+                )
+            ) {
+                completeButton.textContent = "✓ Lesson Completed";
+                completeButton.disabled = true;
+                completionMessage.textContent =
+                    "This lesson is already marked as completed.";
+            }
+        }
+
+        completeButton.addEventListener("click", function () {
+            if (!window.SwypyyCourse) {
+                completionMessage.textContent =
+                    "Progress system could not be loaded. Please refresh the page.";
+                return;
+            }
+
+            window.SwypyyCourse.markLessonCompleted(
+                MODULE_NUMBER,
+                LESSON_NUMBER
+            );
+
+            completeButton.textContent = "✓ Lesson Completed";
+            completeButton.disabled = true;
+
+            completionMessage.textContent =
+                "Your progress has been saved successfully!";
+        });
+
+        updateCompletionStatus();
+    </script>
+</body>
+</html>
